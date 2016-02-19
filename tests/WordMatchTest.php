@@ -95,6 +95,19 @@
         $this->assertEquals(3, $result);
       }
 
+      function test_Numbers_As_Words() {
+        //Arrange;
+        $matcher = new WordMatch;
+        $input1 = '1';
+        $input2 = 'I eat 1 banana and I eat 1 chicken. 1.';
+
+        //Act;
+        $result = $matcher->checkMatch($input1, $input2);
+
+        //Assert;
+        $this->assertEquals(3, $result);
+      }
+
 
 
 
