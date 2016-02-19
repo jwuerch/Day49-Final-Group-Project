@@ -120,6 +120,19 @@
         //Assert;
         $this->assertEquals(3, $result);
       }
+
+      function test_Check_InputOne_Punctuation() {
+        //Arrange;
+        $matcher = new WordMatch;
+        $input1 = 'hi,';
+        $input2 = 'hi there';
+
+        //Act;
+        $result = $matcher->checkMatch($input1, $input2);
+
+        //Assert;
+        $this->assertEquals("Please enter a word without punctuation.", $result);
+      }
     }
 
 
