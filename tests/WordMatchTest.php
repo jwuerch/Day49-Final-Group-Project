@@ -46,7 +46,7 @@
       function test_Multiple_Letter_Words() {
         //Arrange;
         $matcher = new WordMatch;
-        $input1 = 'a';
+        $input1 = 'banana';
         $input2 = 'I eat a banana';
 
         //Act;
