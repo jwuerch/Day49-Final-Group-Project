@@ -44,6 +44,6 @@ Output: 3
 
 8. Will count numbers as words even if not written out.
 
-Input: '1', "I eat 1 banana and I eat 1 chicken."
+Input: '1', "I eat 1 banana and I eat 1 chicken. 1."
 
-Output: 2
+Output: 3
