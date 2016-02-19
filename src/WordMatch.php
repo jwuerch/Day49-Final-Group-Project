@@ -2,6 +2,10 @@
 
     class WordMatch {
 
+      function checkMatch() {
+        
+      }
+
 
 
     }
