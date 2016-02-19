@@ -1,7 +1,7 @@
 <?php
     class WordMatch {
       function checkMatch($word, $phrase) {
-        foreach (str_split($word as $char) {
+        foreach (str_split($word) as $char) {
           if (preg_match('/[!#;@._?,]/', $char)) {
             return 'Please enter a word without punctuation.';
           }
