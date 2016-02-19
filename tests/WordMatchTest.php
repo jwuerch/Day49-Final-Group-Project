@@ -30,6 +30,19 @@
         $this->assertEquals(0, $result);
       }
 
+      function test_One_Letter_Words() {
+        //Arrange;
+        $matcher = new WordMatch;
+        $input1 = 'a';
+        $input2 = 'I eat a banana';
+
+        //Act;
+        $result = $matcher->checkMatch($input1, $input2);
+
+        //Assert;
+        $this->assertEquals(1, $result);
+      }
+
 
 
 
