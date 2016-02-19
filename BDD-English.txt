@@ -47,3 +47,9 @@ Output: 3
 Input: '1', "I eat 1 banana and I eat 1 chicken. 1."
 
 Output: 3
+
+9. Capital words still count as words.
+
+Input: 'the', "The. brown.,dl Dog The The ldk.!# The#@d"
+
+Output: 3
