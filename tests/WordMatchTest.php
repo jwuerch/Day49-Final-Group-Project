@@ -85,14 +85,14 @@
       function test_Punctiation() {
         //Arrange;
         $matcher = new WordMatch;
-        $input1 = 'eat';
-        $input2 = 'I eat a banana. I eat a banana twice. I love my banana!';
+        $input1 = 'banana';
+        $input2 = 'I eat a banana. I eat a banana twice...!!#, I love my banana!';
 
         //Act;
         $result = $matcher->checkMatch($input1, $input2);
 
         //Assert;
-        $this->assertEquals(0, $result);
+        $this->assertEquals(3, $result);
       }
 
 
