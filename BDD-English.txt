@@ -6,7 +6,7 @@ Input: '', 'I eat a banana.'
 
 Output: 0
 
-2. Checks for spaces not being identified as words.
+2. Words are defined as what is in between spaces and not spaces.
 
 Input: ' ', "I eat a banana"
 
