@@ -41,3 +41,9 @@ Output: 1
 Input: 'banana', "I eat a banana. I eat a banana twice. I love my banana!"
 
 Output: 3
+
+8. Will count numbers as words even if not written out.
+
+Input: '1', "I eat 1 banana and I eat 1 chicken."
+
+Output: 2
