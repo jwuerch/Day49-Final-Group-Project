@@ -108,6 +108,19 @@
         $this->assertEquals(3, $result);
       }
 
+      function test_Capitals_Are_Words_Too() {
+        //Arrange;
+        $matcher = new WordMatch;
+        $input1 = 'the';
+        $input2 = 'The. brown.,dl Dog The The ldk.!# The#@d';
+
+        //Act;
+        $result = $matcher->checkMatch($input1, $input2);
+
+        //Assert;
+        $this->assertEquals(3, $result);
+      }
+
 
 
 
