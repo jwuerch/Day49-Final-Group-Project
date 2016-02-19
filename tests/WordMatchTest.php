@@ -69,6 +69,19 @@
         $this->assertEquals(2, $result);
       }
 
+      function test_Word_Appears_Twice() {
+        //Arrange;
+        $matcher = new WordMatch;
+        $input1 = 'eat';
+        $input2 = 'I eat a banana and I eat chicken';
+
+        //Act;
+        $result = $matcher->checkMatch($input1, $input2);
+
+        //Assert;
+        $this->assertEquals(2, $result);
+      }
+
 
 
 

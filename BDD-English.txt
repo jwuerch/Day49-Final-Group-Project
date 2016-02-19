@@ -30,15 +30,14 @@ Input: 'eat', 'I eat a banana and I eat a chicken'
 
 Output: 2
 
-
-6. Still checks words even if there's punctuation.
-
-Input: 'banana', "I eat a banana. I eat a banana twice. I love my banana!"
-
-Output: 3
-
-7. Will not output true for partial spellings of a word.
+6. Will not output true for partial spellings of a word.
 
 Input: 'banana', 'I love bananas and I eat a banana.'
 
 Output: 1
+
+7. Still checks words even if there's punctuation.
+
+Input: 'banana', "I eat a banana. I eat a banana twice. I love my banana!"
+
+Output: 3
