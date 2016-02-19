@@ -1,7 +1,7 @@
 <?php
-    require_once 'src/Class.php';
+    require_once 'src/WordMatch.php';
 
-    class ClassTest extends PHPUnit_Framework_TestCase
+    class WordMatchTest extends PHPUnit_Framework_TestCase
     {
       function test_Example()
       {
@@ -10,7 +10,7 @@
         //Act;
 
         //Assert;
-        
+
       }
 
 

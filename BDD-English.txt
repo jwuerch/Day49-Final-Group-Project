@@ -1,0 +1,44 @@
+BDD Specs
+
+1. Checks if returns a blank string.
+
+Input: '', 'I eat a banana.'
+
+Output: 0
+
+2. Checks for spaces not being identified as words.
+
+Input: ' ', "I eat a banana"
+
+Output: 0
+
+3. Check how many times one letter appears in a string.
+
+Input: 'a', 'I eat a banana'
+
+Output: 1
+
+4. Checks for words of more than one letter.
+
+Input: 'banana', 'I eat a banana'
+
+Output: 1
+
+5. Checks for words that appear more than once.
+
+Input: 'eat', 'I eat a banana and I eat a chicken'
+
+Output: 2
+
+
+6. Still checks words even if there's punctuation.
+
+Input: 'banana', "I eat a banana. I eat a banana twice. I love my banana!"
+
+Output: 3
+
+7. Will not output true for partial spellings of a word.
+
+Input: 'banana', 'I love bananas and I eat a banana.'
+
+Output: 1
