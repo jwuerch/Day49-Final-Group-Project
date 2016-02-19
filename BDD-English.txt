@@ -53,3 +53,9 @@ Output: 3
 Input: 'the', "The. brown.,dl Dog The The ldk.!# The#@d"
 
 Output: 3
+
+10. Returns error message if inputted word contains punctuation.
+
+Input: 'hello,.', 'Hello there!'
+
+Output: 'Please input a word without punctuation.'

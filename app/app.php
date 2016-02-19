@@ -1,5 +1,6 @@
 <?php
     require_once __DIR__.'/../vendor/autoload.php';
+    require_once __DIR__.'/../src/WordMatch.php';
 
     $app = new Silex\Application();
 
@@ -16,5 +17,7 @@
       $result = $matcher->checkMatch($input1, $input2);
       return $app['twig']->render('home.html.twig', array('result' => $result, 'word' => $input1, 'phrase' => $input2));
     });
+
+    return $app;
 
  ?>
