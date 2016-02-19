@@ -69,17 +69,17 @@
         $this->assertEquals(2, $result);
       }
 
-      function test_Word_Appears_Twice() {
+      function test_Partial_Words() {
         //Arrange;
         $matcher = new WordMatch;
-        $input1 = 'eat';
+        $input1 = 'ea';
         $input2 = 'I eat a banana and I eat chicken';
 
         //Act;
         $result = $matcher->checkMatch($input1, $input2);
 
         //Assert;
-        $this->assertEquals(2, $result);
+        $this->assertEquals(0, $result);
       }
 
 
