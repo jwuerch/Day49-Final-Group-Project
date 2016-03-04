@@ -56,6 +56,23 @@
             $this->assertEquals($id, $result);
         }
 
+        function testSave() {
+            //Arrange;
+            $name = 'Zapatos';
+            $location = '111 SW st.';
+            $test_store = new Store($name, $location);
+
+            //Act;
+            $test_store->save();
+            $result = Store::getAll();
+
+            //Arrange;
+            $this->assertEquals($test_store, $result[0]);
+
+        }
+
+
+
     }
 
 
