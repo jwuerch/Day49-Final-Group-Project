@@ -27,6 +27,20 @@
             $this->assertEquals($name, $result);
         }
 
+        function testGetId() {
+            //Arrange;
+            $name = 'Adidas';
+            $id = 1;
+            $test_brand = new Brand($name, $id);
+
+            //Act;
+            $result = $test_brand->getId();
+
+            //Assert;
+            $this->assertEquals($id, $result);
+
+        }
+
     }
 
 
