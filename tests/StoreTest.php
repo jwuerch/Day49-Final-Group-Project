@@ -108,7 +108,23 @@
 
             //Assert;
             $this->assertEquals([], $result);
+        }
 
+        function testUpdate() {
+            //Arrange;
+            $name = 'Zapatos';
+            $location = '111 SW St.';
+            $test_store = new Store($name, $location);
+            $test_store->save();
+
+            //Act;
+            $new_name = 'Jonathans Shoe Store';
+            $new_location = '222 SW St.';
+            $test_store->update($new_name, $new_location);
+            $result = [$test_store->getName(), $test_store->getLocation()];
+
+            //Act;
+            $this->assertEquals([$new_name, $new_location], $result);
         }
 
 

@@ -38,6 +38,12 @@
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
+        public function update($new_name, $new_location) {
+            $GLOBALS['DB']->exec("UPDATE stores SET name = '{$new_name}', location = '{$new_location}' WHERE id = {$this->getId()};");
+            $this->setName($new_name);
+            $this->setLocation($new_location);
+        }
+
         static function getAll() {
             $returned_stores = $GLOBALS['DB']->query("SELECT * FROM stores;");
             $stores = array();
@@ -54,6 +60,8 @@
         static function deleteAll() {
             $GLOBALS['DB']->exec("DELETE FROM stores;");
         }
+
+
     }
 
 ?>
