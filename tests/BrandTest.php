@@ -9,7 +9,7 @@
     $password = 'root';
     $DB = new PDO($server, $username, $password);
 
-    class BookTest extends PHPUnit_Framework_TestCase {
+    class BrandTest extends PHPUnit_Framework_TestCase {
 
         protected function teardown() {
             Brand::deleteAll();
