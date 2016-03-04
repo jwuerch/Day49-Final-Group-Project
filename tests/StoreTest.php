@@ -42,6 +42,20 @@
             $this->assertEquals($location, $result);
         }
 
+        function testGetId() {
+            //Arrange;
+            $name = 'Zapatos';
+            $location = '111 SW St';
+            $id = 1;
+            $test_brand = new Store($name, $location, $id);
+
+            //Act;
+            $result = $test_brand->getId();
+
+            //Assert;
+            $this->assertEquals($id, $result);
+        }
+
     }
 
 
