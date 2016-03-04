@@ -127,6 +127,22 @@
             $this->assertEquals([$new_name, $new_location], $result);
         }
 
+        function find() {
+            //Arrange;
+            $name = 'Zapatos';
+            $location = '111 SW St.';
+            $id = 2;
+            $test_store = new Store($name, $location, $id);
+            $test_store->save();
+
+            //Act;
+            $search_id = 2;
+            $result = Store::find($search_id);
+
+            //Assert;
+            $this->assertEquals($test_store, $result);
+        }
+
 
 
     }
