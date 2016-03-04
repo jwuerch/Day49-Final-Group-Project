@@ -3,9 +3,7 @@
     * @backupGlobals disabled
     * @backupStaticAttributes disabled
     */
-    require_once "src/Book.php";
-    require_once "src/Author.php";
-    require_once "src/Copy.php";
+    require_once "src/Brand.php";
     $server = 'mysql:host=localhost;dbname=shoes_test';
     $username = 'root';
     $password = 'root';
@@ -13,8 +11,20 @@
 
     class BookTest extends PHPUnit_Framework_TestCase {
 
-        protected function {
+        // protected function {
+        //
+        // }
 
+        function testGetName() {
+            //Arrange;
+            $name = 'Adidas';
+            $test_brand = new Brand($name);
+
+            //Act;
+            $result = $test_brand->getName();
+
+            //Assert;
+            $this->assertEquals($name, $result);
         }
 
     }
