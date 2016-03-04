@@ -29,6 +29,19 @@
             $this->assertEquals($name, $result);
         }
 
+        function testGetLocation() {
+            //Arrange;
+            $name = 'Zapatos';
+            $location = '111 SW St';
+            $test_brand = new Store($name, $location);
+
+            //Act;
+            $result = $test_brand->getLocation();
+
+            //Assert;
+            $this->assertEquals($location, $result);
+        }
+
     }
 
 
