@@ -110,7 +110,7 @@
             $this->assertEquals([$new_name], $result);
         }
 
-        function find() {
+        function testFind() {
             //Arrange;
             $name = 'Zapatos';
             $id = 2;
@@ -118,7 +118,7 @@
             $test_brand->save();
 
             //Act;
-            $search_id = 2;
+            $search_id = $test_brand->getId();
             $result = Brand::find($search_id);
 
             //Assert;

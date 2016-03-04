@@ -4,6 +4,7 @@
     * @backupStaticAttributes disabled
     */
     require_once "src/Store.php";
+    require_once "src/Brand.php";
     $server = 'mysql:host=localhost;dbname=shoes_test';
     $username = 'root';
     $password = 'root';
@@ -127,7 +128,7 @@
             $this->assertEquals([$new_name, $new_location], $result);
         }
 
-        function find() {
+        function testFind() {
             //Arrange;
             $name = 'Zapatos';
             $location = '111 SW St.';
@@ -136,11 +137,31 @@
             $test_store->save();
 
             //Act;
-            $search_id = 2;
+            $search_id = $test_store->getId();
             $result = Store::find($search_id);
 
             //Assert;
             $this->assertEquals($test_store, $result);
+        }
+
+        function testAddBrand() {
+            //Arrange;
+            $name = 'Zapatos';
+            $location = '111 SW St.';
+            $id = 2;
+            $test_store = new Store($name, $location, $id);
+            $test_store->save();
+
+            $name2 = 'Nike';
+            $test_brand = new Brand($name);
+            $test_brand->save();
+
+            //Act;
+            $test_store->addBrand($test_brand);
+            $result = $test_store->getBrands();
+
+            //Assert;
+            $this->assertEquals([$test_brand], $result);
         }
 
 
