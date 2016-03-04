@@ -28,6 +28,11 @@
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
+        public function update($new_name) {
+            $GLOBALS['DB']->exec("UPDATE brands SET name = '{$new_name}' WHERE id = {$this->getId()};");
+            $this->setName($new_name);
+        }
+
         static function getAll() {
             $returned_brands = $GLOBALS['DB']->query("SELECT * FROM brands;");
             $brands = array();
@@ -42,6 +47,18 @@
 
         static function deleteAll() {
             $GLOBALS['DB']->exec("DELETE FROM brands;");
+        }
+
+
+        static function find($search_id) {
+            $all_brands = Brand::getAll();
+            $found_brand = null;
+            foreach ($all_brands as $brand) {
+                if ($search_id == $brand->getId()) {
+                    $found_brand = $brand;
+                }
+            }
+            return $found_brand;
         }
     }
 

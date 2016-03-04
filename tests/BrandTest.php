@@ -96,6 +96,36 @@
 
         }
 
+        function testUpdate() {
+            //Arrange;
+            $name = 'Nike';
+            $test_brand = new Brand($name);
+            $test_brand->save();
+
+            //Act;
+            $new_name = 'Adidas';         $test_brand->update($new_name);
+            $result = [$test_brand->getName()];
+
+            //Act;
+            $this->assertEquals([$new_name], $result);
+        }
+
+        // function find() {
+        //     //Arrange;
+        //     $name = 'Zapatos';
+        //     $location = '111 SW St.';
+        //     $id = 2;
+        //     $test_brand = new Store($name, $location, $id);
+        //     $test_brand->save();
+        //
+        //     //Act;
+        //     $search_id = 2;
+        //     $result = Store::find($search_id);
+        //
+        //     //Assert;
+        //     $this->assertEquals($test_brand, $result);
+        // }
+
     }
 
 
