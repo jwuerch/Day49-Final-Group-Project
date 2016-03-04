@@ -11,9 +11,10 @@
 
     class BookTest extends PHPUnit_Framework_TestCase {
 
-        // protected function {
-        //
-        // }
+        protected function teardown() {
+            Brand::deleteAll();
+
+        }
 
         function testGetName() {
             //Arrange;
@@ -38,6 +39,21 @@
 
             //Assert;
             $this->assertEquals($id, $result);
+        }
+
+        function testSave() {
+            //Arrange;
+            $name = 'Adidas';
+            $id = 1;
+            $test_brand = new Brand($name, $id);
+
+            //Act;
+            $test_brand->save();
+            $result = Brand::getAll();
+
+            //Arrange;
+            $this->assertEquals($test_brand, $result[0]);
+
 
         }
 
