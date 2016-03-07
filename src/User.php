@@ -6,7 +6,6 @@
         private $status;
         private $kink_friendly;
         private $age;
-        private $zip_code;
         private $display_name;
         private $email;
         private $about_me;
@@ -17,7 +16,7 @@
         private $last_login;
         private $id;
 
-        public function __construct($identity, $name, $status, $kink_friendly = true, $age, $zip_code, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $id = null);
+        public function __construct($identity, $name, $status, $kink_friendly = true, $age, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $id = null);
 
         //Setters
         public function setIdentity($new_identity) {
@@ -34,9 +33,6 @@
         }
         public function setAge($new_age) {
             $this->age = $new_age;
-        }
-        public function setZipCode($new_zip_code) {
-            $this->zip_code = $new_zip_code;
         }
         public function setDisplayName($new_display_name) {
             $this->display_name = $new_display_name;
@@ -79,9 +75,6 @@
         public function getAge() {
             return $this->age;
         }
-        public function getZipCode() {
-            return $this->zip_code;
-        }
         public function getDisplayName() {
             return $this->display_name;
         }
@@ -109,6 +102,8 @@
         public function getId() {
             return $this->id;
         }
+
+        //Public Functions
 
 
 

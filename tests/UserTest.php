@@ -9,8 +9,13 @@
     $password = 'root';
     $DB = new PDO($server, $username, $password);
 
+    require_once "src/User.php";
+
     class UserTest extends PHPUnit_Framework_TestCase {
 
+        protected function tearDown() {
+
+        }
     }
 
 
