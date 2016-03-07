@@ -16,17 +16,32 @@
         private $last_login;
         private $id;
 
-        public function __construct($identity, $name, $status, $kink_friendly = true, $age, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $id = null);
+        public function __construct($identity, $name, $status, $kink_friendly = true, $age, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $id = null) {
+            $this->identity = $identity;
+            $this->name = $name;
+            $this->status = $status;
+            $this->kink_friendly = $kink_friendly;
+            $this->age = $age;
+            $this->display_name = $display_name;
+            $this->email = $email;
+            $this->about_me = $about_me;
+            $this->gender = $gender;
+            $this->interests = $interests;
+            $this->seeking_gender = $seeking_gender;
+            $this->seeking_relationship_type = $seeking_relationship_type;
+            $this->last_login = $last_login;
+            $this->id = $id;
+        }
 
         //Setters
         public function setIdentity($new_identity) {
             $this->identity = $new_identity;
         }
         public function setName($new_name) {
-            $this->name = $new_name
+            $this->name = $new_name;
         }
         public function setStatus($new_status) {
-            $this->status = $new_status
+            $this->status = $new_status;
         }
         public function setKinkFriendly($new_kink_friendly) {
             $this->kink_friendly = $new_kink_friendly;
@@ -70,7 +85,7 @@
             return $this->status;
         }
         public function getKinkFriendly() {
-            return $this->kink_friendly
+            return $this->kink_friendly;
         }
         public function getAge() {
             return $this->age;
@@ -91,7 +106,7 @@
             return $this->interests;
         }
         public function getSeekingGender() {
-            return $this->seeking_gender
+            return $this->seeking_gender;
         }
         public function getSeekingRelationshipType() {
             return $this->seeking_relationship_type;
@@ -104,7 +119,7 @@
         }
 
         //Public Functions
-
+    }   
 
 
 
