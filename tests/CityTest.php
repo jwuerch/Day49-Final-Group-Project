@@ -27,7 +27,19 @@
 
             //Assert;
             $this->assertEquals($name, $result);
+        }
 
+        public function testGetState() {
+            //Arrange;
+            $name = 'Portland';
+            $state = 'Oregon';
+            $test_city = new City($name, $state);
+
+            //Act;
+            $result = $test_city->getState();
+
+            //Assert;
+            $this->assertEquals($state, $result);
         }
     }
 
