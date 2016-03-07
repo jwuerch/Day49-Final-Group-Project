@@ -9,6 +9,7 @@
     $DB = new PDO($server, $username, $password);
 
     require_once "src/ZipCode.php";
+    require_once "src/City.php";
 
     class ZipCodeTest extends PHPUnit_Framework_TestCase {
 
@@ -27,6 +28,23 @@
 
             //Assert;
             $this->assertEquals($number, $result);
+        }
+
+        function testGetCityId() {
+            //Arrange
+            $city_name = 'Portland';
+            $state = 'Oregon';
+            $test_city = new City($city_name, $state);
+
+            $number = 97210;
+            $city_id = $test_city->getId();
+            $test_zip_code = new ZipCode($number, $city_id);
+
+            //Act;
+            $result = $test_zip_code->getCityId();
+
+            //Assert;
+            $this->assertEquals($city_id, $result);
         }
     }
 
