@@ -170,11 +170,22 @@
                 array_push($users, $new_user);
             }
             return $users;
-
         }
 
         static function deleteAll() {
             $GLOBALS['DB']->exec("DELETE FROM users");
+        }
+
+        static function BasicSearch($my_identity, $city_id) {
+            $returned_users = User::getAll();
+                $found_users = array();
+                foreach ($returned_user as $user) {
+                    if ($my_identity = $user->seekingGender() && $city_id == $user->getCityId()) {
+                        array_push($users, $user);
+                    }
+                }
+                return $users;
+
         }
 
     }

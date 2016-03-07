@@ -507,6 +507,54 @@
             //Assert;
             $this->assertEquals($new_name, $result);
         }
+
+        function testBasicSearch() {
+            //Arrange;
+
+            $name = 'Portland';
+            $state = 'Oregon';
+            $test_city = new City($name, $state);
+            $test_city->save();
+
+            $number = 97201;
+            $city_id = $test_city->getId();
+            $test_zip_code = new ZipCode($number, $city_id);
+            $test_zip_code->save();
+
+            $identity = 'Male';
+            $name = 'Jason';
+            $status = 'Single';
+            $kink_friendly = 1;
+            $age = 27;
+            $display_name = 'JMoney';
+            $email = 'wuerchjason@gmail.com';
+            $about_me = 'I am friendly.';
+            $gender = 'Male';
+            $interests = 'Basketball, Tennis';
+            $seeking_gender = 'Female';
+            $seeking_relationship_type = 'Primary Partner';
+            $last_login = '1989-03-07';
+            $city_id = $test_city->getId();
+            $zip_code_id = $test_zip_code->getId();
+            $test_user = new User($identity, $name, $status, $kink_friendly, $age, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
+            $test_user->save();
+
+            $seeking_gender2 = 'Male';
+            $test_user2 = new User($identity, $name, $status, $kink_friendly, $age, $display_name, $email, $about_me, $gender, $interests, $seeking_gender2, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
+            $test_user2->save();
+
+            $seeking_gender3 = 'Male';
+            $test_user3 = new User($identity, $name, $status, $kink_friendly, $age, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
+            $test_user3->save();
+
+            //Act;
+            $my_identity = 'Male';
+            $city = $test_city_id->getId();
+            $result = User::search($my_identity, $city);
+
+            //Assert;
+            $this->assertEquals([$test_user2, $test_user3], $result);
+        }
     }
 
 

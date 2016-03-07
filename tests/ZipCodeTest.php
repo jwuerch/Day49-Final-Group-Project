@@ -14,20 +14,20 @@
     class ZipCodeTest extends PHPUnit_Framework_TestCase {
 
         protected function tearDown() {
-
+            ZipCode::deleteAll();
         }
 
-        function testGetNumber() {
+        function testGetZipNumber() {
             //Arrange
-            $number = 97210;
+            $zip_number = 97210;
             $city_id = 1;
-            $test_zip_code = new ZipCode($number, $city_id);
+            $test_zip_code = new ZipCode($zip_number, $city_id);
 
             //Act;
-            $result = $test_zip_code->getNumber();
+            $result = $test_zip_code->getZipNumber();
 
             //Assert;
-            $this->assertEquals($number, $result);
+            $this->assertEquals($zip_number, $result);
         }
 
         function testGetCityId() {
@@ -63,6 +63,21 @@
 
             //Assert;
             $this->assertEquals($id, $result);
+        }
+
+        function testSave() {
+            //Arrange
+            $zip_number = 97210;
+            $city_id = 2;
+            $test_zip_code = new ZipCode($zip_number, $city_id);
+
+            //Act;
+            $test_zip_code->save();
+            $result = ZipCode::getAll();
+            var_dump($result);
+
+            //Assert;
+            $this->assertEquals($test_zip_code, $result[0]);
         }
     }
 
