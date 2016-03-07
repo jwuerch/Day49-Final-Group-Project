@@ -448,6 +448,36 @@
             //Assert;
             $this->assertEquals([$test_user, $test_user2], $result);
         }
+
+        function testDeleteAll() {
+            //Arrange;
+            $identity = 'Male';
+            $name = 'Jason';
+            $status = 'Single';
+            $kink_friendly = 1;
+            $age = 27;
+            $display_name = 'JMoney';
+            $email = 'wuerchjason@gmail.com';
+            $about_me = 'I am friendly.';
+            $gender = 'Male';
+            $interests = 'Basketball, Tennis';
+            $seeking_gender = 'Female';
+            $seeking_relationship_type = 'Primary Partner';
+            $last_login = '1989-03-07';
+            $city_id = 1;
+            $zip_code_id = 1;
+            $test_user = new User($identity, $name, $status, $kink_friendly, $age, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
+            $test_user->save();
+
+            $test_user2 = new User($identity, $name, $status, $kink_friendly, $age, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
+            $test_user2->save();
+
+            //Act;
+            User::deleteAll();
+            $result = User::getAll();
+            //Assert;
+            $this->assertEquals([], $result);
+        }
     }
 
 
