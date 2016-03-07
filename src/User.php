@@ -144,6 +144,10 @@
             $GLOBALS['DB']->exec("UPDATE users SET NAME = '{$new_name}' WHERE id = {$this->getId()};");
             $this->setName($new_name);
         }
+        public function deleteProfile() {
+            $GLOBALS['DB']->exec("DELETE FROM users WHERE id = {$this->getId()}");
+            $GLOBALS['DB']->exec("DELETE FROM relationships WHERE user_id_one = {$this->getId()} OR user_id_two = {$this->getId()};");
+        }
 
         //Static Fucntions;
         static function getAll() {
@@ -185,6 +189,17 @@
                 }
             }
             return $found_users;
+        }
+
+        static function find($search_id) {
+            $returned_users = User::getAll();
+            $found_user = null;
+            foreach ($returned_users as $user) {
+                if ($search_id == $user->getId()) {
+                    $found_user = $user;
+                }
+             }
+             return $found_user;
         }
 
     }
