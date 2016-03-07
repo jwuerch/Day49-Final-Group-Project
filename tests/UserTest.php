@@ -23,7 +23,7 @@
             $identity = 'Male';
             $name = 'Jason';
             $status = 'Single';
-            $kink_friendly = true;
+            $kink_friendly = 1;
             $age = 27;
             $display_name = 'JMoney';
             $email = 'wuerchjason@gmail.com';
@@ -119,7 +119,7 @@
             $identity = 'Male';
             $name = 'Jason';
             $status = 'Single';
-            $kink_friendly = true;
+            $kink_friendly = 1;
             $age = 27;
             $display_name = 'JMoney';
             $email = 'wuerchjason@gmail.com';
@@ -390,18 +390,10 @@
 
         function testSave() {
             //Arrange;
-            $city_name = 'Portland';
-            $state = 'Oregon';
-            $test_city = new City($city_name, $state);
-
-            $number = 97201;
-            $city_id = $test_city->getId();
-            $test_zip_code = new ZipCode($number, $city_id);
-            
             $identity = 'Male';
             $name = 'Jason';
             $status = 'Single';
-            $kink_friendly = true;
+            $kink_friendly = 1;
             $age = 27;
             $display_name = 'JMoney';
             $email = 'wuerchjason@gmail.com';
@@ -411,14 +403,14 @@
             $seeking_gender = 'Female';
             $seeking_relationship_type = 'Primary Partner';
             $last_login = '1989-03-07';
-            $city_id = $test_city->getId();
-            $zip_code_id = $test_zip_code->getId();
+            $city_id = 1;
+            $zip_code_id = 1;
             $test_user = new User($identity, $name, $status, $kink_friendly, $age, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
 
             //Act;
             $test_user->save();
             $result = User::getAll();
-
+            var_dump($result);
             //Assert;
             $this->assertEquals($test_user, $result[0]);
         }

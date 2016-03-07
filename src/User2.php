@@ -4,36 +4,18 @@
         private $identity;
         private $name;
         private $status;
-        private $kink_friendly;
         private $age;
+        private $kink_friendly;
         private $display_name;
-        private $email;
-        private $about_me;
-        private $gender;
-        private $interests;
-        private $seeking_gender;
-        private $seeking_relationship_type;
-        private $last_login;
-        private $city_id;
-        private $zip_code_id;
+
         private $id;
 
-        public function __construct($identity, $name, $status, $kink_friendly = 1, $age, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id = null, $zip_code_id = null, $id = null) {
+        public function __construct($identity, $name, $status, $age, $kink_friendly = true, $id = null) {
             $this->identity = $identity;
             $this->name = $name;
             $this->status = $status;
-            $this->kink_friendly = $kink_friendly;
             $this->age = $age;
-            $this->display_name = $display_name;
-            $this->email = $email;
-            $this->about_me = $about_me;
-            $this->gender = $gender;
-            $this->interests = $interests;
-            $this->seeking_gender = $seeking_gender;
-            $this->seeking_relationship_type = $seeking_relationship_type;
-            $this->last_login = $last_login;
-            $this->zip_code_id = $zip_code_id;
-            $this->city_id = $city_id;
+            $this->kink_friendly;
             $this->id = $id;
         }
 
@@ -81,7 +63,7 @@
             $this->zip_code_id = $zip_code_id;
         }
         public function setCityId($city_id) {
-            $this->city_id = $city;
+            $this->city_id = $city_id;
         }
 
         //Getters
@@ -136,7 +118,7 @@
 
         //Public Functions;
         public function save() {
-            $GLOBALS['DB']->exec("INSERT INTO users (identity, name, status, kink_friendly, age, display_name, email, about_me, gender, interests, seeking_gender, seeking_relationship_type, last_login, city_id, zip_code_id) VALUES ('{$this->getIdentity()}', '{$this->getName()}', '{$this->getStatus()}', {$this->getKinkFriendly()}, {$this->getAge()}, '{$this->getDisplayName()}', '{$this->getEmail()}', '{$this->getAboutMe()}', '{$this->getGender()}', '{$this->getInterests()}', '{$this->getSeekingGender()}', '{$this->getSeekingRelationshipType()}', '{$this->getLastLogin()}', {$this->getCityId()}, {$this->getZipCodeId()});");
+            $GLOBALS['DB']->exec("INSERT INTO users (identity, name, status, age, kink_friendly) VALUES ('{$this->getIdentity()}', '{$this->getName()}', '{$this->getStatus()}', {$this->getAge()}), {$this->getKinkFriendly()};");
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
@@ -149,20 +131,10 @@
                 $identity = $user['identity'];
                 $name = $user['name'];
                 $status = $user['status'];
-                $kink_friendly = $user['kink_friendly'];
                 $age = $user['age'];
-                $display_name = $user['display_name'];
-                $email = $user['email'];
-                $about_me = $user['about_me'];
-                $gender = $user['gender'];
-                $interests = $user['interests'];
-                $seeking_gender = $user['seeking_gender'];
-                $seeking_relationship_type = $user['seeking_relationship_type'];
-                $last_login = $user['last_login'];
-                $city_id = $user['city_id'];
-                $zip_code_id = $user['zip_code_id'];
+                $kink_friendly = $user['kink_friendly'];
                 $id = $user['id'];
-                $new_user = new User($identity, $name, $status, $kink_friendly, $age, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id, $id);
+                $new_user = new User($identity, $name, $status, $age, $kink_friendly, $id);
                 array_push($users, $new_user);
             }
             return $users;
