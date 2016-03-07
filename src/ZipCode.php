@@ -17,7 +17,7 @@
         }
         //Getters
         public function getNumber() {
-            return $this->$number;
+            return $this->number;
         }
         public function getCityId() {
             return $this->city_id;

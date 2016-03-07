@@ -15,6 +15,19 @@
         protected function tearDown() {
 
         }
+
+        function testGetNumber() {
+            //Arrange
+            $number = 97210;
+            $city_id = 1;
+            $test_zip_code = new ZipCode($number, $city_id);
+
+            //Act;
+            $result = $test_zip_code->getNumber();
+
+            //Assert;
+            $this->assertEquals($number, $result);
+        }
     }
 
 ?>
