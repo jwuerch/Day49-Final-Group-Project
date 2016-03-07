@@ -128,7 +128,12 @@
             return $this->id;
         }
 
-        //Public Functions
+        //Public Functions;
+        public function save() {
+            $GLOBALS['DB']->exec("INSERT INTO users (identity, name, status, kink_friendly, age, display_name, email) VALUES ('{$this->getIdentity()}', '{$this->getName()}', '{$this->getStatus()}', {$this->getKinkFriendly()}, {$this->getAge()}, '{$this->getDisplayName()}', '{$this->getEmail()}', '{$this->getAboutMe()}');");
+            $GLOBALS['DB']->exec("INSERT INTO users (about_me, gender, interests, seeking_gender, seeking_relationship_type, last_login, city_id, zip_code_id) VALUES '{$this->getAboutMe()}', '{$this->getGender()}', '{$this->getInterests()}', '{$this->getSeekingGender()}', '{$this->getSeekingRelationshipType()}', '{$this->getLastLogin()}', '{$this->getCityId()}', '{$this->getZipCodeId()}');");
+            $this->id = $GLOBALS['DB']->lastInsertId();
+        }
     }
 
 
