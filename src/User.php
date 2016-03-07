@@ -176,16 +176,15 @@
             $GLOBALS['DB']->exec("DELETE FROM users");
         }
 
-        static function BasicSearch($my_identity, $city_id) {
+        static function basicSearch($my_identity, $city_id) {
             $returned_users = User::getAll();
-                $found_users = array();
-                foreach ($returned_user as $user) {
-                    if ($my_identity = $user->seekingGender() && $city_id == $user->getCityId()) {
-                        array_push($users, $user);
-                    }
+            $found_users = array();
+            foreach ($returned_users as $user) {
+                if ($my_identity == $user->getSeekingGender() && $city_id == $user->getCityId()) {
+                    array_push($found_users, $user);
                 }
-                return $users;
-
+            }
+            return $found_users;
         }
 
     }

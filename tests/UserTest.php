@@ -536,22 +536,21 @@
             $last_login = '1989-03-07';
             $city_id = $test_city->getId();
             $zip_code_id = $test_zip_code->getId();
-            $test_user = new User($identity, $name, $status, $kink_friendly, $age, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
+            $test_user = new User($identity, $name, $status, $kink_friendly, $age, $display_name, $email, $about_me, $gender, $interests, 'Female', $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
             $test_user->save();
 
             $seeking_gender2 = 'Male';
-            $test_user2 = new User($identity, $name, $status, $kink_friendly, $age, $display_name, $email, $about_me, $gender, $interests, $seeking_gender2, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
+            $test_user2 = new User($identity, $name, $status, $kink_friendly, $age, $display_name, $email, $about_me, $gender, $interests, 'Male', $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
             $test_user2->save();
 
             $seeking_gender3 = 'Male';
-            $test_user3 = new User($identity, $name, $status, $kink_friendly, $age, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
+            $test_user3 = new User($identity, $name, $status, $kink_friendly, $age, $display_name, $email, $about_me, $gender, $interests, 'Male', $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
             $test_user3->save();
 
             //Act;
             $my_identity = 'Male';
-            $city = $test_city_id->getId();
-            $result = User::search($my_identity, $city);
-
+            $city_id = $test_city->getId();
+            $result = User::basicSearch($my_identity, $city_id);
             //Assert;
             $this->assertEquals([$test_user2, $test_user3], $result);
         }
