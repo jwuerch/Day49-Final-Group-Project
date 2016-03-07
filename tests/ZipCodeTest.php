@@ -97,6 +97,26 @@
             //Assert;
             $this->assertEquals([$test_zip_code, $test_zip_code2], $result);
         }
+
+        function testDeleteAll() {
+            //Arrange
+            $zip_number = 97210;
+            $city_id = 2;
+            $test_zip_code = new ZipCode($zip_number, $city_id);
+            $test_zip_code->save();
+
+            $zip_number2 = 97772;
+            $city_id2 = 1;
+            $test_zip_code2 = new ZipCode($zip_number2, $city_id2);
+            $test_zip_code2->save();
+
+            //Act;
+            ZipCode::deleteAll();
+            $result = ZipCode::getAll();
+
+            //Assert;
+            $this->assertEquals([], $result);
+        }
     }
 
 ?>
