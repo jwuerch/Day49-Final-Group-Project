@@ -9,6 +9,7 @@
     $DB = new PDO($server, $username, $password);
 
     require_once "src/User.php";
+    require_once "src/City.php";
 
     class UserTest extends PHPUnit_Framework_TestCase {
 
@@ -330,6 +331,10 @@
 
         function testGetCityId() {
             //Arrange;
+            $city_name = 'Portland';
+            $state = 'Oregon';
+            $test_city = new City($city_name, $state);
+
             $identity = 'Male';
             $name = 'Jason';
             $status = 'Single';
@@ -343,6 +348,8 @@
             $seeking_gender = 'Female';
             $seeking_relationship_type = 'Primary Partner';
             $last_login = '1989-03-07';
+            $city_id = $test_city->getId();
+
             $test_user = new User($identity, $name, $status, $kink_friendly, $age, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id);
         }
     }
