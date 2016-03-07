@@ -14,9 +14,11 @@
         private $seeking_gender;
         private $seeking_relationship_type;
         private $last_login;
+        private $city_id;
+        private $zip_code_id;
         private $id;
 
-        public function __construct($identity, $name, $status, $kink_friendly = true, $age, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $id = null) {
+        public function __construct($identity, $name, $status, $kink_friendly = true, $age, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id = null, $zip_code_id = null, $id = null) {
             $this->identity = $identity;
             $this->name = $name;
             $this->status = $status;
@@ -30,6 +32,8 @@
             $this->seeking_gender = $seeking_gender;
             $this->seeking_relationship_type = $seeking_relationship_type;
             $this->last_login = $last_login;
+            $this->zip_code_id = $zip_code_id;
+            $this->city_id = $city_id;
             $this->id = $id;
         }
 
@@ -113,6 +117,12 @@
         }
         public function getLastLogin() {
             return $this->last_login;
+        }
+        public function getCityId() {
+            return $this->city_id;
+        }
+        public function getZipCodeId() {
+            return $this->zip_code_id;
         }
         public function getId() {
             return $this->id;

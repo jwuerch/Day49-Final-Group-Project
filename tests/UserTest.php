@@ -155,7 +155,6 @@
 
             //Act;
             $result = $test_user->getDisplayName();
-            var_dump($result);
 
             //Assert;
             $this->assertEquals($display_name, $result);
