@@ -41,6 +41,19 @@
             //Assert;
             $this->assertEquals($state, $result);
         }
+        public function testGetId() {
+            //Arrange;
+            $name = 'Portland';
+            $state = 'Oregon';
+            $id = 1;
+            $test_city = new City($name, $state, $id);
+
+            //Act;
+            $result = $test_city->getId();
+
+            //Assert;
+            $this->assertEquals($id, $result);
+        }
     }
 
 ?>
