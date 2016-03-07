@@ -140,6 +140,11 @@
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
+        public function updateName($new_name) {
+            $GLOBALS['DB']->exec("UPDATE users SET NAME = '{$new_name}' WHERE id = {$this->getId()};");
+            $this->setName($new_name);
+        }
+
         //Static Fucntions;
         static function getAll() {
             $returned_users = $GLOBALS['DB']->query("SELECT * FROM users;");
