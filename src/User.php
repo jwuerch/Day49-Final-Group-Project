@@ -18,7 +18,7 @@
         private $zip_code_id;
         private $id;
 
-        public function __construct($identity, $name, $status, $kink_friendly = true, $age, $display_name, $email, $about_me, $gender, $interests, $seeking_gender = null, $seeking_relationship_type = null, $last_login = null, $city_id = null, $zip_code_id = null, $id = null) {
+        public function __construct($identity, $name, $status, $kink_friendly = true, $age, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id = null, $zip_code_id = null, $id = null) {
             $this->identity = $identity;
             $this->name = $name;
             $this->status = $status;
@@ -130,7 +130,7 @@
 
         //Public Functions;
         public function save() {
-            $GLOBALS['DB']->exec("INSERT INTO users (identity, name, status, kink_friendly, age, display_name, email, about_me, gender, interests, seeking_gender, seeking_relationship_type, last_login, city_id, zip_code_id) VALUES ('{$this->getIdentity()}', '{$this->getName()}', '{$this->getStatus()}', {$this->getKinkFriendly()}, {$this->getAge()}, '{$this->getDisplayName()}', '{$this->getEmail()}', '{$this->getAboutMe()}', '{$this->getAboutMe()}', '{$this->getGender()}', '{$this->getInterests()}', '{$this->getSeekingGender()}', '{$this->getSeekingRelationshipType()}', '{$this->getLastLogin()}', '{$this->getCityId()}', '{$this->getZipCodeId()}');");
+            $GLOBALS['DB']->exec("INSERT INTO users (identity, name, status, kink_friendly, age, display_name, email, about_me, gender, interests, seeking_gender, seeking_relationship_type, last_login, city_id, zip_code_id) VALUES ('{$this->getIdentity()}', '{$this->getName()}', '{$this->getStatus()}', {$this->getKinkFriendly()}, {$this->getAge()}, '{$this->getDisplayName()}', '{$this->getEmail()}', '{$this->getAboutMe()}', '{$this->getAboutMe()}', '{$this->getGender()}', '{$this->getInterests()}', '{$this->getSeekingGender()}', '{$this->getSeekingRelationshipType()}', '{$this->getLastLogin()}', {$this->getCityId()}, {$this->getZipCodeId()});");
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
