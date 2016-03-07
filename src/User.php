@@ -134,6 +134,34 @@
             $GLOBALS['DB']->exec("INSERT INTO users (about_me, gender, interests, seeking_gender, seeking_relationship_type, last_login, city_id, zip_code_id) VALUES '{$this->getAboutMe()}', '{$this->getGender()}', '{$this->getInterests()}', '{$this->getSeekingGender()}', '{$this->getSeekingRelationshipType()}', '{$this->getLastLogin()}', '{$this->getCityId()}', '{$this->getZipCodeId()}');");
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
+
+        //Static Fucntions;
+        static function getAll() {
+            $returned_users = $GLOBALS['DB']->query("SELECT * FROM users;");
+            $users = array();
+            $foreach ($returned_users as $user) {
+                $identity = $user['identity'];
+                $name = $user['name'];
+                $status = $user['status'];
+                $kink_friendly = $user['kink_friendly'];
+                $age = 27;
+                $display_name = $user['display_name'];
+                $email = $user['email'];
+                $about_me = $user['about_me'];
+                $gender = $user['gender'];
+                $interests = $user['interests'];
+                $seeking_gender = $user['seeking_gender'];
+                $seeking_relationship_type = $user['seeking_relationship_type'];
+                $last_login = $user['last_login'];
+                $city_id = $user['city_id'];
+                $zip_code_id = $user['zip_code'];
+                $id = $user['id'];
+                $new_user = new User($identity, $name, $status, $kink_friendly, $age, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
+                array_push($users, $new_user);
+            }
+            return $users;
+        }
+
     }
 
 
