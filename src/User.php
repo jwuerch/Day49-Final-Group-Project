@@ -143,7 +143,6 @@
         //Static Fucntions;
         static function getAll() {
             $returned_users = $GLOBALS['DB']->query("SELECT * FROM users;");
-            var_dump($returned_users);
             $users = array();
             foreach ($returned_users as $user) {
                 $identity = $user['identity'];
