@@ -13,10 +13,10 @@
     class CityTest extends PHPUnit_Framework_TestCase {
 
         protected function tearDown() {
-
+            City::deleteAll();
         }
 
-        public function testGetName() {
+        function testGetName() {
             //Arrange;
             $name = 'Portland';
             $state = 'Oregon';
@@ -29,7 +29,7 @@
             $this->assertEquals($name, $result);
         }
 
-        public function testGetState() {
+        function testGetState() {
             //Arrange;
             $name = 'Portland';
             $state = 'Oregon';
@@ -41,7 +41,7 @@
             //Assert;
             $this->assertEquals($state, $result);
         }
-        public function testGetId() {
+        function testGetId() {
             //Arrange;
             $name = 'Portland';
             $state = 'Oregon';
@@ -53,6 +53,20 @@
 
             //Assert;
             $this->assertEquals($id, $result);
+        }
+
+        function testSave() {
+            //Arrange;
+            $name = 'Portland';
+            $state = 'Oregon';
+            $test_city = new City($name, $state);
+
+            //Act;
+            $test_city->save();
+            $result = City::getAll();
+
+            //Assert;
+            $this->assertEquals($test_city, $result[0]);
         }
     }
 

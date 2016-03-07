@@ -28,6 +28,29 @@
         public function getId() {
             return $this->id;
         }
+
+        public function save() {
+            $GLOBALS['DB']->exec("INSERT INTO cities (name, state) VALUES ('{$this->getName()}', '{$this->getState()}');");
+            $this->id = $GLOBALS['DB']->lastInsertId();
+        }
+
+        //Static Functions;
+        static function getAll() {
+            $returned_cities = $GLOBALS['DB']->query("SELECT * FROM cities;");
+            $cities = array();
+            foreach ($returned_cities as $city) {
+                $id = $city['id'];
+                $name = $city['name'];
+                $state = $city['state'];
+                $new_city = new City($name, $state, $id);
+                array_push($cities, $new_city);
+            }
+            return $cities;
+        }
+
+        static function deleteAll() {
+            $GLOBALS['DB']->exec("DELETE FROM cities;");
+        }
     }
 
 
