@@ -112,14 +112,14 @@
             return $this->seeking_relationship_type;
         }
         public function getLastLogin() {
-            return $this->getLastLogin;
+            return $this->last_login;
         }
         public function getId() {
             return $this->id;
         }
 
         //Public Functions
-    }   
+    }
 
 
 
