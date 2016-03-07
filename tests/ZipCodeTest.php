@@ -46,6 +46,24 @@
             //Assert;
             $this->assertEquals($city_id, $result);
         }
+
+        function testGetId() {
+            //Arrange
+            $city_name = 'Portland';
+            $state = 'Oregon';
+            $test_city = new City($city_name, $state);
+
+            $number = 97210;
+            $city_id = $test_city->getId();
+            $id = 1;
+            $test_zip_code = new ZipCode($number, $city_id, $id);
+
+            //Act;
+            $result = $test_zip_code->getId();
+
+            //Assert;
+            $this->assertEquals($id, $result);
+        }
     }
 
 ?>
