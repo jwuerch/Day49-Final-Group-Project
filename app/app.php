@@ -2,6 +2,7 @@
     require_once __DIR__.'/../vendor/autoload.php';
     require_once __DIR__.'/../src/User.php';
     require_once __DIR__.'/../src/City.php';
+    require_once __DIR__.'/../src/ZipCode.php';
 
     $app = new Silex\Application();
     $server = 'mysql:host=localhost;dbname=poly_date';
@@ -88,10 +89,14 @@
     //*******
 
     $app->get('/all_zip_codes', function() use ($app) {
+        return $app['twig']->render('all_zip_codes.html.twig', array('all_zip_codes', ZipCode::getAll(), 'all_cities' => City::getAll()));
+    });
+
+    $app->post('/add_zip_code', function() use ($app) {
         $zip_number = $_POST['zip_number'];
         $city_id = $_POST['city_id'];
         $new_zip_code = new ZipCode($zip_number, $city_id);
-        return $app['twig']->render('all_zip_codes', array('all_zip_codes', ZipCode::getAll()));
+        return $app['twig']->render('all_zip_codes.html.twig', array('all_zip_codes', ZipCode::getAll(), 'all_cities' => City::getAll()));
     });
 
 

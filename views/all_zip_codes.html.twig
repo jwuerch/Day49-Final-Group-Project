@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    {% include 'head.html' %}
+    {% include 'navbar.html' %}
+    <body>
+        <div class="container">
+            <form action="/add_zip_code">
+                <div class="form-group">
+                    <label for="zip_number">Zip Code</label>
+                    <input id="zip_number" name="zip_number" class="form-select" type="number">
+                </div>
+
+                <div class="form-group">
+                    <label for="city_id">City</label>
+                    <select name="city_id">
+                        {% for city in all_cities %}
+                        <option value="{{ city.getId }}">{{ city.getName }}, {{city.getState }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </form>
+        </div>
+
+    </body>
+    {% include 'footer.html' %}
+</html>
