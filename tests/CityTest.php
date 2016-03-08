@@ -152,6 +152,7 @@
             //Assert;
             $this->assertEquals([$test_city2, $test_city3], $result);
         }
+
     }
 
 ?>
