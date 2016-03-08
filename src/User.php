@@ -18,7 +18,7 @@
         private $zip_code_id;
         private $id;
 
-        public function __construct($identity, $name, $status, $kink_friendly = 1, $birthday, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id = null, $zip_code_id = null, $id = null) {
+        public function __construct($identity, $name, $status, $kink_friendly = 1, $birthday, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login = null, $city_id = null, $zip_code_id = null, $id = null) {
             $this->identity = $identity;
             $this->name = $name;
             $this->status = $status;
