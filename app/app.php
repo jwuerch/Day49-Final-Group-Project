@@ -30,24 +30,30 @@
 
     $app->post('/register_new_user', function() use ($app) {
         $username = $_POST['username'];
-        $password = $_POST['password'];
-        $identity = $_POST['identity'];
-        $name = $_POST['name'];
-        $status = $_POST['status'];
-        $kink_friendly = $_POST['kink_friendly'];
-        $birthday = $_POST['birthday'];
-        $display_name = $_POST['display_name'];
-        $email = $_POST['email'];
-        $about_me = $_POST['about_me'];
-        $gender = $_POST['gender'];
-        $interests = $_POST['interests'];
-        $seeking_gender = $_POST['seeking_gender'];
-        $seeking_relationship_type = $_POST['seeking_relationship_type'];
-        $city_id = $_POST['city_id'];
-        $zip_code_id = $_POST['zip_code_id'];
-        $last_login = date("F j, Y, g:i a");
-        $new_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $city_id, $zip_code_id, $last_login);
-        $new_user->save();
+        $password = 'xyz';
+        $identity = 'Male';
+        $name = 'Jason';
+        $status = 'Single';
+        $kink_friendly = 1;
+        $birthday = '1989-03-07';
+        $display_name = 'JMoney';
+        $email = 'wuerchjason@gmail.com';
+        $about_me = 'I am friendly.';
+        $gender = 'Male';
+        $interests = 'Basketball, Tennis';
+        $seeking_gender = 'Female';
+        $seeking_relationship_type = 'Primary Partner';
+        $last_login = '1989-03-07';
+        $city_id = 1;
+        $zip_code_id = 2;
+        $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
+        $test_user->save();
+        print_r(User::getAll());
+        return $app['twig']->render('all_users.html.twig', array('all_users' => User::getAll()));
+    });
+
+    $app->post('/delete_all_users', function() use ($app) {
+        User::deleteAll();
         return $app['twig']->render('all_users.html.twig', array('all_users' => User::getAll()));
     });
 

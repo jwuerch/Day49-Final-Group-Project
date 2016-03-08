@@ -5,7 +5,13 @@
 
     <body>
         <div class="container">
+            {% for user in all_users %}
+                {{ user.getCityId }}
+            {% endfor %}
 
+            <form action="/delete_all_users" method="post">
+                <button class="btn-danger btn">Delete ALL Users</button>
+            </form>
         </div>
     </body>
     {% include 'footer.html' %}
