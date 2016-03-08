@@ -30,12 +30,11 @@
             $display_name = 'JMoney';
             $email = 'wuerchjason@gmail.com';
             $about_me = 'I am friendly.';
-            $gender = 'Male';
             $interests = 'Basketball, Tennis';
             $seeking_gender = 'Female';
             $seeking_relationship_type = 'Primary Partner';
             $last_login = '1989-03-07';
-            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login);
+            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login);
 
             //Act;
             $result = $test_user->getUsername();
@@ -56,12 +55,11 @@
             $display_name = 'JMoney';
             $email = 'wuerchjason@gmail.com';
             $about_me = 'I am friendly.';
-            $gender = 'Male';
             $interests = 'Basketball, Tennis';
             $seeking_gender = 'Female';
             $seeking_relationship_type = 'Primary Partner';
             $last_login = '1989-03-07';
-            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login);
+            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login);
 
             //Act;
             $result = $test_user->getPassword();
@@ -82,12 +80,11 @@
             $display_name = 'JMoney';
             $email = 'wuerchjason@gmail.com';
             $about_me = 'I am friendly.';
-            $gender = 'Male';
             $interests = 'Basketball, Tennis';
             $seeking_gender = 'Female';
             $seeking_relationship_type = 'Primary Partner';
             $last_login = '1989-03-07';
-            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login);
+            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login);
 
             //Act;
             $result = $test_user->getIdentity();
@@ -108,12 +105,11 @@
             $display_name = 'JMoney';
             $email = 'wuerchjason@gmail.com';
             $about_me = 'I am friendly.';
-            $gender = 'Male';
             $interests = 'Basketball, Tennis';
             $seeking_gender = 'Female';
             $seeking_relationship_type = 'Primary Partner';
             $last_login = '1989-03-07';
-            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login);
+            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login);
 
             //Act;
             $result = $test_user->getName();
@@ -134,12 +130,11 @@
             $display_name = 'JMoney';
             $email = 'wuerchjason@gmail.com';
             $about_me = 'I am friendly.';
-            $gender = 'Male';
             $interests = 'Basketball, Tennis';
             $seeking_gender = 'Female';
             $seeking_relationship_type = 'Primary Partner';
             $last_login = '1989-03-07';
-            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login);
+            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login);
             //Act;
             $result = $test_user->getStatus();
 
@@ -159,12 +154,11 @@
             $display_name = 'JMoney';
             $email = 'wuerchjason@gmail.com';
             $about_me = 'I am friendly.';
-            $gender = 'Male';
             $interests = 'Basketball, Tennis';
             $seeking_gender = 'Female';
             $seeking_relationship_type = 'Primary Partner';
             $last_login = '1989-03-07';
-            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login);
+            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login);
 
             //Act;
             $result = $test_user->getKinkFriendly();
@@ -185,12 +179,11 @@
             $display_name = 'JMoney';
             $email = 'wuerchjason@gmail.com';
             $about_me = 'I am friendly.';
-            $gender = 'Male';
             $interests = 'Basketball, Tennis';
             $seeking_gender = 'Female';
             $seeking_relationship_type = 'Primary Partner';
             $last_login = '1989-03-07';
-            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login);
+            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login);
 
             //Act;
             $result = $test_user->getBirthday();
@@ -211,12 +204,11 @@
             $display_name = 'JMoney';
             $email = 'wuerchjason@gmail.com';
             $about_me = 'I am friendly.';
-            $gender = 'Male';
             $interests = 'Basketball, Tennis';
             $seeking_gender = 'Female';
             $seeking_relationship_type = 'Primary Partner';
             $last_login = '1989-03-07';
-            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login);
+            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login);
 
             //Act;
             $result = $test_user->getDisplayName();
@@ -237,12 +229,11 @@
             $display_name = 'JMoney';
             $email = 'wuerchjason@gmail.com';
             $about_me = 'I am friendly.';
-            $gender = 'Male';
             $interests = 'Basketball, Tennis';
             $seeking_gender = 'Female';
             $seeking_relationship_type = 'Primary Partner';
             $last_login = '1989-03-07';
-            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login);
+            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login);
 
             //Act;
             $result = $test_user->getEmail();
@@ -263,44 +254,17 @@
             $display_name = 'JMoney';
             $email = 'wuerchjason@gmail.com';
             $about_me = 'I am friendly.';
-            $gender = 'Male';
             $interests = 'Basketball, Tennis';
             $seeking_gender = 'Female';
             $seeking_relationship_type = 'Primary Partner';
             $last_login = '1989-03-07';
-            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login);
+            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login);
 
             //Act;
             $result = $test_user->getAboutMe();
 
             //Assert;
             $this->assertEquals($about_me, $result);
-        }
-
-        function testGetGender() {
-            //Arrange;
-            $username = 'jwuerch';
-            $password = 'xyz';
-            $identity = 'Male';
-            $name = 'Jason';
-            $status = 'Single';
-            $kink_friendly = 1;
-            $birthday = '1989-03-07';
-            $display_name = 'JMoney';
-            $email = 'wuerchjason@gmail.com';
-            $about_me = 'I am friendly.';
-            $gender = 'Male';
-            $interests = 'Basketball, Tennis';
-            $seeking_gender = 'Female';
-            $seeking_relationship_type = 'Primary Partner';
-            $last_login = '1989-03-07';
-            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login);
-
-            //Act;
-            $result = $test_user->getGender();
-
-            //Assert;
-            $this->assertEquals($gender, $result);
         }
 
         function testGetInterests() {
@@ -315,12 +279,11 @@
             $display_name = 'JMoney';
             $email = 'wuerchjason@gmail.com';
             $about_me = 'I am friendly.';
-            $gender = 'Male';
             $interests = 'Basketball, Tennis';
             $seeking_gender = 'Female';
             $seeking_relationship_type = 'Primary Partner';
             $last_login = '1989-03-07';
-            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login);
+            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login);
 
             //Act;
             $result = $test_user->getInterests();
@@ -341,12 +304,11 @@
             $display_name = 'JMoney';
             $email = 'wuerchjason@gmail.com';
             $about_me = 'I am friendly.';
-            $gender = 'Male';
             $interests = 'Basketball, Tennis';
             $seeking_gender = 'Female';
             $seeking_relationship_type = 'Primary Partner';
             $last_login = '1989-03-07';
-            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login);
+            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login);
 
             //Act;
             $result = $test_user->getSeekingGender();
@@ -367,12 +329,11 @@
             $display_name = 'JMoney';
             $email = 'wuerchjason@gmail.com';
             $about_me = 'I am friendly.';
-            $gender = 'Male';
             $interests = 'Basketball, Tennis';
             $seeking_gender = 'Female';
             $seeking_relationship_type = 'Primary Partner';
             $last_login = '1989-03-07';
-            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login);
+            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login);
 
             //Act;
             $result = $test_user->getSeekingRelationshipType();
@@ -393,12 +354,11 @@
             $display_name = 'JMoney';
             $email = 'wuerchjason@gmail.com';
             $about_me = 'I am friendly.';
-            $gender = 'Male';
             $interests = 'Basketball, Tennis';
             $seeking_gender = 'Female';
             $seeking_relationship_type = 'Primary Partner';
             $last_login = '1989-03-07';
-            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login);
+            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login);
 
             //Act;
             $result = $test_user->getLastLogin();
@@ -423,14 +383,13 @@
             $display_name = 'JMoney';
             $email = 'wuerchjason@gmail.com';
             $about_me = 'I am friendly.';
-            $gender = 'Male';
             $interests = 'Basketball, Tennis';
             $seeking_gender = 'Female';
             $seeking_relationship_type = 'Primary Partner';
             $last_login = '1989-03-07';
             $city_id = $test_city->getId();
 
-            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id);
+            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id);
 
             //Act;
             $result = $test_user->getCityId();
@@ -459,14 +418,13 @@
             $display_name = 'JMoney';
             $email = 'wuerchjason@gmail.com';
             $about_me = 'I am friendly.';
-            $gender = 'Male';
             $interests = 'Basketball, Tennis';
             $seeking_gender = 'Female';
             $seeking_relationship_type = 'Primary Partner';
             $last_login = '1989-03-07';
             $city_id = $test_city->getId();
             $zip_code_id = $test_zip_code->getId();
-            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
+            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
 
             //Act;
             $result = $test_user->getZipCodeId();
@@ -487,14 +445,13 @@
             $display_name = 'JMoney';
             $email = 'wuerchjason@gmail.com';
             $about_me = 'I am friendly.';
-            $gender = 'Male';
             $interests = 'Basketball, Tennis';
             $seeking_gender = 'Female';
             $seeking_relationship_type = 'Primary Partner';
             $last_login = '1989-03-07';
             $city_id = 1;
             $zip_code_id = 2;
-            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
+            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
 
             //Act;
             $test_user->save();
@@ -515,17 +472,16 @@
             $display_name = 'JMoney';
             $email = 'wuerchjason@gmail.com';
             $about_me = 'I am friendly.';
-            $gender = 'Male';
             $interests = 'Basketball, Tennis';
             $seeking_gender = 'Female';
             $seeking_relationship_type = 'Primary Partner';
             $last_login = '1989-03-07';
             $city_id = 1;
             $zip_code_id = 1;
-            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
+            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
             $test_user->save();
 
-            $test_user2 = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
+            $test_user2 = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
             $test_user2->save();
 
             //Act;
@@ -546,17 +502,16 @@
             $display_name = 'JMoney';
             $email = 'wuerchjason@gmail.com';
             $about_me = 'I am friendly.';
-            $gender = 'Male';
             $interests = 'Basketball, Tennis';
             $seeking_gender = 'Female';
             $seeking_relationship_type = 'Primary Partner';
             $last_login = '1989-03-07';
             $city_id = 1;
             $zip_code_id = 1;
-            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
+            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
             $test_user->save();
 
-            $test_user2 = new User($identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
+            $test_user2 = new User($identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
             $test_user2->save();
 
             //Act;
@@ -578,14 +533,13 @@
             $display_name = 'JMoney';
             $email = 'wuerchjason@gmail.com';
             $about_me = 'I am friendly.';
-            $gender = 'Male';
             $interests = 'Basketball, Tennis';
             $seeking_gender = 'Female';
             $seeking_relationship_type = 'Primary Partner';
             $last_login = '1989-03-07';
             $city_id = 1;
             $zip_code_id = 1;
-            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
+            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
             $test_user->save();
 
             //Act;
@@ -620,22 +574,21 @@
             $display_name = 'JMoney';
             $email = 'wuerchjason@gmail.com';
             $about_me = 'I am friendly.';
-            $gender = 'Male';
             $interests = 'Basketball, Tennis';
             $seeking_gender = 'Female';
             $seeking_relationship_type = 'Primary Partner';
             $last_login = '1989-03-07';
             $city_id = $test_city->getId();
             $zip_code_id = $test_zip_code->getId();
-            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $gender, $interests, 'Female', $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
+            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $interests, 'Female', $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
             $test_user->save();
 
             $seeking_gender2 = 'Male';
-            $test_user2 = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $gender, $interests, 'Male', $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
+            $test_user2 = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $interests, 'Male', $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
             $test_user2->save();
 
             $seeking_gender3 = 'Male';
-            $test_user3 = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $gender, $interests, 'Male', $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
+            $test_user3 = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $interests, 'Male', $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
             $test_user3->save();
 
             //Act;
@@ -658,7 +611,6 @@
             $display_name = 'JMoney';
             $email = 'wuerchjason@gmail.com';
             $about_me = 'I am friendly.';
-            $gender = 'Male';
             $interests = 'Basketball, Tennis';
             $seeking_gender = 'Female';
             $seeking_relationship_type = 'Primary Partner';
@@ -666,11 +618,11 @@
             $city_id = 1;
             $zip_code_id = 1;
             $id = 1;
-            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $gender, $interests, 'Female', $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
+            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $interests, 'Female', $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
             $test_user->save();
 
             $id2 = 2;
-            $test_user2 = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $gender, $interests, 'Female', $seeking_relationship_type, $last_login, $city_id, $zip_code_id, $id);
+            $test_user2 = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $interests, 'Female', $seeking_relationship_type, $last_login, $city_id, $zip_code_id, $id);
             $test_user2->save();
 
             //Act;
@@ -693,17 +645,16 @@
             $display_name = 'JMoney';
             $email = 'wuerchjason@gmail.com';
             $about_me = 'I am friendly.';
-            $gender = 'Male';
             $interests = 'Basketball, Tennis';
             $seeking_gender = 'Female';
             $seeking_relationship_type = 'Primary Partner';
             $last_login = '1989-03-07';
             $city_id = 1;
             $zip_code_id = 1;
-            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $gender, $interests, 'Female', $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
+            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $interests, 'Female', $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
             $test_user->save();
 
-            $test_user2 = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $gender, $interests, 'Female', $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
+            $test_user2 = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $interests, 'Female', $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
             $test_user2->save();
 
             //Act;
@@ -725,7 +676,6 @@
             $display_name = 'JMoney';
             $email = 'wuerchjason@gmail.com';
             $about_me = 'I am friendly.';
-            $gender = 'Male';
             $interests = 'Basketball, Tennis';
             $seeking_gender = 'Female';
             $seeking_relationship_type = 'Primary Partner';
@@ -733,7 +683,7 @@
             $city_id = 1;
             $zip_code_id = 1;
             $id = 1;
-            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
+            $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
             $test_user->save();
 
             //Act;

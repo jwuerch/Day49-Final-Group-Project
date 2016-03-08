@@ -30,8 +30,8 @@
 
     $app->post('/register_new_user', function() use ($app) {
         $username = $_POST['username'];
-        $password = 'xyz';
-        $identity = 'Male';
+        $password = $_POST['password'];
+        $identity = $_POST['identity'];
         $name = 'Jason';
         $status = 'Single';
         $kink_friendly = 1;
