@@ -29,18 +29,18 @@
             $this->assertEquals($name, $result);
         }
 
-        // function testGetDescription() {
-        //     //Assert;
-        //     $name ='male';
-        //     $description = 'description';
-        //     $test_identity = new Identity($name, $description);
-        //
-        //     //Act;
-        //     $result = $test_identity->getDescription();
-        //
-        //     //Assert;
-        //     $this->assertEquals($description, $result);
-        // }
+        function testGetDescription() {
+            //Assert;
+            $name ='male';
+            $description = 'description';
+            $test_identity = new Identity($name, $description);
+
+            //Act;
+            $result = $test_identity->getDescription();
+
+            //Assert;
+            $this->assertEquals($description, $result);
+        }
 
     }
 
