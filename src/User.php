@@ -5,7 +5,7 @@
         private $name;
         private $status;
         private $kink_friendly;
-        private $age;
+        private $birthday;
         private $display_name;
         private $email;
         private $about_me;
@@ -18,12 +18,12 @@
         private $zip_code_id;
         private $id;
 
-        public function __construct($identity, $name, $status, $kink_friendly = 1, $age, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id = null, $zip_code_id = null, $id = null) {
+        public function __construct($identity, $name, $status, $kink_friendly = 1, $birthday, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id = null, $zip_code_id = null, $id = null) {
             $this->identity = $identity;
             $this->name = $name;
             $this->status = $status;
             $this->kink_friendly = $kink_friendly;
-            $this->age = $age;
+            $this->birthday = $birthday;
             $this->display_name = $display_name;
             $this->email = $email;
             $this->about_me = $about_me;
@@ -50,8 +50,8 @@
         public function setKinkFriendly($new_kink_friendly) {
             $this->kink_friendly = $new_kink_friendly;
         }
-        public function setAge($new_age) {
-            $this->age = $new_age;
+        public function setBirthday($new_birthday) {
+            $this->birthday = $new_birthday;
         }
         public function setDisplayName($new_display_name) {
             $this->display_name = $new_display_name;
@@ -97,8 +97,8 @@
         public function getKinkFriendly() {
             return $this->kink_friendly;
         }
-        public function getAge() {
-            return $this->age;
+        public function getBirthday() {
+            return $this->birthday;
         }
         public function getDisplayName() {
             return $this->display_name;
@@ -136,7 +136,7 @@
 
         //Public Functions;
         public function save() {
-            $GLOBALS['DB']->exec("INSERT INTO users (identity, name, status, kink_friendly, age, display_name, email, about_me, gender, interests, seeking_gender, seeking_relationship_type, last_login, city_id, zip_code_id) VALUES ('{$this->getIdentity()}', '{$this->getName()}', '{$this->getStatus()}', {$this->getKinkFriendly()}, {$this->getAge()}, '{$this->getDisplayName()}', '{$this->getEmail()}', '{$this->getAboutMe()}', '{$this->getGender()}', '{$this->getInterests()}', '{$this->getSeekingGender()}', '{$this->getSeekingRelationshipType()}', '{$this->getLastLogin()}', {$this->getCityId()}, {$this->getZipCodeId()});");
+            $GLOBALS['DB']->exec("INSERT INTO users (identity, name, status, kink_friendly, birthday, display_name, email, about_me, gender, interests, seeking_gender, seeking_relationship_type, last_login, city_id, zip_code_id) VALUES ('{$this->getIdentity()}', '{$this->getName()}', '{$this->getStatus()}', {$this->getKinkFriendly()}, '{$this->getBirthday()}', '{$this->getDisplayName()}', '{$this->getEmail()}', '{$this->getAboutMe()}', '{$this->getGender()}', '{$this->getInterests()}', '{$this->getSeekingGender()}', '{$this->getSeekingRelationshipType()}', '{$this->getLastLogin()}', {$this->getCityId()}, {$this->getZipCodeId()});");
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
@@ -149,6 +149,8 @@
             $GLOBALS['DB']->exec("DELETE FROM relationships WHERE user_id_one = {$this->getId()} OR user_id_two = {$this->getId()};");
         }
 
+        // public function update($new_identity, $new_name, $new_status, $new_kink_friendly, $new_email, $new_about_me, $new_gender, $new_interests)
+
         //Static Fucntions;
         static function getAll() {
             $returned_users = $GLOBALS['DB']->query("SELECT * FROM users;");
@@ -158,7 +160,7 @@
                 $name = $user['name'];
                 $status = $user['status'];
                 $kink_friendly = $user['kink_friendly'];
-                $age = $user['age'];
+                $birthday = $user['birthday'];
                 $display_name = $user['display_name'];
                 $email = $user['email'];
                 $about_me = $user['about_me'];
@@ -170,7 +172,7 @@
                 $city_id = $user['city_id'];
                 $zip_code_id = $user['zip_code_id'];
                 $id = $user['id'];
-                $new_user = new User($identity, $name, $status, $kink_friendly, $age, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id, $id);
+                $new_user = new User($identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id, $id);
                 array_push($users, $new_user);
             }
             return $users;
@@ -201,6 +203,8 @@
              }
              return $found_user;
         }
+
+
 
     }
 
