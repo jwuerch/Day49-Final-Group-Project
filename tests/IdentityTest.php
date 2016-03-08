@@ -70,6 +70,25 @@
             $this->assertEquals($test_identity, $result[0]);
         }
 
+        function testGetAll() {
+            //Assert;
+            $name ='male';
+            $description = 'description';
+            $test_identity = new Identity($name, $description);
+            $test_identity->save();
+
+            $name ='male';
+            $description = 'description';
+            $test_identity2 = new Identity($name, $description);
+            $test_identity2->save();
+
+            //Act;
+            $result = Identity::getAll();
+
+            //Assert;
+            $this->assertEquals([$test_identity, $test_identity2], $result);
+        }
+
     }
 
 ?>
