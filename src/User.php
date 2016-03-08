@@ -157,11 +157,6 @@
             $GLOBALS['DB']->exec("DELETE FROM relationships WHERE user_id_one = {$this->getId()} OR user_id_two = {$this->getId()};");
         }
 
-        public function UpdateIdentity($new_identity) {
-            $GLOBALS['DB']->exec("UPDATE users SET identity = {$new_identity} WHERE id = {$this->getId()};");
-            $this->setIdentity($new_identity);
-        }
-
         public function getIdentities() {
             $returned_identities = $GLOBALS['DB']->query("SELECT identities.* FROM users
             JOIN identities_users ON (users.id = identities_users.user_id)
