@@ -29,6 +29,8 @@
     });
 
     $app->post('/register_new_user', function() use ($app) {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
         $identity = $_POST['identity'];
         $name = $_POST['name'];
         $status = $_POST['status'];
@@ -41,12 +43,12 @@
         $interests = $_POST['interests'];
         $seeking_gender = $_POST['seeking_gender'];
         $seeking_relationship_type = $_POST['seeking_relationship_type'];
-        $last_login = $_POST['last_login'];
-
-
-
-        $new_user = new User($identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
-        return $app['twig']->render('new_profile_created.index.twig');
+        $city_id = $_POST['city_id'];
+        $zip_code_id = $_POST['zip_code_id'];
+        $last_login = date("F j, Y, g:i a");
+        $new_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $city_id, $zip_code_id, $last_login);
+        $new_user->save();
+        return $app['twig']->render('all_users.html.twig', array('all_users' => User::getAll()));
     });
 
 
