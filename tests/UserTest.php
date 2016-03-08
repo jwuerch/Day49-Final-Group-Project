@@ -618,7 +618,7 @@
             $this->assertEquals($test_user2, $result);
         }
 
-        function testUpdate() {
+        function testUpdateIdentity() {
             //Arrange;
             $identity = 'Male';
             $name = 'Jason';
@@ -638,6 +638,14 @@
             $id = 1;
             $test_user = new User($identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
             $test_user->save();
+
+            //Act;
+            $new_identity = 'Female';
+            $test_user->updateIdentity($new_identity);
+            $result = $test_user->getIdentity();
+
+            //Assert;
+            $this->assertEquals($new_identity, $result);
         }
     }
 

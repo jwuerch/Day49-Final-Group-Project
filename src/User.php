@@ -149,8 +149,9 @@
             $GLOBALS['DB']->exec("DELETE FROM relationships WHERE user_id_one = {$this->getId()} OR user_id_two = {$this->getId()};");
         }
 
-        public function update($new_identity, $new_name, $new_status, $new_kink_friendly, $new_birthday, $new_display_name, $new_email, $new_about_me, $new_gender, $new_interests, $new_seeking_gender, $new_seeking_relationship_type, $new_city_id, $new_zip_code_id) {
-            return func_get_ars;
+        public function UpdateIdentity($new_identity) {
+            $GLOBALS['DB']->exec("UPDATE users SET identity = {$new_identity} WHERE id = {$this->getId()};");
+            $this->setIdentity($new_identity);
         }
 
         //Static Fucntions;
