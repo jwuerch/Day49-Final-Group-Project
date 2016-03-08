@@ -29,6 +29,31 @@
             return $this->id;
         }
 
+        //Public Functions
+        public function save() {
+            $GLOBALS['DB']->exec("INSERT INTO identities (name, description) VALUES ('{$this->getName()}', '{$this->getDescription()}');");
+            $this->id = $GLOBALS['DB']->lastInsertId();
+        }
+
+        //Static Functions;
+        static function getAll() {
+            $returned_identities = $GLOBALS['DB']->query("SELECT * FROM identities;");
+            $identities = array();
+            foreach ($returned_identities as $identity) {
+                $id = $identity['id'];
+                $name = $identity['name'];
+                $description = $identity['description'];
+                $new_identity = new Identity($name, $description, $id);
+                array_push($identities, $new_identity);
+            }
+            return $identities;
+        }
+
+        static function deleteAll() {
+            $GLOBALS['DB']->exec("DELETE FROM identities;");
+        }
+
+
 
     }
 

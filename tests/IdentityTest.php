@@ -12,9 +12,9 @@
 
     class IdentityTest extends PHPUnit_Framework_TestCase {
 
-        // protected function tearDown() {
-        //     City::deleteAll();
-        // }
+        protected function tearDown() {
+            Identity::deleteAll();
+        }
 
         function testGetName() {
             //Assert;
@@ -54,6 +54,20 @@
 
             //Assert;
             $this->assertEquals($id, $result);
+        }
+
+        function testSave() {
+            //Assert;
+            $name ='male';
+            $description = 'description';
+            $test_identity = new Identity($name, $description);
+
+            //Act;
+            $test_identity->save();
+            $result = Identity::getAll();
+
+            //Assert;
+            $this->assertEquals($test_identity, $result[0]);
         }
 
     }
