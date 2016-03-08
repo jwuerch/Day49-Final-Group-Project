@@ -87,6 +87,13 @@
     //*******
     //*******
 
+    $app->get('/all_zip_codes', function() use ($app) {
+        $zip_number = $_POST['zip_number'];
+        $city_id = $_POST['city_id'];
+        $new_zip_code = new ZipCode($zip_number, $city_id);
+        return $app['twig']->render('all_zip_codes', array('all_zip_codes', ZipCode::getAll()));
+    });
+
 
 
     return $app;
