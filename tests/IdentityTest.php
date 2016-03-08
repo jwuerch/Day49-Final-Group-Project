@@ -89,6 +89,26 @@
             $this->assertEquals([$test_identity, $test_identity2], $result);
         }
 
+        function testDeleteAll() {
+            //Assert;
+            $name ='male';
+            $description = 'description';
+            $test_identity = new Identity($name, $description);
+            $test_identity->save();
+
+            $name ='male';
+            $description = 'description';
+            $test_identity2 = new Identity($name, $description);
+            $test_identity2->save();
+
+            //Act;
+            Identity::deleteAll();
+            $result = Identity::getAll();
+
+            //Assert;
+            $this->assertEquals([], $result);
+        }
+
     }
 
 ?>
