@@ -1,6 +1,8 @@
 <?php
 
     class User {
+        private $username;
+        private $password;
         private $identity;
         private $name;
         private $status;
@@ -18,7 +20,9 @@
         private $zip_code_id;
         private $id;
 
-        public function __construct($identity, $name, $status, $kink_friendly = 1, $birthday, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login = null, $city_id = null, $zip_code_id = null, $id = null) {
+        public function __construct($username, $password, $identity, $name, $status, $kink_friendly = 1, $birthday, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login = null, $city_id = null, $zip_code_id = null, $id = null) {
+            $this->username = $username;
+            $this->password = $password;
             $this->identity = $identity;
             $this->name = $name;
             $this->status = $status;
@@ -38,6 +42,12 @@
         }
 
         //Setters
+        public function setUsername($username) {
+            $this->username = $username;
+        }
+        public function setPassword($password) {
+
+        }
         public function setIdentity($new_identity) {
             $this->identity = $new_identity;
         }
@@ -85,6 +95,12 @@
         }
 
         //Getters
+        public function getUsername() {
+            return $this->username;
+        }
+        public function getPassword() {
+            return $this->password;
+        }
         public function getIdentity() {
             return $this->identity;
         }

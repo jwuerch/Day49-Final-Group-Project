@@ -1,6 +1,7 @@
 <?php
     require_once __DIR__.'/../vendor/autoload.php';
     require_once __DIR__.'/../src/User.php';
+    require_once __DIR__.'/../src/login.php';
 
     $app = new Silex\Application();
     $server = 'mysql:host=localhost;dbname=poly_date';
@@ -41,8 +42,7 @@
         $seeking_gender = $_POST['seeking_gender'];
         $seeking_relationship_type = $_POST['seeking_relationship_type'];
         $last_login = $_POST['last_login'];
-        $city_id = $_POST['city_id'];
-        $zip_code_id = $_POST['zip_code_id'];
+
 
 
         $new_user = new User($identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
