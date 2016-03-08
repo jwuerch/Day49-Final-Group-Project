@@ -32,7 +32,8 @@
     });
 
     $app->get('/user_profile/{id}', function($id) use ($app) {
-        return $app['twig']->render('user_profile.index.twig');
+        $user = User::find($id);
+        return $app['twig']->render('user_profile.index.twig', array('user' => $user));
     });
 
     $app->post('/register_new_user', function() use ($app) {
@@ -89,14 +90,15 @@
     //*******
 
     $app->get('/all_zip_codes', function() use ($app) {
-        return $app['twig']->render('all_zip_codes.html.twig', array('all_zip_codes', ZipCode::getAll(), 'all_cities' => City::getAll()));
+        return $app['twig']->render('all_zip_codes.html.twig', array('all_zip_codes' => ZipCode::getAll(), 'all_cities' => City::getAll()));
     });
 
     $app->post('/add_zip_code', function() use ($app) {
         $zip_number = $_POST['zip_number'];
         $city_id = $_POST['city_id'];
         $new_zip_code = new ZipCode($zip_number, $city_id);
-        return $app['twig']->render('all_zip_codes.html.twig', array('all_zip_codes', ZipCode::getAll(), 'all_cities' => City::getAll()));
+        $new_zip_code->save();
+        return $app['twig']->render('all_zip_codes.html.twig', array('all_zip_codes' => ZipCode::getAll(), 'all_cities' => City::getAll()));
     });
 
 

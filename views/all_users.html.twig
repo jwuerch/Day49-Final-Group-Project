@@ -5,29 +5,12 @@
 
     <body>
         <div class="container">
-            {% for user in all_users %}
-            <ul>
-            <li><strong><span style="text-decoration:underline;">{{ user.getUsername }}</span></strong></li>
-                <ul>
-                    <li>Password: {{ user.getPassword }}</li>
-                    <li>Identity: {{ user.getIdentity }}</li>
-                    <li>First Name: {{ user.getFirstName }}</li>
-                    <li>Last Name: {{ user.getLastName }}</li>
-                    <li>Status: {{ user.getStatus }}</li>
-                    <li>Kink Friendly: {{ user.getKinkFriendly }}</li>
-                    <li>Birthday: {{ user.getBirthday }}</li>
-                    <li>Email: {{ user.getEmail }}</li>
-                    <li>About Me: {{ user.getAboutMe }}</li>
-                    <li>Interests: {{ user.getInterests }}</li>
-                    <li>Seeking Gender: {{ user.getSeekingGender }}</li>
-                    <li>Seeking Relationship Type: {{ user.getSeekingRelationshipType }}</li>
-                    <li>Last Login: {{ user.getLastLogin }}</li>
-                    <li>City Id: {{ user.getCityId }}</li>
-                    <li>Zip Code Id: {{ user.getZipCodeId }}</li>
 
-                </ul>
+            <ul>
+                {% for user in all_users %}
+                    <li><a href="/user_profile/{{ user.getId }}">{{ user.getUsername }}</a></li>
+                {% endfor %}
             </ul>
-            {% endfor %}
 
             <form action="/delete_all_users" method="post">
                 <button class="btn-danger btn">Delete ALL Users</button>

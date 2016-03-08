@@ -4,7 +4,15 @@
     {% include 'navbar.html' %}
     <body>
         <div class="container">
-            <form action="/add_zip_code">
+            <h5>Here are your current zip codes</h5>
+            <ul>
+                {% for zip_code in all_zip_codes %}
+                    <li>{{ zip_code.getZipNumber }}</li>
+                {% endfor %}
+            </ul>
+
+            <br>
+            <form action="/add_zip_code" method="post">
                 <div class="form-group">
                     <label for="zip_number">Zip Code</label>
                     <input id="zip_number" name="zip_number" class="form-select" type="number">
@@ -18,6 +26,7 @@
                         {% endfor %}
                     </select>
                 </div>
+                <button type="submit" class="btn btn-primary">Add Zip Code</button>
             </form>
         </div>
 
