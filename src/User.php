@@ -193,9 +193,12 @@
             return $messages;
         }
 
-        public function addMessage($message) {
+        public function sendMessage($message) {
             $GLOBALS['DB']->exec("INSERT INTO messages_users (user_id, message_id) VALUES ({$this->getId()}, {$message->getId()});");
         }
+                // $new_message = new Message($description);
+                // $new_message->save();
+                // $GLOBALS['DB']->exec("INSERT INTO messages_users (user_id, message_id) VALUES ({$user_id_two->getId()}, {$new_message->getId()});");
 
         public function askRelationship() {
 
@@ -208,11 +211,6 @@
             } else {
                 return 'This person denies';
             }
-        }
-
-        public function sendMessage($message, $user_two) {
-            $message = null;
-            $GLOBALS['DB']->exec("INSERT INTO ");
         }
 
         //Static Fucntions;
