@@ -84,6 +84,11 @@
         return $app['twig']->render('all_cities.html.twig', array('all_cities' => City::getAll()));
     });
 
+    $app->post('/delete_all_cities', function() use ($app) {
+        City::deleteAll();
+        return $app['twig']->render('all_cities.html.twig', array('all_cities' => City::getAll()));
+    });
+
     //Zip Codes
     //*******
     //*******
