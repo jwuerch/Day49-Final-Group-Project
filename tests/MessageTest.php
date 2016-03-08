@@ -28,6 +28,19 @@
             $this->assertEquals($description, $result);
         }
 
+        function testGetId() {
+            //Arrange;
+            $description = 'text';
+            $id = 1;
+            $test_message = new Message($description, $id);
+
+            //Act;
+            $result = $test_message->getId();
+
+            //Assert;
+            $this->assertEquals($id, $result);
+        }
+
 
     }
 
