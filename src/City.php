@@ -56,6 +56,17 @@
             $GLOBALS['DB']->exec("DELETE FROM cities;");
         }
 
+        static function searchByName($search_term) {
+            $all_cities = City::getAll();
+            $cities = array();
+            foreach($all_cities as $city) {
+                if ($search_term[0] == $city->getName()[0]) {
+                    array_push($cities, $city);
+                }
+            }
+            return $cities;
+        }
+
 
     }
 
