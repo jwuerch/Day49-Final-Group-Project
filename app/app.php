@@ -47,7 +47,6 @@
         $zip_code_id = 2;
         $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
         $test_user->save();
-        print_r(User::getAll());
         return $app['twig']->render('all_users.html.twig', array('all_users' => User::getAll()));
     });
 
