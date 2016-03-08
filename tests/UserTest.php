@@ -804,10 +804,11 @@
             //Act;
             $test_message1 = $test_user->getMessages()[0];
             $result1 = $test_user->getMessages();
-            print_r($test_message1);
+            $result2 = $test_message1->getDescription();
 
             //Assert;
             $this->assertEquals($test_message1, $result1[0]);
+            $this->assertEquals('hi friend', $result2);
         }
 
     }
