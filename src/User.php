@@ -152,7 +152,7 @@
 
         //Public Functions;
         public function save() {
-            $GLOBALS['DB']->exec("INSERT INTO users (identity, name, status, kink_friendly, birthday, display_name, email, about_me, gender, interests, seeking_gender, seeking_relationship_type, last_login, city_id, zip_code_id) VALUES ('{$this->getIdentity()}', '{$this->getName()}', '{$this->getStatus()}', {$this->getKinkFriendly()}, '{$this->getBirthday()}', '{$this->getDisplayName()}', '{$this->getEmail()}', '{$this->getAboutMe()}', '{$this->getGender()}', '{$this->getInterests()}', '{$this->getSeekingGender()}', '{$this->getSeekingRelationshipType()}', '{$this->getLastLogin()}', {$this->getCityId()}, {$this->getZipCodeId()});");
+            $GLOBALS['DB']->exec("INSERT INTO users (username, password, identity, name, status, kink_friendly, birthday, display_name, email, about_me, gender, interests, seeking_gender, seeking_relationship_type, last_login, city_id, zip_code_id) VALUES ('{$this->getUsername()}', '{$this->getPassword()}', '{$this->getIdentity()}', '{$this->getName()}', '{$this->getStatus()}', {$this->getKinkFriendly()}, '{$this->getBirthday()}', '{$this->getDisplayName()}', '{$this->getEmail()}', '{$this->getAboutMe()}', '{$this->getGender()}', '{$this->getInterests()}', '{$this->getSeekingGender()}', '{$this->getSeekingRelationshipType()}', '{$this->getLastLogin()}', {$this->getCityId()}, {$this->getZipCodeId()});");
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
@@ -175,6 +175,8 @@
             $returned_users = $GLOBALS['DB']->query("SELECT * FROM users;");
             $users = array();
             foreach ($returned_users as $user) {
+                $username = $user['username'];
+                $password = $user['password'];
                 $identity = $user['identity'];
                 $name = $user['name'];
                 $status = $user['status'];
@@ -191,7 +193,7 @@
                 $city_id = $user['city_id'];
                 $zip_code_id = $user['zip_code_id'];
                 $id = $user['id'];
-                $new_user = new User($identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id, $id);
+                $new_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id, $id);
                 array_push($users, $new_user);
             }
             return $users;
