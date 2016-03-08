@@ -6,7 +6,28 @@
     <body>
         <div class="container">
             {% for user in all_users %}
-                {{ user.getCityId }}
+            <ul>
+            <li><strong><span style="text-decoration:underline;">{{ user.getUsername }}</span></strong></li>
+                <ul>
+                    <li>Identity: {{ user.getPassword }}</li>
+                    <li>Name: {{ user.getPassword }}</li>
+                    <li>Status: {{ user.getPassword }}</li>
+                    <li>Kink Friendly: {{ user.getPassword }}</li>
+                    <li>Birthday: {{ user.getPassword }}</li>
+                    <li>Display Name: {{ user.getPassword }}</li>
+                    <li>Email: {{ user.getPassword }}</li>
+                    <li>About Me: {{ user.getPassword }}</li>
+                    <li>Gender: {{ user.getPassword }}</li>
+                    <li>Interests: {{ user.getPassword }}</li>
+                    <li>Seeking Gender: {{ user.getPassword }}</li>
+                    <li>Seeking Relationship Type: {{ user.getPassword }}</li>
+                    <li>Last Login: {{ user.getPassword }}</li>
+                    <li>City Id: {{ user.getPassword }}</li>
+                    <li>Zip Code Id: {{ user.getPassword }}</li>
+                    <li>Password: {{ user.getPassword }}</li>
+
+                </ul>
+            </ul>
             {% endfor %}
 
             <form action="/delete_all_users" method="post">
