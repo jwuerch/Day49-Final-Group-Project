@@ -117,6 +117,25 @@
             //Assert;
             $this->assertEquals([], $result);
         }
+
+        function testFind() {
+            //Arrange
+            $zip_number = 97210;
+            $city_id = 2;
+            $test_zip_code = new ZipCode($zip_number, $city_id);
+            $test_zip_code->save();
+
+            $zip_number2 = 97772;
+            $city_id2 = 1;
+            $test_zip_code2 = new ZipCode($zip_number2, $city_id2);
+            $test_zip_code2->save();
+
+            //Act;
+            $result = ZipCode::find($test_zip_code2->getId());
+
+            //Assert;
+            $this->assertEquals($test_zip_code2, $result);
+        }
     }
 
 ?>
