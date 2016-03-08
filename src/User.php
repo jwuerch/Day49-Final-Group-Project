@@ -218,6 +218,11 @@
             return $city->getName();
         }
 
+        public function getStateName() {
+            $city = City::find($this->getCityId());
+            return $city->getState();
+        }
+
         //Static Fucntions;
         static function getAll() {
             $returned_users = $GLOBALS['DB']->query("SELECT * FROM users;");
