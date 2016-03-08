@@ -9,7 +9,6 @@
             <h5>Create A Profile</h5>
 
             <form action="/register_new_user" method="post">
-                
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input id="username" name="username" type="text" class="form-select" required>
@@ -82,7 +81,7 @@
                     <label for="city_id">City</label>
                     <select name="city_id">
                         {% for city in all_cities %}
-                        <option value="{{ city.getId }}">{{ city.getName}}, {{city.getState }}</option>
+                            <option value="{{ city.getId }}">{{ city.getName}}, {{city.getState }}</option>
                         {% endfor %}
                     </select>
                 </div>

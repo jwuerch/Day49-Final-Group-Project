@@ -47,6 +47,17 @@
         static function deleteAll() {
             $GLOBALS['DB']->exec("DELETE FROM zip_codes;");
         }
+
+        static function find($zip_id) {
+            $all_zip_codes = ZipCode::getAll();
+            $found_zip = null;
+            foreach ($all_zip_codes as $zip_code) {
+                if ($zip_id == $zip_code->getId()) {
+                    $found_zip = $zip_code;
+                }
+            }
+            return $found_zip;
+        }
     }
 
 

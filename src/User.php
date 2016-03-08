@@ -223,6 +223,11 @@
             return $city->getState();
         }
 
+        public function getZipCode() {
+            $zip_code = ZipCode::find($this->getZipCodeId());
+            return $zip_code->getZipNumber();
+        }
+
         //Static Fucntions;
         static function getAll() {
             $returned_users = $GLOBALS['DB']->query("SELECT * FROM users;");

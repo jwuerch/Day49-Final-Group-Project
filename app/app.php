@@ -33,9 +33,7 @@
 
     $app->get('/user_profile/{id}', function($id) use ($app) {
         $user = User::find($id);
-        $city_id = $_GET['city_id'];
-        $city = City::find($city_id);
-        return $app['twig']->render('user_profile.html.twig', array('user' => $user, 'city' => $city));
+        return $app['twig']->render('user_profile.html.twig', array('user' => $user, 'city_name' => $user->getCityName()));
     });
 
     $app->post('/register_new_user', function() use ($app) {
@@ -53,8 +51,8 @@
         $seeking_gender = $_POST['seeking_gender'];
         $seeking_relationship_type = $_POST['seeking_relationship_type'];
         $last_login = date("Y-m-d");
-        $city_id = 1;
-        $zip_code_id = 2;
+        $city_id = $_POST['city_id'];
+        $zip_code_id = $_POST['zip_code_id'];
         $test_user = new User($username, $password, $identity, $first_name, $last_name, $status, $kink_friendly, $birthday, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
         $test_user->save();
         return $app['twig']->render('all_users.html.twig', array('all_users' => User::getAll()));
