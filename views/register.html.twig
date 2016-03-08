@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     {% include 'head.html' %}
-    {% include 'navbar_sign_in.html' %}
+    {% include 'navbar.html' %}
 
 
     <body>
@@ -79,8 +79,12 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="city_id">City Id</label>
-                    <input id="city_id" name="city_id" type="text" class="form-select" required>
+                    <label for="city_id">City</label>
+                    <select name="city_id">
+                        {% for city in all_cities %}
+                        <option value="{{ city.getId }}">{{ city.getName}}, {{city.getState }}</option>
+                        {% endfor %}
+                    </select>
                 </div>
 
                 <div class="form-group">

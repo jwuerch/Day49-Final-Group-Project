@@ -22,12 +22,12 @@
     $app->get("/users_basic_search", function() use ($app) {
         $my_identity = $_GET['my_identity'];
         $city = $_GET['city_id'];
-        $search_results = User::basicSearch($my_identity, $city);
-        return $app['twig']->render('basic_search_results.html.twig', array('all_cities' => City::getAll()));
+        $user_search_results = User::basicSearch($my_identity, $city);
+        return $app['twig']->render('basic_search_results.html.twig', array('all_cities' => City::getAll(), 'user_search_results' => $results));
     });
 
     $app->get('/register', function() use ($app) {
-        return $app['twig']->render('register.html.twig');
+        return $app['twig']->render('register.html.twig', array('all_cities' => City::getAll()));
     });
 
     $app->get('/user_profile/{id}', function($id) use ($app) {
@@ -65,7 +65,7 @@
         return $app['twig']->render('all_users.html.twig', array('all_users' => User::getAll()));
     });
 
-    //cities
+    //Cities
     //*******
     //*******
     //*******
@@ -81,6 +81,11 @@
         $new_city->save();
         return $app['twig']->render('all_cities.html.twig', array('all_cities' => City::getAll()));
     });
+
+    //Zip Codes
+    //*******
+    //*******
+    //*******
 
 
 

@@ -7,17 +7,17 @@
             <?php echo 'hello'; ?>
             <h1 class="text-center">Welcome To Poly Date</h1>
 
-            <form action="/basic_search">
-                <label for="identity">I am/We Are</label>
-                <select id="identity" name="identity">
+            <form action="/users_basic_search">
+                <label for="my_identity">I am/We Are</label>
+                <select id="my_identity" name="my_identity">
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                     <option value="mm">Male-Male</option>
                     <option value="ff">Female-Female</option>
                     <option value="mf">Male-Female</option>
                 </select>
-                <label for="city">City</label>
-                <select id = "city" name="city">
+                <label for="city_id">City</label>
+                <select id = "city_id" name="city_id">
                     {% for city in all_cities %}
                         <option value="{{ city.getId }}">{{ city.getName}}, {{city.getState}}</option>
                     {% endfor %}
