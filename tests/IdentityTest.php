@@ -42,6 +42,20 @@
             $this->assertEquals($description, $result);
         }
 
+        function testGetId() {
+            //Assert;
+            $name ='male';
+            $description = 'description';
+            $id = 1;
+            $test_identity = new Identity($name, $description, $id);
+
+            //Act;
+            $result = $test_identity->getId();
+
+            //Assert;
+            $this->assertEquals($id, $result);
+        }
+
     }
 
 ?>
