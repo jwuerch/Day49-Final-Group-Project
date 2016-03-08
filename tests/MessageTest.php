@@ -3,8 +3,8 @@
     * @backupGlobals disabled
     * @backupStaticAttributes disabled
     */
-    require_once "src/Store.php";
-    require_once "src/Brand.php";
+    require_once "src/Message.php";
+
     $server = 'mysql:host=localhost;dbname=poly_date_test';
     $username = 'root';
     $password = 'root';
@@ -12,6 +12,21 @@
 
     class MessageTest extends PHPUnit_Framework_TestCase {
 
+        // protected function tearDown() {
+        //     Message::deleteAll();
+        // }
+
+        function testGetDescription() {
+            //Arrange;
+            $description = 'text';
+            $test_message = new Message($description);
+
+            //Act;
+            $result = $test_message->getDescription();
+
+            //Assert;
+            $this->assertEquals($description, $result);
+        }
 
 
     }

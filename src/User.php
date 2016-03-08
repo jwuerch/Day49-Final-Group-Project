@@ -177,6 +177,24 @@
             $GLOBALS['DB']->exec("INSERT INTO identities_users (user_id, identity_id) VALUES ({$this->getId()}, {$identity->getId()});");
         }
 
+        public function askRelationship() {
+
+        }
+
+        public function acceptRelationship($user_two) {
+            $response = null;
+            if ($response) {
+                $GLOBALS['DB']->exec("INSERT INTO relationships (user_id_one, user_id_two) VALUES ({$this->getId()}, {$user_two->getId()});");
+            } else {
+                return 'This person denies';
+            }
+        }
+
+        public function sendMessage($message, $user_two) {
+            $message = null;
+            $GLOBALS['DB']->exec("INSERT INTO ");
+        }
+
         //Static Fucntions;
         static function getAll() {
             $returned_users = $GLOBALS['DB']->query("SELECT * FROM users;");
