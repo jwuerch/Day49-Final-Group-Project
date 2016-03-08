@@ -72,6 +72,22 @@
             $this->assertEquals([], $result);
         }
 
+        function testGetAll() {
+            //Arrange;
+            $description = 'text';
+            $test_message = new Message($description);
+            $test_message->save();
+            $test_message2 = new Message($description);
+            $test_message2->save();
+
+            //Act;
+            $result = Message::getAll();
+
+
+            //Assert;
+            $this->assertEquals([$test_message, $test_message2], $result);
+        }
+
 
     }
 
