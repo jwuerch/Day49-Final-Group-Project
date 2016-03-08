@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    {% include 'head.html' %}
+    {% include 'navbar.html' %}
+    <body>
+        <div class="container">
+            <ul>
+                {% for identity in all_identities %}
+                    <li>Name: {{ identity.getName }}</li>
+                    <ul>
+                        <li>Description: {{ identity.getDescription }}</li>
+                    </ul>
+                {% endfor %}
+            </ul>
+            <br>
+            <form action="/add_identity" method="post">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input id="name" name="name" class="form-select" type="text">
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <input id="description" name="description" class="form-select" type="text">
+                </div>
+                <button type="submit" class="btn btn-primary">Add Identity</button>
+            </form>
+        </div>
+    </body>
+    {% include 'footer.html' %}
+</html>

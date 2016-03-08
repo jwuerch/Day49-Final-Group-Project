@@ -3,6 +3,7 @@
     require_once __DIR__.'/../src/User.php';
     require_once __DIR__.'/../src/City.php';
     require_once __DIR__.'/../src/ZipCode.php';
+    require_once __DIR__.'/../src/Identity.php';
 
     $app = new Silex\Application();
     $server = 'mysql:host=localhost;dbname=poly_date';
@@ -24,7 +25,7 @@
         $my_identity = $_GET['my_identity'];
         $city = $_GET['city_id'];
         $user_search_results = User::basicSearch($my_identity, $city);
-        return $app['twig']->render('basic_search_results.html.twig', array('all_cities' => City::getAll(), 'user_search_results' => $results));
+        return $app['twig']->render('basic_search_results.html.twig', array('all_cities' => City::getAll(), 'user_search_results' => $user_search_results));
     });
 
     $app->get('/register', function() use ($app) {
@@ -115,6 +116,27 @@
     $app->post('/delete_all_zip_codes', function() use ($app) {
         ZipCode::deleteAll();
         return $app['twig']->render('all_zip_codes.html.twig', array('all_zip_codes' => ZipCode::getAll()));
+    });
+
+    //Identities
+    //*******
+    //*******
+    //*******
+    $app->get('/all_identities', function() use ($app) {
+        return $app['twig']->render('all_identities.html.twig', array('all_identities' => Identity::getAll()));
+    });
+
+    $app->post('/add_identity', function() use ($app) {
+        $name = $_POST['name'];
+        $description = $_POST['description'];
+        $new_identity = new Identity($name, $description);
+        $new_identity->save();
+        return $app['twig']->render('all_identities.html.twig', array('all_identities' => Identity::getAll()));
+    });
+
+    $app->post('/delete_all_identities', function() use ($app) {
+        Identity::deleteAll();
+        return $app['twig']->render('all_identities.html.twig', array('all_identities' => Identity::getAll()));
     });
 
 
