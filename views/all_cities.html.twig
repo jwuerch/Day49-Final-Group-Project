@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    {% include 'head.html' %}
+    {% include 'navbar.html' %}
+    <body>
+        <div class="container">
+            <h5>Here are your current cities in database:</h5>
+            <ul>
+            {% for city in all_cities %}
+                <li>{{ city.getName }}, {{city.getState}}</li>
+                <ul>
+                    <li>ID: {{city.getId }}</li>
+                </ul>
+            {% endfor %}
+            </ul>
+
+            <form action="/add_city" method="post">
+                <div class="form-group">
+                    <label for="city_name">Enter City Name</label>
+                    <input id="city_name" name="city_name" class="form-select" type="text">
+                </div>
+
+                <div class="form-group">
+                    <label for="state">Enter State Name</label>
+                    <input id="state" name="state" class="form-select" type="text">
+                </div>
+                <button type="submit" class="btn btn-primary">Add City</button>
+            </form>
+        </div>
+    </body>
+    {% include 'footer.html' %}
+</html>

@@ -1,7 +1,7 @@
 <?php
     require_once __DIR__.'/../vendor/autoload.php';
     require_once __DIR__.'/../src/User.php';
-    require_once __DIR__.'/../src/login.php';
+    require_once __DIR__.'/../src/City.php';
 
     $app = new Silex\Application();
     $server = 'mysql:host=localhost;dbname=poly_date';
@@ -16,7 +16,14 @@
     $app->register(new Silex\Provider\TwigServiceProvider(), array('twig.path' => __DIR__.'/../views'));
 
     $app->get('/', function() use ($app) {
-      return $app['twig']->render('index.html.twig');
+      return $app['twig']->render('index.html.twig', array('all_cities' => City::getAll()));
+    });
+
+    $app->get("/users_basic_search", function() use ($app) {
+        $my_identity = $_GET['my_identity'];
+        $city = $_GET['city_id'];
+        $search_results = User::basicSearch($my_identity, $city);
+        return $app['twig']->render('basic_search_results.html.twig', array('all_cities' => City::getAll()));
     });
 
     $app->get('/register', function() use ($app) {
@@ -56,6 +63,23 @@
     $app->post('/delete_all_users', function() use ($app) {
         User::deleteAll();
         return $app['twig']->render('all_users.html.twig', array('all_users' => User::getAll()));
+    });
+
+    //cities
+    //*******
+    //*******
+    //*******
+
+    $app->get('/all_cities', function() use ($app) {
+        return $app['twig']->render('all_cities.html.twig', array('all_cities' => City::getAll()));
+    });
+
+    $app->post('/add_city', function() use ($app) {
+        $city_name = $_POST['city_name'];
+        $state = $_POST['state'];
+        $new_city = new City($city_name, $state);
+        $new_city->save();
+        return $app['twig']->render('all_cities.html.twig', array('all_cities' => City::getAll()));
     });
 
 
