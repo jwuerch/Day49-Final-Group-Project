@@ -805,10 +805,11 @@
             $test_message1 = $test_user->getMessages()[0];
             $result1 = $test_user->getMessages();
             $result2 = $test_message1->getDescription();
-
+            $result3 = $test_user2->getMessages();
             //Assert;
             $this->assertEquals($test_message1, $result1[0]);
             $this->assertEquals('hi friend', $result2);
+            $this->assertEquals($test_message1, $result3[0]);
         }
 
     }
