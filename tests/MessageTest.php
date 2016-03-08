@@ -12,9 +12,9 @@
 
     class MessageTest extends PHPUnit_Framework_TestCase {
 
-        // protected function tearDown() {
-        //     Message::deleteAll();
-        // }
+        protected function tearDown() {
+            Message::deleteAll();
+        }
 
         function testGetDescription() {
             //Arrange;
@@ -39,6 +39,20 @@
 
             //Assert;
             $this->assertEquals($id, $result);
+        }
+
+        function testSave() {
+            //Arrange;
+            $description = 'text';
+            $test_message = new Message($description);
+
+            //Act;
+            $test_message->save();
+            $result = Message::getAll();
+
+
+            //Assert;
+            $this->assertEquals($test_message, $result[0]);
         }
 
 

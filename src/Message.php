@@ -23,7 +23,27 @@
         }
 
         //Public Functions;
+        public function save() {
+            $GLOBALS['DB']->exec("INSERT INTO messages (description) VALUES ('{$this->getDescription()}');");
+            $this->id = $GLOBALS['DB']->lastInsertId();
+        }
 
+        //Static Functions;
+        static function getAll() {
+            $returned_messages = $GLOBALS['DB']->query("SELECT * FROM messages;");
+            $messages = array();
+            foreach ($returned_messages as $message) {
+                $id = $message['id'];
+                $description = $message['description'];
+                $new_message = new Message($description, $id);
+                array_push($messages, $new_message);
+            }
+            return $messages;
+        }
+
+        static function deleteAll() {
+            $GLOBALS['DB']->exec("DELETE FROM messages;");
+        }
 
     }
 
