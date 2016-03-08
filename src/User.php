@@ -193,12 +193,12 @@
             return $messages;
         }
 
-        public function sendMessage($message) {
-            $GLOBALS['DB']->exec("INSERT INTO messages_users (user_id, message_id) VALUES ({$this->getId()}, {$message->getId()});");
+        public function sendMessage($user_id_two, $description) {
+            $new_message = new Message($description);
+            $new_message->save();
+            $GLOBALS['DB']->exec("INSERT INTO messages_users (user_id, message_id) VALUES ({$this->getId()}, {$new_message->getId()});");
+            $GLOBALS['DB']->exec("INSERT INTO messages_users (user_id, message_id) VALUES ({$user_id_two}, {$new_message->getId()});");
         }
-                // $new_message = new Message($description);
-                // $new_message->save();
-                // $GLOBALS['DB']->exec("INSERT INTO messages_users (user_id, message_id) VALUES ({$user_id_two->getId()}, {$new_message->getId()});");
 
         public function askRelationship() {
 
