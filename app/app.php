@@ -106,6 +106,11 @@
         return $app['twig']->render('all_zip_codes.html.twig', array('all_zip_codes' => ZipCode::getAll(), 'all_cities' => City::getAll()));
     });
 
+    $app->post('/delete_all_zip_codes', function() use ($app) {
+        ZipCode::deleteAll();
+        return $app['twig']->render('all_zip_codes.html.twig', array('all_zip_codes' => ZipCode::getAll()));
+    });
+
 
 
     return $app;
