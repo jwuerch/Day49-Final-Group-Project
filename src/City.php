@@ -34,6 +34,10 @@
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
+        public function delete() {
+            $GLOBALS['DB']->exec("DELETE FROM cities WHERE id = {$this->getId()};");
+        }
+
         //Static Functions;
         static function getAll() {
             $returned_cities = $GLOBALS['DB']->query("SELECT * FROM cities;");
@@ -51,6 +55,8 @@
         static function deleteAll() {
             $GLOBALS['DB']->exec("DELETE FROM cities;");
         }
+
+
     }
 
 

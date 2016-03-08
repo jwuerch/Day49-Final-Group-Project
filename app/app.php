@@ -31,11 +31,11 @@
         $username = $_POST['username'];
         $password = $_POST['password'];
         $identity = $_POST['identity'];
-        $name = $_POST['name'];
+        $first_name = $_POST['first_name'];
         $status = $_POST['status'];
         $kink_friendly = $_POST['kink_friendly'];
         $birthday = $_POST['birthday'];
-        $display_name = $_POST['display_name'];
+        $last_name = $_POST['last_name'];
         $email = $_POST['email'];
         $about_me = $_POST['about_me'];
         $interests = $_POST['interests'];
@@ -44,7 +44,7 @@
         $last_login = date("Y-m-d");
         $city_id = 1;
         $zip_code_id = 2;
-        $test_user = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
+        $test_user = new User($username, $password, $identity, $first_name, $last_name, $status, $kink_friendly, $birthday, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
         $test_user->save();
         return $app['twig']->render('all_users.html.twig', array('all_users' => User::getAll()));
     });

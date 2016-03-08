@@ -107,6 +107,27 @@
             //Assert;
             $this->assertEquals([], $result);
         }
+
+        function testDelete() {
+            //Arrange;
+            $name = 'Portland';
+            $state = 'Oregon';
+            $test_city = new City($name, $state);
+            $test_city->save();
+
+            $name2 = 'Seattle';
+            $state2 = 'Washington';
+            $test_city2 = new City($name2, $state2);
+            $test_city2->save();
+
+            //Act;
+            $test_city->delete();
+            $result = City::getAll();
+
+            //Assert;
+            $this->assertEquals([$test_city2], $result);
+
+        }
     }
 
 ?>
