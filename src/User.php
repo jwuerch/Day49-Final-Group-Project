@@ -155,6 +155,7 @@
         public function deleteProfile() {
             $GLOBALS['DB']->exec("DELETE FROM users WHERE id = {$this->getId()}");
             $GLOBALS['DB']->exec("DELETE FROM relationships WHERE user_id_one = {$this->getId()} OR user_id_two = {$this->getId()};");
+            $GLOBALS['DB']->exec("DELETE FROM messages_users WHERE user_id = {$this->getId()};");
         }
 
         public function getIdentities() {

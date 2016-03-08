@@ -88,6 +88,22 @@
             $this->assertEquals([$test_message, $test_message2], $result);
         }
 
+        function testDelete() {
+            //Arrange;
+            $description = 'text';
+            $test_message = new Message($description);
+            $test_message->save();
+            $test_message2 = new Message($description);
+            $test_message2->save();
+
+            //Act;
+            $test_message->delete();
+            $result = Message::getAll();
+
+            //Assert;
+            $this->assertEquals([$test_message2], $result);
+        }
+
 
     }
 

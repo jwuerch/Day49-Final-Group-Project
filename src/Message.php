@@ -45,6 +45,11 @@
             $GLOBALS['DB']->exec("DELETE FROM messages;");
         }
 
+        public function delete() {
+            $GLOBALS['DB']->exec("DELETE FROM messages WHERE id = {$this->getId()};");
+            $GLOBALS['DB']->exec("DELETE FROM messages_users WHERE message_id = {$this->getId()};");
+        }
+
     }
 
 
