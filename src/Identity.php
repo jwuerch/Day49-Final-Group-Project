@@ -3,15 +3,33 @@
     Class Identity {
         private $name;
         private $description;
-        private $user_id;
         private $id;
 
-        public function __contstruct($name, $description, $user_id, $id = null) {
+        public function __construct($name, $description, $id = null) {
             $this->name = $name;
             $this->description = $description;
-            $this->user_id = $user_id;
             $this->id = $id;
         }
+
+        //Setters;
+        public function setName($name) {
+            $this->name = $name;
+        }
+        public function setDescription($description) {
+            $this->description = $description;
+        }
+        //Getters;
+        public function getName() {
+            return $this->name;
+        }
+        public function getDescription() {
+            return $this->description;
+        }
+        public function getId() {
+            return $this->id;
+        }
+
+
     }
 
 

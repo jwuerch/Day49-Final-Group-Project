@@ -19,7 +19,7 @@
         private $zip_code_id;
         private $id;
 
-        public function __construct($username, $password, $identity, $first_name, $last_name, $status, $kink_friendly = 1, $birthday, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login = null, $city_id = null, $zip_code_id = null, $id = null) {
+        public function __construct($username, $password, $identity = null, $first_name, $last_name, $status, $kink_friendly = 1, $birthday, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login = null, $city_id = null, $zip_code_id = null, $id = null) {
             $this->username = $username;
             $this->password = $password;
             $this->identity = $identity;
