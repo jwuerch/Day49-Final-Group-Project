@@ -28,7 +28,7 @@
     });
 
     $app->get('/register', function() use ($app) {
-        return $app['twig']->render('register.html.twig', array('all_cities' => City::getAll()));
+        return $app['twig']->render('register.html.twig', array('all_cities' => City::getAll(), 'all_zip_codes' => ZipCode::getAll()));
     });
 
     $app->get('/user_profile/{id}', function($id) use ($app) {

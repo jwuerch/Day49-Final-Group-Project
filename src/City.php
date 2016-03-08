@@ -67,6 +67,17 @@
             return $cities;
         }
 
+        static function find($city_id) {
+            $found_city = null;
+            $all_cities = City::getAll();
+            foreach ($all_cities as $city) {
+                if ($city_id == $city->getId()) {
+                    $found_city = $city;
+                }
+            }
+            return $found_city;
+        }
+
 
     }
 
