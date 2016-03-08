@@ -20,8 +20,16 @@
                 <li>Seeking Relationship Type: {{ user.getSeekingRelationshipType }}</li>
                 <li>Last Login: {{ user.getLastLogin }}</li>
                 <li>City: {{ user.getCityName }}</li>
-                <li>Zip Code Id: {{ user.getZipCodeId }}</li>
+                <li>Zip Code: {{ user.getZipCode }}</li>
+                <li>ID: {{ user.getId }}</li>
             </ul>
+
+            <br>
+            <form action="/delete_user" method="post">
+                <input type="hidden" name="_method" value="delete">
+                <input type="hidden" name="user_id" value="{{ user.getId }}">
+                <button type="submit"class="btn btn-danger">Delete THIS User</button>
+            </form>
         </div>
     </body>
     {% include 'footer.html' %}

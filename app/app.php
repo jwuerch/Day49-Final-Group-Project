@@ -33,7 +33,13 @@
 
     $app->get('/user_profile/{id}', function($id) use ($app) {
         $user = User::find($id);
-        return $app['twig']->render('user_profile.html.twig', array('user' => $user, 'city_name' => $user->getCityName()));
+        return $app['twig']->render('user_profile.html.twig', array('user' => $user, 'city_name' => $user->getCityName(), 'zip_code' => $user->getZipCode()));
+    });
+
+    $app->delete('/delete_user', function() use ($app) {
+        $user = User::find($_POST['user_id']);
+        $user->deleteProfile();
+        return $app['twig']->render('all_users.html.twig', array('all_users' => User::getAll()));
     });
 
     $app->post('/register_new_user', function() use ($app) {
