@@ -150,7 +150,7 @@
 
         public function updateFirstName($new_first_name) {
             $GLOBALS['DB']->exec("UPDATE users SET first_name = '{$new_first_name}' WHERE id = {$this->getId()};");
-            $this->setName($new_name);
+            $this->setFirstName($new_first_name);
         }
         public function deleteProfile() {
             $GLOBALS['DB']->exec("DELETE FROM users WHERE id = {$this->getId()}");

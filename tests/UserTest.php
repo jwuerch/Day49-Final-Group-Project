@@ -109,7 +109,7 @@
             $seeking_gender = 'Female';
             $seeking_relationship_type = 'Primary Partner';
             $last_login = '1989-03-07';
-            $test_user = new User($username, $password, $identity, $first_name, $last_name $status, $kink_friendly, $birthday, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login);
+            $test_user = new User($username, $password, $identity, $first_name, $last_name, $status, $kink_friendly, $birthday, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login);
 
             //Act;
             $result = $test_user->getFirstName();
@@ -389,7 +389,7 @@
             $last_login = '1989-03-07';
             $city_id = $test_city->getId();
 
-            $test_user = new User($username, $password, $identity, $first_name, $last_name $status, $kink_friendly, $birthday, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id);
+            $test_user = new User($username, $password, $identity, $first_name, $last_name, $status, $kink_friendly, $birthday, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id);
 
             //Act;
             $result = $test_user->getCityId();
@@ -424,7 +424,7 @@
             $last_login = '1989-03-07';
             $city_id = $test_city->getId();
             $zip_code_id = $test_zip_code->getId();
-            $test_user = new User($username, $password, $identity, $name, $last_name, $status, $kink_friendly, $birthday, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
+            $test_user = new User($username, $password, $identity, $first_name, $last_name, $status, $kink_friendly, $birthday, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
 
             //Act;
             $result = $test_user->getZipCodeId();
@@ -438,7 +438,7 @@
             $username = 'jwuerch';
             $password = 'xyz';
             $identity = 'Male';
-            $name = 'Jason';
+            $first_name = 'Jason';
             $status = 'Single';
             $kink_friendly = 1;
             $birthday = '1989-03-07';
@@ -478,9 +478,8 @@
             $last_login = '1989-03-07';
             $city_id = 1;
             $zip_code_id = 1;
-            $test_user = new User($username, $password, $identity, $fist_name, $last_name, $status, $kink_friendly, $birthday, $last_name, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
+            $test_user = new User($username, $password, $identity, $first_name, $last_name, $status, $kink_friendly, $birthday, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
             $test_user->save();
-
             $test_user2 = new User($username, $password, $identity, $first_name, $last_name, $status, $kink_friendly, $birthday, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
             $test_user2->save();
 
@@ -548,7 +547,7 @@
             $result = $test_user->getFirstName();
 
             //Assert;
-            $this->assertEquals($new_name, $result);
+            $this->assertEquals($new_first_name, $result);
         }
 
         function testBasicSearch() {
@@ -584,11 +583,11 @@
             $test_user->save();
 
             $seeking_gender2 = 'Male';
-            $test_user2 = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $last_name, $email, $about_me, $interests, 'Male', $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
+            $test_user2 = new User($username, $password, $identity, $first_name, $last_name, $status, $kink_friendly, $birthday, $email, $about_me, $interests, 'Male', $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
             $test_user2->save();
 
             $seeking_gender3 = 'Male';
-            $test_user3 = new User($username, $password, $identity, $name, $status, $kink_friendly, $birthday, $last_name, $email, $about_me, $interests, 'Male', $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
+            $test_user3 = new User($username, $password, $identity, $first_name, $last_name, $status, $kink_friendly, $birthday, $email, $about_me, $interests, 'Male', $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
             $test_user3->save();
 
             //Act;
@@ -622,7 +621,7 @@
             $test_user->save();
 
             $id2 = 2;
-            $test_user2 = new User($username, $password, $identity, $first_name, $last_name $status, $kink_friendly, $birthday, $email, $about_me, $interests, 'Female', $seeking_relationship_type, $last_login, $city_id, $zip_code_id, $id);
+            $test_user2 = new User($username, $password, $identity, $first_name, $last_name, $status, $kink_friendly, $birthday, $email, $about_me, $interests, 'Female', $seeking_relationship_type, $last_login, $city_id, $zip_code_id, $id);
             $test_user2->save();
 
             //Act;
