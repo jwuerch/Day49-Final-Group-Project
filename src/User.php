@@ -178,6 +178,25 @@
             $GLOBALS['DB']->exec("INSERT INTO identities_users (user_id, identity_id) VALUES ({$this->getId()}, {$identity->getId()});");
         }
 
+        public function getMessages() {
+            $returned_messages = $GLOBALS['DB']->query("SELECT messages.* FROM users
+            JOIN messages_users ON (users.id = messages_users.user_id)
+            JOIN messages ON (messages_users.message_id = messages.id)
+            WHERE user_id = {$this->getId()};");
+            $messages = array();
+            foreach ($returned_messages as $message) {
+                $description = $message['description'];
+                $id = $message['id'];
+                $new_message = new Message($description, $id);
+                array_push($messages, $new_message);
+            }
+            return $messages;
+        }
+
+        public function addMessage($message) {
+            $GLOBALS['DB']->exec("INSERT INTO messages_users (user_id, message_id) VALUES ({$this->getId()}, {$message->getId()});");
+        }
+
         public function askRelationship() {
 
         }
