@@ -33,7 +33,7 @@
 
     $app->get('/user_profile/{id}', function($id) use ($app) {
         $user = User::find($id);
-        return $app['twig']->render('user_profile.index.twig', array('user' => $user));
+        return $app['twig']->render('user_profile.html.twig', array('user' => $user));
     });
 
     $app->post('/register_new_user', function() use ($app) {

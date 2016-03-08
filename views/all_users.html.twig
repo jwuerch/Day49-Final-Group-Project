@@ -4,12 +4,12 @@
     {% include 'navbar.html' %}
 
     <body>
+        <li><a href="/user_profile/{{ user.getId }}">{{ user.getUsername }}</a></li>
         <div class="container">
-
             <ul>
-                {% for user in all_users %}
-                    <li><a href="/user_profile/{{ user.getId }}">{{ user.getUsername }}</a></li>
-                {% endfor %}
+            {% for user in all_users %}
+                <li><a href="/user_profile/{{ user.getId }}">{{ user.getUsername }}</a></li>
+            {% endfor %}
             </ul>
 
             <form action="/delete_all_users" method="post">
