@@ -774,45 +774,45 @@
             $this->assertEquals('hi friend', $result2[0]->getDescription());
         }
 
-        // function testGetMessages() {
-        //     //Arrange;
-        //     $username = 'jmonkey';
-        //     $password = 'xyz';
-        //     $identity = 'Male';
-        //     $first_name = 'Jason';
-        //     $status = 'Single';
-        //     $kink_friendly = 1;
-        //     $birthday = '1989-03-07';
-        //     $last_name = 'JMoney';
-        //     $email = 'wuerchjason@gmail.com';
-        //     $about_me = 'I am friendly.';
-        //     $interests = 'Basketball, Tennis';
-        //     $seeking_gender = 'Female';
-        //     $seeking_relationship_type = 'Primary Partner';
-        //     $last_login = '1989-03-07';
-        //     $city_id = 1;
-        //     $zip_code_id = 1;
-        //     $test_user = new User($username, $password, $identity, $first_name, $last_name, $status, $kink_friendly, $birthday, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
-        //     $test_user->save();
-        //
-        //     $username2 = 'Johnny';
-        //     $test_user2 = new User($username2, $password, $identity, $first_name, $last_name, $status, $kink_friendly, $birthday, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
-        //     $test_user2->save();
-        //
-        //     $description = 'hi friend';
-        //
-        //     $test_user->sendMessage($test_user2->getId(), $description);
-        //
-        //     //Act;
-        //     $test_message1 = $test_user->getMessages()[0];
-        //     $result1 = $test_user->getMessages();
-        //     $result2 = $test_message1->getDescription();
-        //     $result3 = $test_user2->getMessages();
-        //     //Assert;
-        //     $this->assertEquals($test_message1, $result1[0]);
-        //     $this->assertEquals('hi friend', $result2);
-        //     $this->assertEquals($test_message1, $result3[0]);
-        // }
+        function testGetMessages() {
+            //Arrange;
+            $username = 'jmonkey';
+            $password = 'xyz';
+            $identity = 'Male';
+            $first_name = 'Jason';
+            $status = 'Single';
+            $kink_friendly = 1;
+            $birthday = '1989-03-07';
+            $last_name = 'JMoney';
+            $email = 'wuerchjason@gmail.com';
+            $about_me = 'I am friendly.';
+            $interests = 'Basketball, Tennis';
+            $seeking_gender = 'Female';
+            $seeking_relationship_type = 'Primary Partner';
+            $last_login = '1989-03-07';
+            $city_id = 1;
+            $zip_code_id = 1;
+            $test_user = new User($username, $password, $identity, $first_name, $last_name, $status, $kink_friendly, $birthday, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
+            $test_user->save();
+
+            $username2 = 'Johnny';
+            $test_user2 = new User($username2, $password, $identity, $first_name, $last_name, $status, $kink_friendly, $birthday, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
+            $test_user2->save();
+
+            $description = 'hi friend';
+
+            $test_user->sendMessage($test_user2->getId(), $description);
+
+            //Act;
+            $test_message1 = $test_user->getMessages()[0];
+            $result1 = $test_user->getMessages();
+            $result2 = $test_message1->getDescription();
+            $result3 = $test_user2->getMessages();
+            //Assert;
+            $this->assertEquals($test_message1, $result1[0]);
+            $this->assertEquals('hi friend', $result2);
+            $this->assertEquals($test_message1, $result3[0]);
+        }
 
     }
 

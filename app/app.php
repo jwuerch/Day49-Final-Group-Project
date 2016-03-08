@@ -33,7 +33,9 @@
 
     $app->get('/user_profile/{id}', function($id) use ($app) {
         $user = User::find($id);
-        return $app['twig']->render('user_profile.html.twig', array('user' => $user));
+        $city_id = $_GET['city_id'];
+        $city = City::find($city_id);
+        return $app['twig']->render('user_profile.html.twig', array('user' => $user, 'city' => $city));
     });
 
     $app->post('/register_new_user', function() use ($app) {
