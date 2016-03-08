@@ -605,13 +605,17 @@
             $last_login = '1989-03-07';
             $city_id = 1;
             $zip_code_id = 1;
-            $id = 1;
             $test_user = new User($identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $gender, $interests, 'Female', $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
             $test_user->save();
 
-            $id2 = 2;
-            $test_user2 = new User($identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $gender, $interests, 'Female', $seeking_relationship_type, $last_login, $city_id, $zip_code_id, $id);
+            $test_user2 = new User($identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $gender, $interests, 'Female', $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
             $test_user2->save();
+
+            //Act;
+            $result = User::find($test_user2->getId());
+
+            //Assert;
+            $this->assertEquals($test_user2, $result);
         }
 
         function testUpdate() {
@@ -632,7 +636,7 @@
             $city_id = 1;
             $zip_code_id = 1;
             $id = 1;
-            $test_user = new User($identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $gender, $interests, 'Female', $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
+            $test_user = new User($identity, $name, $status, $kink_friendly, $birthday, $display_name, $email, $about_me, $gender, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
             $test_user->save();
         }
     }
