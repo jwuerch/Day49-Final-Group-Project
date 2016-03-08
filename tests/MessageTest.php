@@ -55,6 +55,23 @@
             $this->assertEquals($test_message, $result[0]);
         }
 
+        function testDeleteAll() {
+            //Arrange;
+            $description = 'text';
+            $test_message = new Message($description);
+            $test_message->save();
+            $test_message2 = new Message($description);
+            $test_message2->save();
+
+            //Act;
+            Message::deleteAll();
+            $result = Message::getAll();
+
+
+            //Assert;
+            $this->assertEquals([], $result);
+        }
+
 
     }
 
