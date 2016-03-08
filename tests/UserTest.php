@@ -11,6 +11,7 @@
     require_once "src/User.php";
     require_once "src/City.php";
     require_once "src/ZipCode.php";
+    require_once "src/Identity.php";
 
     class UserTest extends PHPUnit_Framework_TestCase {
 
@@ -692,6 +693,42 @@
 
             //Assert;
             $this->assertEquals($new_identity, $result);
+        }
+
+        function testAddIdentity() {
+            //Arrange;
+            $username = 'jmonkey';
+            $password = 'xyz';
+            $identity = 'Male';
+            $first_name = 'Jason';
+            $status = 'Single';
+            $kink_friendly = 1;
+            $birthday = '1989-03-07';
+            $last_name = 'JMoney';
+            $email = 'wuerchjason@gmail.com';
+            $about_me = 'I am friendly.';
+            $interests = 'Basketball, Tennis';
+            $seeking_gender = 'Female';
+            $seeking_relationship_type = 'Primary Partner';
+            $last_login = '1989-03-07';
+            $city_id = 1;
+            $zip_code_id = 1;
+            $id = 1;
+            $test_user = new User($username, $password, $identity, $first_name, $last_name, $status, $kink_friendly, $birthday, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
+            $test_user->save();
+
+            $name = 'male';
+            $description = 'description';
+            $test_identity = new Identity($name, $description);
+            $test_identity->save();
+
+            //Act;
+            $test_user->addIdentity($test_identity);
+            $result = $test_user->getIdentities();
+            //Assert;
+            $this->assertEquals($test_identity, $result[0]);
+
+
         }
     }
 

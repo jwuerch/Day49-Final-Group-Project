@@ -162,6 +162,26 @@
             $this->setIdentity($new_identity);
         }
 
+        public function getIdentities() {
+            $returned_identities = $GLOBALS['DB']->query("SELECT identities.* FROM users
+            JOIN identities_users ON (users.id = identities_users.user_id)
+            JOIN identities ON (identities_users.identity_id = identities.id)
+            WHERE user_id = {$this->getId()};");
+            $identities = array();
+            foreach ($returned_identities as $identity) {
+                $id = $identity['id'];
+                $name = $identity['name'];
+                $description = $identity['description'];
+                $new_identity = new Identity($name, $description, $id);
+                array_push($identities, $new_identity);
+            }
+            return $identities;
+        }
+
+        public function addIdentity($identity) {
+            $GLOBALS['DB']->exec("INSERT INTO identities_users (user_id, identity_id) VALUES ({$this->getId()}, {$identity->getId()});");
+        }
+
         //Static Fucntions;
         static function getAll() {
             $returned_users = $GLOBALS['DB']->query("SELECT * FROM users;");
