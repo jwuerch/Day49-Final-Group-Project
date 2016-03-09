@@ -21,7 +21,11 @@
 
                 <div class="form-group">
                     <label for="identity">Identity</label>
-                    <input id="identity" name="identity" type="text" class="form-select" required>
+                    <select name="identity">
+                        {% for identity in all_identities %}
+                        <option value="{{ identity.getId }}">{{ identity.getName }}</option>
+                        {% endfor %}
+                    </select>
                 </div>
 
                 <div class="form-group">
@@ -36,7 +40,10 @@
 
                 <div class="form-group">
                     <label for="status">Status</label>
-                    <input id="status" name="status" type="text" class="form-select" required>
+                    <select name="status">
+                        <option value="single">Single</option>
+                        <option value="taken">Taken</option>
+                    </select>
                 </div>
 
                 <div class="form-group">
@@ -68,14 +75,20 @@
                 </div>
 
                 <div class="form-group">
-                    <select name="seeking_gender">
                     <label for="seeking_gender">Seeking Gender</label>
-                    <input id="seeking_gender" name="seeking_gender" type="text" class="form-select" required>
+                    <select name="seeking_gender">
+                        {% for identity in all_identities %}
+                            <option value="{{ identity.getId }}">{{ identity.getName }}</option>
+                        {% endfor %}
+                    </select>
                 </div>
 
                 <div class="form-group">
                     <label for="seeking_relationship_type">Seeking Relationship Type</label>
-                    <input id="seeking_relationship_type" name="seeking_relationship_type" type="text" class="form-select" required>
+                    <select name="seeking_relationship_type">
+                            <option value="primary_partner">Primary Partner</option>
+                            <option value="side_partner">Side Partner</option>
+                    </select>
                 </div>
 
                 <div class="form-group">

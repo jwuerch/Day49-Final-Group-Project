@@ -213,6 +213,7 @@
             }
         }
 
+
         public function getCityName() {
             $city = City::find($this->getCityId());
             return $city->getName();

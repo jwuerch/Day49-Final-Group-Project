@@ -53,6 +53,17 @@
             $GLOBALS['DB']->exec("DELETE FROM identities;");
         }
 
+        static function find($id) {
+            $all_identities = Identity::getAll();
+            $found_identity = null;
+            foreach ($all_identities as $identity) {
+                if ($id = $identity->getId()) {
+                    $found_identity = $identity;
+                }
+            }
+            return $found_identity;
+        }
+
 
 
     }

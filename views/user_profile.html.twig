@@ -24,6 +24,10 @@
                 <li>ID: {{ user.getId }}</li>
             </ul>
 
+            {% for identity in identities %}
+                {{ identity.getName }}
+            {% endfor %}
+
             <br>
             <form action="/delete_user" method="post">
                 <input type="hidden" name="_method" value="delete">

@@ -29,24 +29,25 @@
     });
 
     $app->get('/register', function() use ($app) {
-        return $app['twig']->render('register.html.twig', array('all_cities' => City::getAll(), 'all_zip_codes' => ZipCode::getAll()));
+        return $app['twig']->render('register.html.twig', array('all_cities' => City::getAll(), 'all_zip_codes' => ZipCode::getAll(), 'all_identities' => Identity::getAll()));
     });
 
     $app->get('/user_profile/{id}', function($id) use ($app) {
         $user = User::find($id);
-        return $app['twig']->render('user_profile.html.twig', array('user' => $user, 'city_name' => $user->getCityName(), 'zip_code' => $user->getZipCode()));
+        $identities = $user->getIdentities();
+        return $app['twig']->render('user_profile.html.twig', array('user' => $user, 'city_name' => $user->getCityName(), 'zip_code' => $user->getZipCode(), 'identities' => $identities));
     });
 
     $app->delete('/delete_user', function() use ($app) {
         $user = User::find($_POST['user_id']);
         $user->deleteProfile();
-        return $app['twig']->render('all_users.html.twig', array('all_users' => User::getAll()));
+        return $app['twig']->render('all_users.html.twig', array('all_users' => User::getAll(), 'user_identities' => $new_user->getIdentities()));
     });
 
     $app->post('/register_new_user', function() use ($app) {
         $username = $_POST['username'];
         $password = $_POST['password'];
-        $identity = $_POST['identity'];
+        $identity = null;
         $first_name = $_POST['first_name'];
         $status = $_POST['status'];
         $kink_friendly = $_POST['kink_friendly'];
@@ -60,9 +61,11 @@
         $last_login = date("Y-m-d");
         $city_id = $_POST['city_id'];
         $zip_code_id = $_POST['zip_code_id'];
-        $test_user = new User($username, $password, $identity, $first_name, $last_name, $status, $kink_friendly, $birthday, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
-        $test_user->save();
-        return $app['twig']->render('all_users.html.twig', array('all_users' => User::getAll()));
+        $new_user = new User($username, $password, $identity, $first_name, $last_name, $status, $kink_friendly, $birthday, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
+        $new_user->save();
+        $identity = Identity::find($_POST['identity']);
+        $new_user->addIdentity($identity);
+        return $app['twig']->render('all_users.html.twig', array('all_users' => User::getAll(), 'all_identities' => Identity::getAll()));
     });
 
     $app->get('/all_users', function() use ($app) {
