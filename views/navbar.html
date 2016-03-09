@@ -1,10 +1,12 @@
+{% include 'sign-in-box.html' %}
 <div class="container-fluid">
  <nav class="navbar navbar-default topnav" role="navigation">
  <div class="container topnav">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-
-        <a class="navbar-brand topnav" href="#" target="_blank">Jason Wuerch</a>
+        {% if session is not empty %}
+        <a class="navbar-brand topnav" href="#" target="_blank">Welcome {{ session[0] }}</a>
+        {% endif %}
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -15,7 +17,8 @@
                 <a href="/">Register</a>
             </li>
             <li>
-                <a href="/sign_in">Sign-In</a>
+
+                <button id="log-in" type="submit">Sign-In</button>
             </li>
             {% else %}
             <li>

@@ -251,11 +251,14 @@
                 if ($user->getUsername() == $username && $user->getPassword() == $password) {
                     $found_user = $user;
                     array_push($_SESSION['user'], $username);
-                    return $found_user;
-                } else {
-                    return 'Username or Password Incorrect';
+                    $user = $found_user;
                 }
             }
+            if ($found_user == null) {
+                return 'Incorrect Username or Password';
+            }
+            return $found_user;
+
         }
 
         static function signOut() {

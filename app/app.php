@@ -24,7 +24,6 @@
     $app->register(new Silex\Provider\TwigServiceProvider(), array('twig.path' => __DIR__.'/../views'));
 
     $app->get('/', function() use ($app) {
-        print_r($_SESSION['user']);
       return $app['twig']->render('index.html.twig', array('all_cities' => City::getAll(), 'all_identities' => Identity::getAll(), 'session' => $_SESSION['user']));
     });
 
