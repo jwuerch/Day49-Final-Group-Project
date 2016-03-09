@@ -13,6 +13,7 @@
     require_once "src/Identity.php";
     require_once "src/Message.php";
     require_once "src/Identity.php";
+    require_once "src/Image.php";
 
     class UserTest extends PHPUnit_Framework_TestCase {
 
@@ -22,6 +23,7 @@
             ZipCode::deleteAll();
             Message::deleteAll();
             Identity::deleteAll();
+            Image::deleteAll();
             $_SESSION['user'] = array();
         }
 
@@ -1152,7 +1154,6 @@
 
             //Act;
             $result = User::signIn($username, $password);
-            print_r($result);
             $result2 = User::signIn('JMonkeyy', $password);
             $result3 = User::signIn($username, 'dasfdas');
             User::signIn($username, $password);
@@ -1161,8 +1162,8 @@
 
             //Assert;
             $this->assertEquals($test_user, $result);
-            $this->assertEquals('Username or Password Incorrect', $result2);
-            $this->assertEquals('Username or Password Incorrect', $result3);
+            $this->assertEquals('Incorrect Username or Password', $result2);
+            $this->assertEquals('Incorrect Username or Password', $result3);
             $this->assertEquals([$username, $password], $result4);
         }
 
@@ -1214,6 +1215,56 @@
 
             //Assert;
             $this->assertEquals('You have successfully signed out.', $result);
+        }
+        function testGetImages() {
+            //Arrange;
+
+            $name = 'Seattle';
+            $state = 'WA';
+            $test_city = new City($name, $state);
+            $test_city->save();
+
+            $zip_number = '97201';
+            $city_id = $test_city->getId();
+            $test_zip_code = new ZipCode($zip_number, $city_id);
+            $test_zip_code->save();
+
+            $name = 'male';
+            $description = 'male';
+            $test_identity = new Identity($name, $description);
+            $test_identity->save();
+
+            $username = 'jmonkey';
+            $password = 'xyz';
+            $first_name = 'Jason';
+            $status = 'Single';
+            $kink_friendly = 1;
+            $birthday = '1989-03-07';
+            $last_name = 'JMoney';
+            $email = 'wuerchjason@gmail.com';
+            $about_me = 'I am friendly.';
+            $interests = 'Basketball, Tennis';
+            $seeking_gender = 'Female';
+            $seeking_relationship_type = 'Primary Partner';
+            $last_login = '1989-03-07';
+            $city_id = $test_city->getId();
+            $zip_code_id = $test_zip_code->getId();
+            $test_user = new User($username, $password, $first_name, $last_name, $status, $kink_friendly, $birthday, $email, $about_me, $interests, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
+            $test_user->save();
+
+            $title = 'hello';
+            $description = 'description';
+            $user_id = $test_user->getId();
+            $test_image = new Image($title, $description, $user_id);
+            $test_image->save();
+            $test_image2 = new Image($title, $description, $user_id);
+            $test_image2->save();
+
+            //Act;
+            $result = $test_user->getImages();
+
+            //Assert;
+            $this->assertEquals([$test_image, $test_image2], $result);
 
         }
 

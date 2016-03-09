@@ -242,6 +242,20 @@
             return $zip_code->getZipNumber();
         }
 
+        public function getImages() {
+            $returned_images = $GLOBALS['DB']->query("SELECT * FROM images WHERE user_id = {$this->getId()};");
+            $images = array();
+            foreach ($returned_images as $image) {
+                $title = $image['title'];
+                $description = $image['description'];
+                $user_id = $image['user_id'];
+                $id = $image['id'];
+                $new_image = new Image($title, $description, $user_id, $id);
+                array_push($images, $new_image);
+            }
+            return $images;
+        }
+
         //Static Fucntions;
 
         static function signIn($username, $password) {
