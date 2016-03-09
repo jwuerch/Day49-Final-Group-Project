@@ -34,6 +34,25 @@
             return $this->id;
         }
 
+        public function save() {
+            $GLOBALS['DB']->exec("INSERT INTO images (title, description, user_id) VALUES ('{$this->getTitle()}', '{$this->getDescription()}', {$this->getUserId()});");
+            $this->id = $GLOBALS['DB']->lastInsertId();
+        }
+        //Static Functions;
+        static function getAll() {
+            $returned_images = $GLOBALS['DB']->query("SELECT * FROM images;");
+            $images = array();
+            foreach ($returned_images as $image) {
+                $title = $image['title'];
+                $description = $image['description'];
+                $user_id = $image['user_id'];
+                $id = $image['id'];
+                $new_image = new Image($title, $description, $user_id, $id);
+                array_push($images, $new_image);
+            }
+            return $images;
+        }
+
 
     }
 
