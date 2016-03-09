@@ -243,10 +243,11 @@
         }
 
         public function signIn($username, $password) {
-            if ($username = $this->getUsername() && $password == $this->getPassword()) {
+            if ($username == $this->getUsername() && $password == $this->getPassword()) {
                 array_push($_SESSION['user'], $this->getUsername(), $this->getPassword());
             } else {
                 echo 'Incorrect Password';
+                return 'Incorrect Password';
             }
         }
 
