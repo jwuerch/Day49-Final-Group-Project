@@ -227,7 +227,6 @@
             }
         }
 
-
         public function getCityName() {
             $city = City::find($this->getCityId());
             return $city->getName();
@@ -241,6 +240,14 @@
         public function getZipCode() {
             $zip_code = ZipCode::find($this->getZipCodeId());
             return $zip_code->getZipNumber();
+        }
+
+        public function signIn($username, $password) {
+            if ($username = $this->getUsername() && $password == $this->getPassword()) {
+                array_push($_SESSION['user'], $this->getUsername(), $this->getPassword());
+            } else {
+                echo 'Incorrect Password';
+            }
         }
 
         //Static Fucntions;
@@ -291,7 +298,6 @@
                 }
 
             }
-            print_r($found_users2);
             return $found_users2;
         }
 

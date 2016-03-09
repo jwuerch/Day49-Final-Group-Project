@@ -13,6 +13,10 @@
     use Symfony\Component\HttpFoundation\Request;
     Request::enableHttpMethodParameterOverride();
 
+    session_start();
+    if(empty($_SESSION['list_of_anagrams'])) {
+      $_SESSION['list_of_anagrams'] = array();
+    }
     $app = new Silex\Application();
 
     $app->register(new Silex\Provider\TwigServiceProvider(), array('twig.path' => __DIR__.'/../views'));
@@ -20,6 +24,8 @@
     $app->get('/', function() use ($app) {
       return $app['twig']->render('index.html.twig', array('all_cities' => City::getAll(), 'all_identities' => Identity::getAll()));
     });
+
+
 
     $app->get("/users_basic_search", function() use ($app) {
         $my_identity = Identity::find($my_identity = $_GET['my_identity']);
@@ -30,6 +36,10 @@
 
     $app->get('/register', function() use ($app) {
         return $app['twig']->render('register.html.twig', array('all_cities' => City::getAll(), 'all_zip_codes' => ZipCode::getAll(), 'all_identities' => Identity::getAll()));
+    });
+
+    $app->get('/all_users', function() use ($app) {
+        return $app['twig']->render('all_users.html.twig', array('all_users' => User::getAll()));
     });
 
     $app->get('/user_profile/{id}', function($id) use ($app) {
@@ -76,8 +86,10 @@
         return $app['twig']->render('all_users.html.twig', array('all_users' => User::getAll(), 'all_identities' => Identity::getAll()));
     });
 
-    $app->get('/all_users', function() use ($app) {
-        return $app['twig']->render('all_users.html.twig', array('all_users' => User::getAll()));
+    $app->post('/user_login', function() use ($app) {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+
     });
 
     $app->post('/delete_all_users', function() use ($app) {
