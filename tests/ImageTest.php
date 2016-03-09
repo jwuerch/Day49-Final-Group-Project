@@ -30,6 +30,20 @@
             $this->assertEquals($title, $result);
         }
 
+        function testgetDescription() {
+            //Arrange;
+            $title = 'Me';
+            $description = '';
+            $user_id = 1;
+            $test_image = new Image($title, $description, $user_id);
+
+            //Act;
+            $result = $test_image->getDescription();
+
+            //Assert;
+            $this->assertEquals($description, $result);
+        }
+
 
     }
 
