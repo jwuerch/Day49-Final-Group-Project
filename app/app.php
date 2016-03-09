@@ -23,7 +23,8 @@
 
     $app->get("/users_basic_search", function() use ($app) {
         $my_identity = Identity::find($my_identity = $_GET['my_identity']);
-        $user_search_results = User::basicSearch($my_identity);
+        $city_id = $_GET['city_id'];
+        $user_search_results = User::basicSearch($my_identity, $city_id);
         return $app['twig']->render('basic_search_results.html.twig', array('all_cities' => City::getAll(), 'user_search_results' => $user_search_results));
     });
 

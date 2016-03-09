@@ -273,7 +273,7 @@
             $GLOBALS['DB']->exec("DELETE FROM users");
         }
 
-        static function basicSearch($identity) {
+        static function basicSearch($identity, $city_id) {
             $all_users = User::getAll();
             $found_users = array();
             foreach ($all_users as $user) {
@@ -284,7 +284,15 @@
                     }
                 }
             }
-            return $found_users;
+            $found_users2 = array();
+            foreach($found_users as $user) {
+                if ($city_id == $user->getCityId()) {
+                    array_push($found_users2, $user);
+                }
+
+            }
+            print_r($found_users2);
+            return $found_users2;
         }
 
         static function find($search_id) {

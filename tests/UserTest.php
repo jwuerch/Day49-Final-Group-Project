@@ -477,7 +477,8 @@
             $this->assertEquals($new_first_name, $result);
         }
 
-        function testBasicSearchOneIdentity() {
+
+        function testBasicSearch() {
             //Arrange;
 
             $name = 'Portland';
@@ -531,40 +532,40 @@
             $zip_code_id = $test_zip_code->getId();
 
 
-            $test_user = new User($username, $password, $first_name, $last_name, $status, $kink_friendly, $birthday, $email, $about_me, $interests, $seeking_relationship_type, $last_login, $test_city->getId(), $zip_code_id);
+            $test_user = new User('Jason', $password, $first_name, $last_name, $status, $kink_friendly, $birthday, $email, $about_me, $interests, $seeking_relationship_type, $last_login, $test_city->getId(), $zip_code_id);
             $test_user->save();
             $test_user->addSeekingGender($test_identity3);
 
-            $test_user2 = new User($username, $password, $first_name, $last_name, $status, $kink_friendly, $birthday, $email, $about_me, $interests, $seeking_relationship_type, $last_login, $test_city->getId(), $zip_code_id);
+            $test_user2 = new User('John', $password, $first_name, $last_name, $status, $kink_friendly, $birthday, $email, $about_me, $interests, $seeking_relationship_type, $last_login, $test_city->getId(), $zip_code_id);
             $test_user2->save();
             $test_user->addSeekingGender($test_identity2);
 
-            $test_user3 = new User($username, $password, $first_name, $last_name, $status, $kink_friendly, $birthday, $email, $about_me, $interests, $seeking_relationship_type, $last_login, $test_city2->getId(), $zip_code_id);
+            $test_user3 = new User('Max', $password, $first_name, $last_name, $status, $kink_friendly, $birthday, $email, $about_me, $interests, $seeking_relationship_type, $last_login, $test_city->getId(), $zip_code_id);
             $test_user3->save();
             $test_user3->addSeekingGender($test_identity);
 
-            $test_user4 = new User($username, $password, $first_name, $last_name, $status, $kink_friendly, $birthday, $email, $about_me, $interests, $seeking_relationship_type, $last_login, $test_city2->getId(), $zip_code_id);
+            $test_user4 = new User('Beth', $password, $first_name, $last_name, $status, $kink_friendly, $birthday, $email, $about_me, $interests, $seeking_relationship_type, $last_login, $test_city->getId(), $zip_code_id);
             $test_user4->save();
             $test_user4->addSeekingGender($test_identity);
 
-            $test_user5 = new User($username, $password, $first_name, $last_name, $status, $kink_friendly, $birthday, $email, $about_me, $interests, $seeking_relationship_type, $last_login, $test_city3->getId(), $zip_code_id);
+            $test_user5 = new User('Michael', $password, $first_name, $last_name, $status, $kink_friendly, $birthday, $email, $about_me, $interests, $seeking_relationship_type, $last_login, $test_city3->getId(), $zip_code_id);
             $test_user5->save();
             $test_user5->addSeekingGender($test_identity2);
 
-            $test_user6 = new User($username, $password, $first_name, $last_name, $status, $kink_friendly, $birthday, $email, $about_me, $interests, $seeking_relationship_type, $last_login, $test_city3->getId(), $zip_code_id);
+            $test_user6 = new User('Sara', $password, $first_name, $last_name, $status, $kink_friendly, $birthday, $email, $about_me, $interests, $seeking_relationship_type, $last_login, $test_city3->getId(), $zip_code_id);
             $test_user6->save();
             $test_user6->addSeekingGender($test_identity3);
 
-            $test_user7 = new User($username, $password, $first_name, $last_name, $status, $kink_friendly, $birthday, $email, $about_me, $interests, $seeking_relationship_type, $last_login, $test_city3->getId(), $zip_code_id);
+            $test_user7 = new User('Hilary', $password, $first_name, $last_name, $status, $kink_friendly, $birthday, $email, $about_me, $interests, $seeking_relationship_type, $last_login, $test_city3->getId(), $zip_code_id);
             $test_user7->save();
             $test_user7->addSeekingGender($test_identity);
 
             //Act;
             $search_term = $test_identity;
-            $city_id = $test_city3->getId();
+            $city_id = $test_city->getId();
             $result = User::basicSearch($test_identity, $city_id);
             //Assert;
-            $this->assertEquals([$test_user3, $test_user4, $test_user7], $result);
+            $this->assertEquals([$test_user3, $test_user4], $result);
         }
 
         function testDeleteProfile() {
