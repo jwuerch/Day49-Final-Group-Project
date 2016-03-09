@@ -251,7 +251,6 @@
                 if ($user->getUsername() == $username && $user->getPassword() == $password) {
                     $found_user = $user;
                     array_push($_SESSION['user'], $username);
-                    array_push($_SESSION['user'], $password);
                     return $found_user;
                 } else {
                     return 'Username or Password Incorrect';
@@ -310,7 +309,6 @@
                 if ($city_id == $user->getCityId()) {
                     array_push($found_users2, $user);
                 }
-
             }
             return $found_users2;
         }

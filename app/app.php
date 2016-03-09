@@ -10,6 +10,7 @@
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);
+
     use Symfony\Component\HttpFoundation\Request;
     Request::enableHttpMethodParameterOverride();
 
@@ -17,40 +18,42 @@
     if(empty($_SESSION['user'])) {
       $_SESSION['user'] = array();
     }
+
     $app = new Silex\Application();
 
     $app->register(new Silex\Provider\TwigServiceProvider(), array('twig.path' => __DIR__.'/../views'));
 
     $app->get('/', function() use ($app) {
-      return $app['twig']->render('index.html.twig', array('all_cities' => City::getAll(), 'all_identities' => Identity::getAll()));
+        print_r($_SESSION['user']);
+      return $app['twig']->render('index.html.twig', array('all_cities' => City::getAll(), 'all_identities' => Identity::getAll(), 'session' => $_SESSION['user']));
     });
 
     $app->get("/users_basic_search", function() use ($app) {
         $my_identity = Identity::find($my_identity = $_GET['my_identity']);
         $city_id = $_GET['city_id'];
         $user_search_results = User::basicSearch($my_identity, $city_id);
-        return $app['twig']->render('basic_search_results.html.twig', array('all_cities' => City::getAll(), 'user_search_results' => $user_search_results));
+        return $app['twig']->render('basic_search_results.html.twig', array('all_cities' => City::getAll(), 'user_search_results' => $user_search_results, 'session' => $_SESSION['user']));
     });
 
     $app->get('/register', function() use ($app) {
-        return $app['twig']->render('register.html.twig', array('all_cities' => City::getAll(), 'all_zip_codes' => ZipCode::getAll(), 'all_identities' => Identity::getAll()));
+        return $app['twig']->render('register.html.twig', array('all_cities' => City::getAll(), 'all_zip_codes' => ZipCode::getAll(), 'all_identities' => Identity::getAll(), 'session' => $_SESSION['user']));
     });
 
     $app->get('/all_users', function() use ($app) {
-        return $app['twig']->render('all_users.html.twig', array('all_users' => User::getAll()));
+        return $app['twig']->render('all_users.html.twig', array('all_users' => User::getAll(), 'session' => $_SESSION['user']));
     });
 
     $app->get('/user_profile/{id}', function($id) use ($app) {
         $user = User::find($id);
         $identities = $user->getIdentities();
         $seeking_genders = $user->getSeekingGenders();
-        return $app['twig']->render('user_profile.html.twig', array('user' => $user, 'city_name' => $user->getCityName(), 'zip_code' => $user->getZipCode(), 'identities' => $identities, 'seeking_genders' => $seeking_genders));
+        return $app['twig']->render('user_profile.html.twig', array('user' => $user, 'city_name' => $user->getCityName(), 'zip_code' => $user->getZipCode(), 'identities' => $identities, 'seeking_genders' => $seeking_genders, 'session' => $_SESSION['user']));
     });
 
     $app->delete('/delete_user', function() use ($app) {
         $user = User::find($_POST['user_id']);
         $user->deleteProfile();
-        return $app['twig']->render('all_users.html.twig', array('all_users' => User::getAll(), 'user_identities' => $new_user->getIdentities()));
+        return $app['twig']->render('all_users.html.twig', array('all_users' => User::getAll(), 'session' => $_SESSION['user']));
     });
 
     $app->post('/register_new_user', function() use ($app) {
@@ -81,25 +84,28 @@
         $identity = Identity::find($_POST['identity']);
         $new_user->addIdentity($identity);
 
-        return $app['twig']->render('all_users.html.twig', array('all_users' => User::getAll(), 'all_identities' => Identity::getAll()));
+        return $app['twig']->render('all_users.html.twig', array('all_users' => User::getAll(), 'all_identities' => Identity::getAll(), 'session' => $_SESSION['user']));
     });
 
     $app->get('/sign_in', function() use ($app) {
-        return $app['twig']->render('sign-in.html.twig');
+        return $app['twig']->render('sign-in.html.twig', array('session' => $_SESSION['user']));
     });
 
     $app->post('/user_login', function() use ($app) {
         $username = $_POST['username'];
         $password = $_POST['password'];
-        $session = $_SESSION['user'];
-        User::signIn($username, $password);
-        return $app['twig']->render('index.html.twig', array('all_identities' => Identity::getAll(), 'all_cities' => City::getAll(), 'session' => $session));
+        $user = User::signIn($username, $password);
+        return $app['twig']->render('index.html.twig', array('all_identities' => Identity::getAll(), 'all_cities' => City::getAll(), 'session' => $_SESSION['user']));
     });
 
+    $app->get('/user_sign_out', function() use ($app) {
+        User::signOut();
+        return $app['twig']->render('sign-in.html.twig', array('session' => $_SESSION['user']));
+    });
 
     $app->post('/delete_all_users', function() use ($app) {
         User::deleteAll();
-        return $app['twig']->render('all_users.html.twig', array('all_users' => User::getAll()));
+        return $app['twig']->render('all_users.html.twig', array('all_users' => User::getAll(), 'session' => $_SESSION['user']));
     });
 
     //Cities
@@ -108,7 +114,7 @@
     //*******
 
     $app->get('/all_cities', function() use ($app) {
-        return $app['twig']->render('all_cities.html.twig', array('all_cities' => City::getAll()));
+        return $app['twig']->render('all_cities.html.twig', array('all_cities' => City::getAll(), 'session' => $_SESSION['user']));
     });
 
     $app->post('/add_city', function() use ($app) {
@@ -116,12 +122,12 @@
         $state = $_POST['state'];
         $new_city = new City($city_name, $state);
         $new_city->save();
-        return $app['twig']->render('all_cities.html.twig', array('all_cities' => City::getAll()));
+        return $app['twig']->render('all_cities.html.twig', array('all_cities' => City::getAll(), 'session' => $_SESSION['user']));
     });
 
     $app->post('/delete_all_cities', function() use ($app) {
         City::deleteAll();
-        return $app['twig']->render('all_cities.html.twig', array('all_cities' => City::getAll()));
+        return $app['twig']->render('all_cities.html.twig', array('all_cities' => City::getAll(), 'session' => $_SESSION['user']));
     });
 
     //Zip Codes
@@ -130,7 +136,7 @@
     //*******
 
     $app->get('/all_zip_codes', function() use ($app) {
-        return $app['twig']->render('all_zip_codes.html.twig', array('all_zip_codes' => ZipCode::getAll(), 'all_cities' => City::getAll()));
+        return $app['twig']->render('all_zip_codes.html.twig', array('all_zip_codes' => ZipCode::getAll(), 'all_cities' => City::getAll(), 'session' => $_SESSION['user']));
     });
 
     $app->post('/add_zip_code', function() use ($app) {
@@ -138,7 +144,7 @@
         $city_id = $_POST['city_id'];
         $new_zip_code = new ZipCode($zip_number, $city_id);
         $new_zip_code->save();
-        return $app['twig']->render('all_zip_codes.html.twig', array('all_zip_codes' => ZipCode::getAll(), 'all_cities' => City::getAll()));
+        return $app['twig']->render('all_zip_codes.html.twig', array('all_zip_codes' => ZipCode::getAll(), 'all_cities' => City::getAll(), 'session' => $_SESSION['user']));
     });
 
     $app->post('/delete_all_zip_codes', function() use ($app) {
@@ -151,7 +157,7 @@
     //*******
     //*******
     $app->get('/all_identities', function() use ($app) {
-        return $app['twig']->render('all_identities.html.twig', array('all_identities' => Identity::getAll()));
+        return $app['twig']->render('all_identities.html.twig', array('all_identities' => Identity::getAll(), 'session' => $_SESSION['user']));
     });
 
     $app->post('/add_identity', function() use ($app) {
@@ -159,12 +165,12 @@
         $description = $_POST['description'];
         $new_identity = new Identity($name, $description);
         $new_identity->save();
-        return $app['twig']->render('all_identities.html.twig', array('all_identities' => Identity::getAll()));
+        return $app['twig']->render('all_identities.html.twig', array('all_identities' => Identity::getAll(), 'session' => $_SESSION['user']));
     });
 
     $app->post('/delete_all_identities', function() use ($app) {
         Identity::deleteAll();
-        return $app['twig']->render('all_identities.html.twig', array('all_identities' => Identity::getAll()));
+        return $app['twig']->render('all_identities.html.twig', array('all_identities' => Identity::getAll(), 'session' => $_SESSION['user']));
     });
 
 
