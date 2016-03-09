@@ -1165,7 +1165,7 @@
 
             //Assert;
             $this->assertEquals([$username, $password], $result);
-            $this->assertEquals('Incorrect Username or Password', $result2);
+            $this->assertEquals('User Does Not Exist', $result2);
             $this->assertEquals('Incorrect Password', $result3);
 
         }

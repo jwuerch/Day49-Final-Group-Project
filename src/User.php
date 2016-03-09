@@ -243,14 +243,21 @@
         }
 
         public function signIn($username, $password) {
-            if ($username == $this->getUsername() && $password == $this->getPassword()) {
-                array_push($_SESSION['user'], $this->getUsername(), $this->getPassword());
-            } else if ($username == $this->getUsername() && $password != $this->getPassword()) {
+            $all_users = User::getAll();
+            $found_user = null;
+            foreach ($all_users as $user) {
+                if ($user->getUsername() == $username) {
+                    $found_user = $user;
+                }
+            }
+            if ($username == $user->getUsername() && $password == $user->getPassword()) {
+                array_push($_SESSION['user'], $user->getUsername(), $user->getPassword());
+            } else if ($username == $user->getUsername() && $password != $user->getPassword()) {
                     echo 'Incorrect Password';
                     return 'Incorrect Password';
             } else {
-                echo 'Incorrect Username or Password';
-                return 'Incorrect Username or Password';
+                echo 'User Does Not Exist';
+                return 'User Does Not Exist';
             }
         }
 
