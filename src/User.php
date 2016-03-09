@@ -263,16 +263,46 @@
             $GLOBALS['DB']->exec("DELETE FROM users");
         }
 
-        // static function basicSearch($my_identity, $city_id) {
-        //     $returned_users = User::getAll();
-        //     $found_users = array();
-        //     foreach ($returned_users as $user) {
-        //         if ($my_identity == $user->getSeekingGender() && $city_id == $user->getCityId()) {
-        //             array_push($found_users, $user);
+        // $returned_users = User::getAll();
+        // // -I have all users
+        // //     -find for each user what they're seeking gender is
+        // //          -find the id for each of those seeking getSeekingGenders
+        // $seeking_genders_ids = array();
+        // foreach($returned_users as $user) {
+        //     $seeking_genders = $users->seekingGenders();
+        //     foreach ($seeking_genders as $gender) {
+        //         array_push($found_seeking_genders, $gender->getId());
+        //     }
+        // }
+        // // -I have my identites
+        // //      -find the id for each one of those identities
+        // $my_identities_ids = array();
+        // foreach($my_identities as $identity) {
+        //     array_push($my_identities_ids, $identity->getId());
+        // }
+        // $identity_match = array();
+        // foreach ($seeking_genders_ids as $gender_id) {
+        //     foreach ($my_identities_id as $identity_id) {
+        //         if ($identity_id == $gender_id) {
+        //             array_push($identity_match, $identity_id);
         //         }
         //     }
-        //     return $found_users;
         // }
+
+        static function basicSearch($identity) {
+            $all_users = User::getAll();
+            $found_users = array();
+            foreach ($all_users as $user) {
+                print_r($user->getSeekingGenders());
+                $user_seeking = $user->getSeekingGenders();
+                foreach ($user_seeking as $seeking) {
+                    if ($identity == $seeking) {
+                        array_push($found_users, $user);
+                    }
+                }
+            }
+            return $found_users;
+        }
 
         static function find($search_id) {
             $returned_users = User::getAll();
