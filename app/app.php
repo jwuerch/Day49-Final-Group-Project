@@ -18,13 +18,13 @@
     $app->register(new Silex\Provider\TwigServiceProvider(), array('twig.path' => __DIR__.'/../views'));
 
     $app->get('/', function() use ($app) {
-      return $app['twig']->render('index.html.twig', array('all_cities' => City::getAll()));
+      return $app['twig']->render('index.html.twig', array('all_cities' => City::getAll(), 'all_identities' => Identity::getAll()));
     });
 
     $app->get("/users_basic_search", function() use ($app) {
-        $my_identity = $_GET['my_identity'];
-        $city = $_GET['city_id'];
-        $user_search_results = User::basicSearch($my_identity, $city);
+        $my_identity = Identity::find($my_identity = $_GET['my_identity']);
+        $user_search_results = User::basicSearch($my_identity);
+        print_r($user_search_results);
         return $app['twig']->render('basic_search_results.html.twig', array('all_cities' => City::getAll(), 'user_search_results' => $user_search_results));
     });
 
@@ -64,7 +64,7 @@
         $zip_code_id = $_POST['zip_code_id'];
         $new_user = new User($username, $password, $first_name, $last_name, $status, $kink_friendly, $birthday, $email, $about_me, $interests, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
         $new_user->save();
-        
+
         //Add Gender
         $seeking_gender = Identity::find($_POST['seeking_gender']);
         $new_user->addSeekingGender($seeking_gender);

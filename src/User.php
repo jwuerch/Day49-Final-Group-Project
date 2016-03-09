@@ -293,7 +293,6 @@
             $all_users = User::getAll();
             $found_users = array();
             foreach ($all_users as $user) {
-                print_r($user->getSeekingGenders());
                 $user_seeking = $user->getSeekingGenders();
                 foreach ($user_seeking as $seeking) {
                     if ($identity == $seeking) {

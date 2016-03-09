@@ -10,11 +10,9 @@
             <form action="/users_basic_search">
                 <label for="my_identity">I am/We Are</label>
                 <select id="my_identity" name="my_identity">
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="mm">Male-Male</option>
-                    <option value="female">Female-Female</option>
-                    <option value="mf">Male-Female</option>
+                    {% for identity in all_identities %}
+                        <option value="{{ identity.getId }}">{{ identity.getName }}</option>
+                    {% endfor %}
                 </select>
                 <label for="city_id">City</label>
                 <select id = "city_id" name="city_id">
