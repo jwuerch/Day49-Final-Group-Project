@@ -10,9 +10,7 @@
                     <ul>
                         <li>First Name: {{ user.getFirstName }}</li>
                         <li>Last Name: {{ user.getLastName }}</li>
-                        <li>{% for gender in seeking_genders %}
-                                        {{ gender.getName }}
-                                      {% endfor %}</li>
+                        <li>{{ user.getSeekingGendersNames }}</li>
                     </ul>
 
                 {% endfor %}
