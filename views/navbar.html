@@ -9,12 +9,19 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
+
+            {% if session is empty %}
             <li>
                 <a href="#home">Register</a>
             </li>
             <li>
-                <a href="#about">Sign-In</a>
+                <a href="/sign_in">Sign-In</a>
             </li>
+            {% else %}
+            <li>
+                <a href="#about">Sign-Out</a>
+            </li>
+            {% endif %}
         </ul>
     </div>
     <!-- /.navbar-collapse -->

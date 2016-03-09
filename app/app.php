@@ -14,8 +14,8 @@
     Request::enableHttpMethodParameterOverride();
 
     session_start();
-    if(empty($_SESSION['list_of_anagrams'])) {
-      $_SESSION['list_of_anagrams'] = array();
+    if(empty($_SESSION['user'])) {
+      $_SESSION['user'] = array();
     }
     $app = new Silex\Application();
 
@@ -24,8 +24,6 @@
     $app->get('/', function() use ($app) {
       return $app['twig']->render('index.html.twig', array('all_cities' => City::getAll(), 'all_identities' => Identity::getAll()));
     });
-
-
 
     $app->get("/users_basic_search", function() use ($app) {
         $my_identity = Identity::find($my_identity = $_GET['my_identity']);
@@ -86,12 +84,18 @@
         return $app['twig']->render('all_users.html.twig', array('all_users' => User::getAll(), 'all_identities' => Identity::getAll()));
     });
 
+    $app->get('/sign_in', function() use ($app) {
+        return $app['twig']->render('sign-in.html.twig');
+    });
+
     $app->post('/user_login', function() use ($app) {
         $username = $_POST['username'];
         $password = $_POST['password'];
-        $user = 
-
+        $session = $_SESSION['user'];
+        User::signIn($username, $password);
+        return $app['twig']->render('index.html.twig', array('all_identities' => Identity::getAll(), 'all_cities' => City::getAll(), 'session' => $session));
     });
+
 
     $app->post('/delete_all_users', function() use ($app) {
         User::deleteAll();

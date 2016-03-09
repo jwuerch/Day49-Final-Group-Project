@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    {% include 'head.html' %}
+    {% include 'navbar.html' %}
+    <body>
+        <div class="container">
+            <form action="/user_login" method="post">
+
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input name="username" id="username" class="form-select" type="text">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input name="password" id="password" class="form-select" type="text">
+                </div>
+                <button class="btn btn-success">Log-In</button>
+            </form>
+        </div>
+    </body>
+    {% include 'footer.html' %}
+</html>

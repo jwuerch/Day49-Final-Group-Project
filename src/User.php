@@ -252,14 +252,16 @@
                     $found_user = $user;
                 }
             }
+
             if ($username == $user->getUsername() && $password == $user->getPassword()) {
                 array_push($_SESSION['user'], $user->getUsername(), $user->getPassword());
+                return 'Successfully Signed-In';
             } else if ($username == $user->getUsername() && $password != $user->getPassword()) {
                     echo 'Incorrect Password';
                     return 'Incorrect Password';
             } else {
-                echo 'User Does Not Exist';
-                return 'User Does Not Exist';
+                echo 'Username or Password Is Incorrect';
+                return 'Username or Password Is Incorrect';
             }
         }
 

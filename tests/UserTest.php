@@ -1162,11 +1162,13 @@
             $result = $_SESSION['user'];
             $result2 = $test_user2->signIn('JMonkeyy', $password);
             $result3 = $test_user2->signIn($username, 'Incorrect Password');
+            $result4 = User::signIn($username, $password);
 
             //Assert;
             $this->assertEquals([$username, $password], $result);
-            $this->assertEquals('User Does Not Exist', $result2);
+            $this->assertEquals('Username or Password Is Incorrect', $result2);
             $this->assertEquals('Incorrect Password', $result3);
+            $this->assertEquals('Successfully Signed-In', $result4);
 
         }
 
