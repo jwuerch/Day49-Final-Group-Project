@@ -242,7 +242,7 @@
             return $zip_code->getZipNumber();
         }
 
-        public function signIn($username, $password) {
+        static function signIn($username, $password) {
             $all_users = User::getAll();
             $found_user = null;
             foreach ($all_users as $user) {

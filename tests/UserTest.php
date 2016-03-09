@@ -1158,7 +1158,7 @@
             $test_user3->save();
 
             //Act;
-            $test_user->signIn($username, $password);
+            User::signIn($username, $password);
             $result = $_SESSION['user'];
             $result2 = $test_user2->signIn('JMonkeyy', $password);
             $result3 = $test_user2->signIn($username, 'Incorrect Password');
