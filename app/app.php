@@ -35,7 +35,8 @@
     $app->get('/user_profile/{id}', function($id) use ($app) {
         $user = User::find($id);
         $identities = $user->getIdentities();
-        return $app['twig']->render('user_profile.html.twig', array('user' => $user, 'city_name' => $user->getCityName(), 'zip_code' => $user->getZipCode(), 'identities' => $identities));
+        $seeking_genders = $user->getSeekingGenders();
+        return $app['twig']->render('user_profile.html.twig', array('user' => $user, 'city_name' => $user->getCityName(), 'zip_code' => $user->getZipCode(), 'identities' => $identities, 'seeking_genders' => $seeking_genders));
     });
 
     $app->delete('/delete_user', function() use ($app) {
@@ -56,13 +57,17 @@
         $email = $_POST['email'];
         $about_me = $_POST['about_me'];
         $interests = $_POST['interests'];
-        $seeking_gender = $_POST['seeking_gender'];
+        $seeking_gender = null;
         $seeking_relationship_type = $_POST['seeking_relationship_type'];
         $last_login = date("Y-m-d");
         $city_id = $_POST['city_id'];
         $zip_code_id = $_POST['zip_code_id'];
         $new_user = new User($username, $password, $identity, $first_name, $last_name, $status, $kink_friendly, $birthday, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
         $new_user->save();
+
+        $seeking_gender = Identity::find($_POST['seeking_gender']);
+        print_r($seeking_gender);
+        $new_user->addSeekingGender($seeking_gender);
         $identity = Identity::find($_POST['identity']);
         $new_user->addIdentity($identity);
         return $app['twig']->render('all_users.html.twig', array('all_users' => User::getAll(), 'all_identities' => Identity::getAll()));

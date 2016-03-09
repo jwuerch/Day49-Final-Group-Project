@@ -8,7 +8,7 @@
             <ul>
                 <li>Password: {{ user.getPassword }}</li>
                 <li>Identity:{% for identity in identities %}
-                                {{ identity.getName }}
+                                {{ identity.getId }}
                               {% endfor %}</li>
                 <li>First Name: {{ user.getFirstName }}</li>
                 <li>Last Name: {{ user.getLastName }}</li>
@@ -18,7 +18,9 @@
                 <li>Email: {{ user.getEmail }}</li>
                 <li>About Me: {{ user.getAboutMe }}</li>
                 <li>Interests: {{ user.getInterests }}</li>
-                <li>Seeking Gender: {{ user.getSeekingGender }}</li>
+                <li>Seeking Gender: {% for gender in seeking_genders %}
+                                {{ gender.getId }}
+                              {% endfor %}</li>
                 <li>Seeking Relationship Type: {{ user.getSeekingRelationshipType }}</li>
                 <li>Last Login: {{ user.getLastLogin }}</li>
                 <li>City: {{ user.getCityName }}</li>
