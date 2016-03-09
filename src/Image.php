@@ -38,6 +38,9 @@
             $GLOBALS['DB']->exec("INSERT INTO images (title, description, user_id) VALUES ('{$this->getTitle()}', '{$this->getDescription()}', {$this->getUserId()});");
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
+        public function delete() {
+            $GLOBALS['DB']->exec("DELETE FROM images WHERE id = {$this->getId()};");
+        }
         //Static Functions;
         static function getAll() {
             $returned_images = $GLOBALS['DB']->query("SELECT * FROM images;");
