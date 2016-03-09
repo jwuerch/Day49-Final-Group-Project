@@ -1115,52 +1115,7 @@
             $this->assertEquals('male, male', $result);
         }
 
-        // function testSignIn() {
-        //     //Arrange;
-        //
-        //     $name = 'Seattle';
-        //     $state = 'WA';
-        //     $test_city = new City($name, $state);
-        //     $test_city->save();
-        //
-        //     $zip_number = '97201';
-        //     $city_id = $test_city->getId();
-        //     $test_zip_code = new ZipCode($zip_number, $city_id);
-        //     $test_zip_code->save();
-        //
-        //     $name = 'male';
-        //     $description = 'male';
-        //     $test_identity = new Identity($name, $description);
-        //     $test_identity->save();
-        //
-        //     $username = 'jmonkey';
-        //     $password = 'xyz';
-        //     $first_name = 'Jason';
-        //     $status = 'Single';
-        //     $kink_friendly = 1;
-        //     $birthday = '1989-03-07';
-        //     $last_name = 'JMoney';
-        //     $email = 'wuerchjason@gmail.com';
-        //     $about_me = 'I am friendly.';
-        //     $interests = 'Basketball, Tennis';
-        //     $seeking_gender = 'Female';
-        //     $seeking_relationship_type = 'Primary Partner';
-        //     $last_login = '1989-03-07';
-        //     $city_id = $test_city->getId();
-        //     $zip_code_id = $test_zip_code->getId();
-        //     $test_user = new User($username, $password, $first_name, $last_name, $status, $kink_friendly, $birthday, $email, $about_me, $interests, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
-        //     $test_user->save();
-        //
-        //     //Act;
-        //     $test_user->signIn($username, $password);
-        //     $result = $_SESSION['user'];
-        //
-        //     //Assert;
-        //     $this->assertEquals([$username, $password], $result);
-        //
-        // }
-
-        function testSignInFail() {
+        function testSignIn() {
             //Arrange;
 
             $name = 'Seattle';
@@ -1196,13 +1151,22 @@
             $test_user = new User($username, $password, $first_name, $last_name, $status, $kink_friendly, $birthday, $email, $about_me, $interests, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
             $test_user->save();
 
+            $test_user2 = new User($username, $password, $first_name, $last_name, $status, $kink_friendly, $birthday, $email, $about_me, $interests, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
+            $test_user2->save();
+
+            $test_user3 = new User($username, $password, $first_name, $last_name, $status, $kink_friendly, $birthday, $email, $about_me, $interests, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
+            $test_user3->save();
+
             //Act;
-            $username2 = 'Jmonkeyy';
-            $result = $test_user->signIn($username2, $password);
-            print_r($result);
+            $test_user->signIn($username, $password);
+            $result = $_SESSION['user'];
+            $result2 = $test_user2->signIn('JMonkeyy', $password);
+            $result3 = $test_user2->signIn($username, 'Incorrect Password');
 
             //Assert;
-            $this->assertEquals('Incorrect Password', $result);
+            $this->assertEquals([$username, $password], $result);
+            $this->assertEquals('Incorrect Username or Password', $result2);
+            $this->assertEquals('Incorrect Password', $result3);
 
         }
 
