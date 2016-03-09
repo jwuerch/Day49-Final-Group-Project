@@ -23,7 +23,7 @@
                     <label for="identity">Identity</label>
                     <select name="identity">
                         {% for identity in all_identities %}
-                        <option value="{{ identity.getId }}">{{ identity.getId }}</option>
+                        <option value="{{ identity.getId }}">{{ identity.getName }}</option>
                         {% endfor %}
                     </select>
                 </div>
@@ -78,7 +78,7 @@
                     <label for="seeking_gender">Seeking Gender</label>
                     <select name="seeking_gender">
                         {% for identity in all_identities %}
-                            <option value="{{ identity.getId }}">{{ identity.getId }}</option>
+                            <option value="{{ identity.getId }}">{{ identity.getName }}</option>
                         {% endfor %}
                     </select>
                 </div>

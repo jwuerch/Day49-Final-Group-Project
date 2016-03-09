@@ -57,7 +57,7 @@
             $all_identities = Identity::getAll();
             $found_identity = null;
             foreach ($all_identities as $identity) {
-                if ($id = $identity->getId()) {
+                if ($id == $identity->getId()) {
                     $found_identity = $identity;
                 }
             }

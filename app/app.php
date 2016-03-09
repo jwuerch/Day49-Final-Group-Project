@@ -46,9 +46,10 @@
     });
 
     $app->post('/register_new_user', function() use ($app) {
+
+        //Add User
         $username = $_POST['username'];
         $password = $_POST['password'];
-        $identity = null;
         $first_name = $_POST['first_name'];
         $status = $_POST['status'];
         $kink_friendly = $_POST['kink_friendly'];
@@ -57,19 +58,21 @@
         $email = $_POST['email'];
         $about_me = $_POST['about_me'];
         $interests = $_POST['interests'];
-        $seeking_gender = null;
         $seeking_relationship_type = $_POST['seeking_relationship_type'];
         $last_login = date("Y-m-d");
         $city_id = $_POST['city_id'];
         $zip_code_id = $_POST['zip_code_id'];
-        $new_user = new User($username, $password, $identity, $first_name, $last_name, $status, $kink_friendly, $birthday, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
+        $new_user = new User($username, $password, $first_name, $last_name, $status, $kink_friendly, $birthday, $email, $about_me, $interests, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
         $new_user->save();
-
+        //Add Gender
         $seeking_gender = Identity::find($_POST['seeking_gender']);
-        print_r($seeking_gender);
+        print_r(Identity::find($_POST['seeking_gender']));
         $new_user->addSeekingGender($seeking_gender);
+
+        //Add Identity
         $identity = Identity::find($_POST['identity']);
         $new_user->addIdentity($identity);
+
         return $app['twig']->render('all_users.html.twig', array('all_users' => User::getAll(), 'all_identities' => Identity::getAll()));
     });
 

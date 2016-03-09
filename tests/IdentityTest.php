@@ -109,6 +109,30 @@
             $this->assertEquals([], $result);
         }
 
+        function testFind() {
+            //Assert;
+            $name ='male';
+            $description = 'description';
+            $test_identity = new Identity($name, $description);
+            $test_identity->save();
+
+            $name ='male';
+            $description = 'description';
+            $test_identity2 = new Identity($name, $description);
+            $test_identity2->save();
+
+            $name ='male';
+            $description = 'description';
+            $test_identity3 = new Identity($name, $description);
+            $test_identity3->save();
+
+            //Act;
+            $result = Identity::find($test_identity2->getId());
+
+            //AssertEquals;
+            $this->assertEquals($test_identity2, $result);
+        }
+
     }
 
 ?>
