@@ -7,7 +7,9 @@
             <h5> {{ user.getUsername }}</h5>
             <ul>
                 <li>Password: {{ user.getPassword }}</li>
-                <li>Identity: {{ user.getIdentity }}</li>
+                <li>Identity:{% for identity in identities %}
+                                {{ identity.getName }}
+                              {% endfor %}</li>
                 <li>First Name: {{ user.getFirstName }}</li>
                 <li>Last Name: {{ user.getLastName }}</li>
                 <li>Status: {{ user.getStatus }}</li>
@@ -23,11 +25,6 @@
                 <li>Zip Code: {{ user.getZipCode }}</li>
                 <li>ID: {{ user.getId }}</li>
             </ul>
-
-            {% for identity in identities %}
-                {{ identity.getName }}
-            {% endfor %}
-
             <br>
             <form action="/delete_user" method="post">
                 <input type="hidden" name="_method" value="delete">

@@ -19,7 +19,7 @@
         private $zip_code_id;
         private $id;
 
-        public function __construct($username, $password, $identity = null, $first_name, $last_name, $status, $kink_friendly = 1, $birthday, $email, $about_me, $interests, $seeking_gender, $seeking_relationship_type, $last_login = null, $city_id = null, $zip_code_id = null, $id = null) {
+        public function __construct($username, $password, $identity = null, $first_name, $last_name, $status, $kink_friendly = 1, $birthday, $email, $about_me, $interests, $seeking_gender = null, $seeking_relationship_type, $last_login = null, $city_id = null, $zip_code_id = null, $id = null) {
             $this->username = $username;
             $this->password = $password;
             $this->identity = $identity;
@@ -172,6 +172,26 @@
                 array_push($identities, $new_identity);
             }
             return $identities;
+        }
+
+        public function addSeekingGender($gender) {
+            $GLOBALS['DB']->exec("INSERT INTO seeking_genders (user_id, identity_id) VALUES ({$this->getId()}, {$gender->getId()});");
+        }
+
+        public function getSeekingGenders() {
+            $returned_seeking_genders = $GLOBALS['DB']->query("SELECT identities.* FROM users
+            JOIN seeking_genders ON (users.id = seeking_genders.user_id)
+            JOIN identities ON (seeking_genders.identity_id = identities.id)
+            WHERE user_id = {$this->getId()};");
+            $seeking_genders = array();
+            foreach ($returned_seeking_genders as $seeking_gender) {
+                $id = $seeking_gender['id'];
+                $name = $seeking_gender['name'];
+                $description = $seeking_gender['description'];
+                $new_seeking_gender = new Identity($name, $description, $id);
+                array_push($seeking_genders, $new_seeking_gender);
+            }
+            return $seeking_genders;
         }
 
         public function addIdentity($identity) {
