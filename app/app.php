@@ -24,8 +24,8 @@
     $app->get("/users_basic_search", function() use ($app) {
         $my_identity = Identity::find($my_identity = $_GET['my_identity']);
         $user_search_results = User::basicSearch($my_identity);
-        print_r($user_search_results);
-        return $app['twig']->render('basic_search_results.html.twig', array('all_cities' => City::getAll(), 'user_search_results' => $user_search_results));
+        $seeking_genders = $user->getSeekingGenders();
+        return $app['twig']->render('basic_search_results.html.twig', array('all_cities' => City::getAll(), 'user_search_results' => $user_search_results, 'seeking_genders' => $seeking_genders));
     });
 
     $app->get('/register', function() use ($app) {

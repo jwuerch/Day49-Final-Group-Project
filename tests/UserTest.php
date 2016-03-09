@@ -1063,6 +1063,58 @@
             $this->assertEquals([$test_identity, $test_identity2], $result);
         }
 
+        function testGetSeekingGenderNames() {
+            //Arrange;
+
+            $name = 'Seattle';
+            $state = 'WA';
+            $test_city = new City($name, $state);
+            $test_city->save();
+
+            $zip_number = '97201';
+            $city_id = $test_city->getId();
+            $test_zip_code = new ZipCode($zip_number, $city_id);
+            $test_zip_code->save();
+
+            $name = 'male';
+            $description = 'male';
+            $test_identity = new Identity($name, $description);
+            $test_identity->save();
+
+            $name = 'male';
+            $description = 'male';
+            $test_identity2 = new Identity($name, $description);
+            $test_identity2->save();
+
+            $username = 'jmonkey';
+            $password = 'xyz';
+            $first_name = 'Jason';
+            $status = 'Single';
+            $kink_friendly = 1;
+            $birthday = '1989-03-07';
+            $last_name = 'JMoney';
+            $email = 'wuerchjason@gmail.com';
+            $about_me = 'I am friendly.';
+            $interests = 'Basketball, Tennis';
+            $seeking_gender = 'Female';
+            $seeking_relationship_type = 'Primary Partner';
+            $last_login = '1989-03-07';
+            $city_id = $test_city->getId();
+            $zip_code_id = $test_zip_code->getId();
+            $test_user = new User($username, $password, $first_name, $last_name, $status, $kink_friendly, $birthday, $email, $about_me, $interests, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
+            $test_user->save();
+            $test_user->addSeekingGender($test_identity);
+            $test_user->addSeekingGender($test_identity2);
+
+            //Act;
+            $result = $test_user->getSeekingGendersNames();
+
+            //Assert;
+            $this->assertEquals('male, male', $result);
+        }
+
+
+
     }
 
 

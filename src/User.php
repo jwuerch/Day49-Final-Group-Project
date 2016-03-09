@@ -178,6 +178,16 @@
             return $seeking_genders;
         }
 
+        public function getSeekingGendersNames() {
+            $seeking_genders = $this->getSeekingGenders();
+            $seeking_gender_names = array();
+            foreach ($seeking_genders as $gender) {
+                array_push($seeking_gender_names, $gender->getName());
+            }
+            $seeking_gender_names = implode(", ", $seeking_gender_names);
+            return $seeking_gender_names;
+        }
+
         public function addIdentity($identity) {
             $GLOBALS['DB']->exec("INSERT INTO identities_users (user_id, identity_id) VALUES ({$this->getId()}, {$identity->getId()});");
         }
@@ -262,32 +272,6 @@
         static function deleteAll() {
             $GLOBALS['DB']->exec("DELETE FROM users");
         }
-
-        // $returned_users = User::getAll();
-        // // -I have all users
-        // //     -find for each user what they're seeking gender is
-        // //          -find the id for each of those seeking getSeekingGenders
-        // $seeking_genders_ids = array();
-        // foreach($returned_users as $user) {
-        //     $seeking_genders = $users->seekingGenders();
-        //     foreach ($seeking_genders as $gender) {
-        //         array_push($found_seeking_genders, $gender->getId());
-        //     }
-        // }
-        // // -I have my identites
-        // //      -find the id for each one of those identities
-        // $my_identities_ids = array();
-        // foreach($my_identities as $identity) {
-        //     array_push($my_identities_ids, $identity->getId());
-        // }
-        // $identity_match = array();
-        // foreach ($seeking_genders_ids as $gender_id) {
-        //     foreach ($my_identities_id as $identity_id) {
-        //         if ($identity_id == $gender_id) {
-        //             array_push($identity_match, $identity_id);
-        //         }
-        //     }
-        // }
 
         static function basicSearch($identity) {
             $all_users = User::getAll();

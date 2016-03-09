@@ -4,7 +4,19 @@
     {% include 'navbar.html' %}
     <body>
         <div class="container">
-            sdfasdfasdf
+            <ul>
+                {% for user in user_search_results %}
+                    <li>{{ user.getUsername }}</li>
+                    <ul>
+                        <li>First Name: {{ user.getFirstName }}</li>
+                        <li>Last Name: {{ user.getLastName }}</li>
+                        <li>{% for gender in seeking_genders %}
+                                        {{ gender.getName }}
+                                      {% endfor %}</li>
+                    </ul>
+
+                {% endfor %}
+            </ul>
         </div>
 
     </body>
