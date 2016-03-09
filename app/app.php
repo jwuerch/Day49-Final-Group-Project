@@ -89,6 +89,7 @@
     $app->post('/user_login', function() use ($app) {
         $username = $_POST['username'];
         $password = $_POST['password'];
+        $user = 
 
     });
 

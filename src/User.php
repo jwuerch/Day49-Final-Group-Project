@@ -242,6 +242,8 @@
             return $zip_code->getZipNumber();
         }
 
+        //Static Fucntions;
+
         static function signIn($username, $password) {
             $all_users = User::getAll();
             $found_user = null;
@@ -261,7 +263,12 @@
             }
         }
 
-        //Static Fucntions;
+        static function signOut() {
+            $_SESSION['user'] = array();
+            echo 'You have successfully signed out.';
+            return 'You have successfully signed out.';
+        }
+
         static function getAll() {
             $returned_users = $GLOBALS['DB']->query("SELECT * FROM users;");
             $users = array();
