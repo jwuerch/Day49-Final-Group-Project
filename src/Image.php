@@ -53,6 +53,10 @@
             return $images;
         }
 
+        static function deleteAll() {
+            $GLOBALS['DB']->exec("DELETE FROM images;");
+        }
+
 
     }
 
