@@ -248,20 +248,14 @@
             $all_users = User::getAll();
             $found_user = null;
             foreach ($all_users as $user) {
-                if ($user->getUsername() == $username) {
+                if ($user->getUsername() == $username && $user->getPassword() == $password) {
                     $found_user = $user;
+                    array_push($_SESSION['user'], $username);
+                    array_push($_SESSION['user'], $password);
+                    return $found_user;
+                } else {
+                    return 'Username or Password Incorrect';
                 }
-            }
-
-            if ($username == $user->getUsername() && $password == $user->getPassword()) {
-                array_push($_SESSION['user'], $user->getUsername(), $user->getPassword());
-                return 'Successfully Signed-In';
-            } else if ($username == $user->getUsername() && $password != $user->getPassword()) {
-                    echo 'Incorrect Password';
-                    return 'Incorrect Password';
-            } else {
-                echo 'Username or Password Is Incorrect';
-                return 'Username or Password Is Incorrect';
             }
         }
 

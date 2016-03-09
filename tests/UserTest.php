@@ -7,7 +7,6 @@
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);
-
     require_once "src/User.php";
     require_once "src/City.php";
     require_once "src/ZipCode.php";
@@ -1151,25 +1150,20 @@
             $test_user = new User($username, $password, $first_name, $last_name, $status, $kink_friendly, $birthday, $email, $about_me, $interests, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
             $test_user->save();
 
-            $test_user2 = new User($username, $password, $first_name, $last_name, $status, $kink_friendly, $birthday, $email, $about_me, $interests, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
-            $test_user2->save();
-
-            $test_user3 = new User($username, $password, $first_name, $last_name, $status, $kink_friendly, $birthday, $email, $about_me, $interests, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
-            $test_user3->save();
-
             //Act;
+            $result = User::signIn($username, $password);
+            print_r($result);
+            $result2 = User::signIn('JMonkeyy', $password);
+            $result3 = User::signIn($username, 'dasfdas');
             User::signIn($username, $password);
-            $result = $_SESSION['user'];
-            $result2 = $test_user2->signIn('JMonkeyy', $password);
-            $result3 = $test_user2->signIn($username, 'Incorrect Password');
-            $result4 = User::signIn($username, $password);
+            $result4 = $_SESSION['user'] = array($username, $password);
+
 
             //Assert;
-            $this->assertEquals([$username, $password], $result);
-            $this->assertEquals('Username or Password Is Incorrect', $result2);
-            $this->assertEquals('Incorrect Password', $result3);
-            $this->assertEquals('Successfully Signed-In', $result4);
-
+            $this->assertEquals($test_user, $result);
+            $this->assertEquals('Username or Password Incorrect', $result2);
+            $this->assertEquals('Username or Password Incorrect', $result3);
+            $this->assertEquals([$username, $password], $result4);
         }
 
         function testSignOut() {
