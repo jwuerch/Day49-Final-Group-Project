@@ -64,9 +64,9 @@
         $zip_code_id = $_POST['zip_code_id'];
         $new_user = new User($username, $password, $first_name, $last_name, $status, $kink_friendly, $birthday, $email, $about_me, $interests, $seeking_relationship_type, $last_login, $city_id, $zip_code_id);
         $new_user->save();
+        
         //Add Gender
         $seeking_gender = Identity::find($_POST['seeking_gender']);
-        print_r(Identity::find($_POST['seeking_gender']));
         $new_user->addSeekingGender($seeking_gender);
 
         //Add Identity
