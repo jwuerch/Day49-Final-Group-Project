@@ -57,6 +57,17 @@
             $GLOBALS['DB']->exec("DELETE FROM images;");
         }
 
+        static function find($search_id) {
+            $images = Image::getAll();
+            $found_image = null;
+            foreach ($images as $image) {
+                if ($search_id = $image->getId()) {
+                    $found_image = $image;
+                }
+            }
+            return $found_image;
+        }
+
 
     }
 

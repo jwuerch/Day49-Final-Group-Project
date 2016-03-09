@@ -137,6 +137,25 @@
             $this->assertEquals([], $result);
         }
 
+        function testFindImage() {
+            //Arrange;
+            $title = 'Me';
+            $description = '';
+            $user_id = 1;
+            $test_image = new Image($title, $description, $user_id);
+            $test_image->save();
+            $test_image2 = new Image($title, $description, $user_id);
+            $test_image2->save();
+
+            //Act;
+            $result = Image::find($test_image2->getId());
+
+            //Assert;
+            $this->assertEquals($test_image2, $result);
+        }
+
+
+
 
     }
 
