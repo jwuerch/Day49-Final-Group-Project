@@ -56,7 +56,9 @@
         $description = $_POST['description'];
         $user = User::find($_POST['user_id']);
         $user_id = $user->getId();
-        $new_image = new Image($title, $description, $user_id);
+        $url = $_POST['url'];
+        print_r($description);
+        $new_image = new Image($title, $description, $user_id, $url);
         $new_image->save();
         return $app['twig']->render('user_profile.html.twig', array('user' => $user, 'city_name' => $user->getCityName(), 'zip_code' => $user->getZipCode(), 'identities' => $user->getIdentities(), 'seeking_genders' => $user->getSeekingGenders(), 'session' => $_SESSION['user'], 'user_images' => $user->getImages()));
     });

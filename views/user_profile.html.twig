@@ -1,18 +1,8 @@
 <!DOCTYPE html>
 <html>
     {% include 'head.html' %}
-    <div class="container-fluid">
-     <nav class="navbar navbar-default topnav" role="navigation">
-     <div class="container topnav">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            {% if session is not empty %}
-            <a class="navbar-brand topnav" href="#" target="_blank">Welcome {{ session[0] }}</a>
-            {% endif %}
-        </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
+    {% include 'navbar.html' %}
+
 
                 {% if session is empty %}
                 <li>
@@ -63,17 +53,22 @@
             </ul>
 
             <br>
-            <form action="/../upload.php" method="POST" enctype="multipart/form-data">
-                Upload an Image
-                <input type="file" name="myfile"><p></p>
-                <input type="submit" value="Upload">
-                Title
-                <input name="title" type="text">
-                Description
-                <input type="text" name="description">
-                URL
-                <input type="text" name="url">
+            <h4>Upload an Image</h4>
+            <form action="/upload_image" method="post">
                 <input type="hidden" value="{{ user.getId }}" name="user_id">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input name="title" id="title" type="text">
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <input name="description" id="description" type="text">
+                </div>
+                <div class="form-group">
+                    <label for="url">Url</label>
+                    <input name="url" id="url" type="text">
+                </div>
+                <button class="btn btn-primary" type="submit">Upload</button>
             </form>
         </div>
     </body>

@@ -137,79 +137,79 @@
             $this->assertEquals($test_image, $result[0]);
         }
 
-        // function testGetAll() {
-        //     //Arrange;
-        //     $title = 'Me';
-        //     $description = '';
-        //     $user_id = 1;
-        //     $url = 'text';
-        //     $test_image = new Image($title, $description, $user_id, $url);
-        //     $test_image->save();
-        //     $test_image2 = new Image($title, $description, $user_id, $url);
-        //     $test_image2->save();
-        //
-        //     //Act;
-        //     $result = Image::getAll();
-        //
-        //     //Assert;
-        //     $this->assertEquals([$test_image, $test_image2], $result);
-        // }
-        //
-        // function testDeleteAll() {
-        //     //Arrange;
-        //     $title = 'Me';
-        //     $description = '';
-        //     $user_id = 1;
-        //     $url = 'text';
-        //     $test_image = new Image($title, $description, $user_id, $url);
-        //     $test_image->save();
-        //     $test_image2 = new Image($title, $description, $user_id, $url);
-        //     $test_image2->save();
-        //
-        //     //Act;
-        //     Image::deleteAll();
-        //     $result = Image::getAll();
-        //
-        //     //Assert;
-        //     $this->assertEquals([], $result);
-        // }
-        //
-        // function testFindImage() {
-        //     //Arrange;
-        //     $title = 'Me';
-        //     $description = '';
-        //     $user_id = 1;
-        //     $url = 'text';
-        //     $test_image = new Image($title, $description, $user_id, $url);
-        //     $test_image->save();
-        //     $test_image2 = new Image($title, $description, $user_id, $url);
-        //     $test_image2->save();
-        //
-        //     //Act;
-        //     $result = Image::find($test_image2->getId());
-        //
-        //     //Assert;
-        //     $this->assertEquals($test_image2, $result);
-        // }
-        //
-        // function testDeleteImage() {
-        //     //Arrange;
-        //     $title = 'Me';
-        //     $description = '';
-        //     $user_id = 1;
-        //     $url = 'text';
-        //     $test_image = new Image($title, $description, $user_id, $url);
-        //     $test_image->save();
-        //     $test_image2 = new Image($title, $description, $user_id, $url);
-        //     $test_image2->save();
-        //
-        //     //Act;
-        //     $test_image2->delete();
-        //     $result = Image::getAll();
-        //
-        //     //Assert;
-        //     $this->assertEquals([$test_image], $result);
-        // }
+        function testGetAll() {
+            //Arrange;
+            $title = 'Me';
+            $description = '';
+            $user_id = 1;
+            $url = 'text';
+            $test_image = new Image($title, $description, $user_id, $url);
+            $test_image->save();
+            $test_image2 = new Image($title, $description, $user_id, $url);
+            $test_image2->save();
+
+            //Act;
+            $result = Image::getAll();
+
+            //Assert;
+            $this->assertEquals([$test_image, $test_image2], $result);
+        }
+
+        function testDeleteAll() {
+            //Arrange;
+            $title = 'Me';
+            $description = '';
+            $user_id = 1;
+            $url = 'text';
+            $test_image = new Image($title, $description, $user_id, $url);
+            $test_image->save();
+            $test_image2 = new Image($title, $description, $user_id, $url);
+            $test_image2->save();
+
+            //Act;
+            Image::deleteAll();
+            $result = Image::getAll();
+
+            //Assert;
+            $this->assertEquals([], $result);
+        }
+
+        function testFindImage() {
+            //Arrange;
+            $title = 'Me';
+            $description = '';
+            $user_id = 1;
+            $url = 'text';
+            $test_image = new Image($title, $description, $user_id, $url);
+            $test_image->save();
+            $test_image2 = new Image($title, $description, $user_id, $url);
+            $test_image2->save();
+
+            //Act;
+            $result = Image::find($test_image2->getId());
+
+            //Assert;
+            $this->assertEquals($test_image2, $result);
+        }
+
+        function testDeleteImage() {
+            //Arrange;
+            $title = 'Me';
+            $description = '';
+            $user_id = 1;
+            $url = 'text';
+            $test_image = new Image($title, $description, $user_id, $url);
+            $test_image->save();
+            $test_image2 = new Image($title, $description, $user_id, $url);
+            $test_image2->save();
+
+            //Act;
+            $test_image2->delete();
+            $result = Image::getAll();
+
+            //Assert;
+            $this->assertEquals([$test_image], $result);
+        }
 
 
 
