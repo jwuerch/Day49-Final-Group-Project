@@ -119,15 +119,13 @@
     });
 
     $app->post('/user_login', function() use ($app) {
+        $_SESSION['user'] = array();
         $username = $_POST['username'];
         $password = $_POST['password'];
         User::signIn($username, $password);
-        if (empty($_SESSION['user'])) {
-            $_SESSION['user'] = [null, null];
-        } else {
         $user_id = ($_SESSION['user'][1]);
         $user = User::find($user_id);
-        }
+        var_dump($_SESSION['user']);
         return $app['twig']->render('index.html.twig', array('all_identities' => Identity::getAll(), 'all_cities' => City::getAll(), 'session' => $_SESSION['user'], 'user' => $user));
     });
 

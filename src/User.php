@@ -267,14 +267,12 @@
                     $found_user = $user;
                     array_push($_SESSION['user'], $username);
                     array_push($_SESSION['user'], $user->getId());
-
-                    $user = $found_user;
+                    return $found_user;
                 }
             }
-            if ($found_user == null) {
+                array_push($_SESSION['user'], -1);
+                array_push($_SESSION['user'], -1);
                 return 'Incorrect Username or Password';
-            }
-            return $found_user;
 
         }
 
