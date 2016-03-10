@@ -75,6 +75,8 @@
       <h3>Zip Code: {{user.getZipCode }}</h3><p>
 
       </p>
+      {% include 'view-images-box.html' %}
+      <a href="#" id='view-images'>View All Images</a>
     </div>
   </div>
 
@@ -116,7 +118,7 @@
         <form action="/delete_user" method="post" class="form-inline">
             <input type="hidden" name="_method" value="delete">
             <input type="hidden" name="user_id" value="{{ user.getId }}">
-            <button type="submit" class="btn btn-danger">Delete My Profile</button>
+            <button type="submit" style="color:red;border:none;text-decoration:underline;background:none;">Delete My Profile</button>
         </form>
         {% endif %}
       </div>
@@ -137,6 +139,8 @@
   <footer>
     <h2> &copy 2016 Poly Something</h2>
   </footer>
+  </div>
+  <div class="transparency">
   </div>
   </body>
 </html>

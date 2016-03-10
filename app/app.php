@@ -55,12 +55,8 @@
     });
 
     $app->get('/about_page', function() use($app) {
-        if (empty($_SESSION['user'])) {
-            $_SESSION['user'] = [null, null];
-        } else {
         $user_id = ($_SESSION['user'][1]);
         $user = User::find($user_id);
-        }
         return $app['twig']->render('about.html.twig', array('user' => $user, 'session' => $_SESSION['user']));
     });
 
@@ -125,7 +121,6 @@
         User::signIn($username, $password);
         $user_id = ($_SESSION['user'][1]);
         $user = User::find($user_id);
-        var_dump($_SESSION['user']);
         return $app['twig']->render('index.html.twig', array('all_identities' => Identity::getAll(), 'all_cities' => City::getAll(), 'session' => $_SESSION['user'], 'user' => $user));
     });
 
