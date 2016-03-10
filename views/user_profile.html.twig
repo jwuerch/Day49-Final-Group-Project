@@ -1,58 +1,130 @@
 <!DOCTYPE html>
 <html>
-    {% include 'head.html' %}
-    {% include 'navbar.html' %}
-    <body>
-        <div class="container">
-            <h5> {{ user.getUsername }}</h5>
-            <ul>
-                <li>Password: {{ user.getPassword }}</li>
-                <li>Identity:{% for identity in identities %}
-                                {{ identity.getName }}
-                              {% endfor %}</li>
-                <li>First Name: {{ user.getFirstName }}</li>
-                <li>Last Name: {{ user.getLastName }}</li>
-                <li>Status: {{ user.getStatus }}</li>
-                <li>Kink Friendly: {{ user.getKinkFriendly }}</li>
-                <li>Birthday: {{ user.getBirthday }}</li>
-                <li>Email: {{ user.getEmail }}</li>
-                <li>About Me: {{ user.getAboutMe }}</li>
-                <li>Interests: {{ user.getInterests }}</li>
-                <li>Seeking Gender: {% for gender in seeking_genders %}
-                                {{ gender.getName }}
-                              {% endfor %}</li>
-                <li>Seeking Relationship Type: {{ user.getSeekingRelationshipType }}</li>
-                <li>Last Login: {{ user.getLastLogin }}</li>
-                <li>City: {{ user.getCityName }}</li>
-                <li>Zip Code: {{ user.getZipCode }}</li>
-                <li>ID: {{ user.getId }}</li>
-                {% for image in user_images %}
-                    {{ image.getName }}
-                {% endfor %}
-            </ul>
-            {% for image in user_images %}
-                <img src="{{ image.getUrl }}">
-            {% endfor %}
-            <br>
-            <h4>Upload an Image</h4>
-            <form action="/upload_image" method="post">
-                <input type="hidden" value="{{ user.getId }}" name="user_id">
-                <div class="form-group">
-                    <label for="title">Title</label>
-                    <input name="title" id="title" type="text">
-                </div>
-                <div class="form-group">
-                    <label for="description">Description</label>
-                    <input name="description" id="description" type="text">
-                </div>
-                <div class="form-group">
-                    <label for="url">Url</label>
-                    <input name="url" id="url" type="text">
-                </div>
-                <button class="btn btn-primary" type="submit">Upload</button>
-            </form>
-        </div>
-    </body>
-    {% include 'footer.html' %}
+  <head>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="/css/profile-styles.css" media="screen" title="no title" charset="utf-8">
+    <meta charset="utf-8">
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
+    <title>Poly Profile Page</title>
 
+  </head>
+  <body>
+  <div class="wrapper">
+
+    <div class="navbar">
+    <div id="logo">
+      <img src="/img/logo2.png" alt="logo" />
+    </div>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/about_page">About</a></li>
+      {% if session is empty %}
+      <li><a href="/register">Register</a></li>
+      <li><a href="#" id="log-in">Log In</a></li>
+      {% else %}
+      <li><a href="/user_profile/{{ user.getId }}">Profile</a></li>
+      <li><a href="/user_sign_out">Sign Out</a></li>
+      {% endif %}
+    </ul>
+    </div>
+
+  <div class=profile-info>
+    <div class="photo">
+      <img src="/images/profile1.jpg" alt="male generic profile" />
+    </div>
+    <div class="info">
+      <h3>Name/Username: {{user.getUsername}} </h3><p>
+
+      </p>
+        <h3>First Name: {{user.getFirstName}} </h3><p>
+
+        </p>
+      <h3>Last Name: {{user.getLastName}}</h3><p>
+
+       </p>
+      <h3>Status: {{user.getStatus}}</h3><p>
+
+        </p>
+      <h3>Kink Friendly?: {{user.getKinkFriendly}}</h3><p>
+
+      </p>
+      <h3>Birthday: {{user.getBirthday}}</h3><p>
+
+      </p>
+      <h3>Email: {{user.getEmail}}</h3><p>
+
+      </p>
+      <h3>Seeking Gender(s): {% for gender in seeking_genders %} {{ gender.getName}} {% endfor %}</h3><p>
+
+      </p>
+      <h3>Seeking Relationship(s): {{ user.getSeekingRelationshipType }}</h3><p>
+
+      </p>
+      <h3>Current Relationship(s): {{ user.getRelationshipType }}</h3><p>
+
+      </p>
+      <h3>Last Login: {{ user.getLastLogin }}</h3><p>
+
+      </p>
+      <h3>City: {{ user.getCityName }}</h3><p>
+
+      </p>
+      <h3>Zip Code: {{user.getZipCode }}</h3><p>
+
+      </p>
+    </div>
+  </div>
+
+  <div class="details">
+      <h3>About Me:</h3>
+      <p>
+        {{ user.getAboutMe }}
+      </p>
+      <h3>Interests/Hobbies:</h3>
+      <p>
+        {{ user.getInterests }}
+      </p>
+    </div>
+
+    <div class="allIcons">
+
+      <div class="icon">
+        <div class="img1">
+          <img src="/img/Mficon.png" alt="" />
+        </div>
+        <div class="info">
+          <p>
+            blah, blah, blah
+          </p>
+        </div>
+     </div>
+
+       <div class="icon">
+         <div class="img2">
+           <img src="/img/MFicon.png" alt="" />
+         </div>
+        <div class="info">
+          <p>
+           it's just wishful thinking, you'll die alone
+          </p>
+        </div>
+      </div>
+
+      <div class="icon">
+        <div class="img3">
+          <img src="/img/MFicon.png" alt="" />
+        </div>
+       <div class="info">
+         <p>
+          when you die, your cat will happily eat your face.
+         </p>
+       </div>
+      </div>
+
+    </div>
+  <footer>
+    <h2> &copy 2016 Poly Something</h2>
+  </footer>
+  </div>
+  </body>
 </html>

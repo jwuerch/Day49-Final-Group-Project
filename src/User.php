@@ -265,6 +265,8 @@
                 if ($user->getUsername() == $username && $user->getPassword() == $password) {
                     $found_user = $user;
                     array_push($_SESSION['user'], $username);
+                    array_push($_SESSION['user'], $user->getId());
+
                     $user = $found_user;
                 }
             }

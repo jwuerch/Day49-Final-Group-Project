@@ -26,7 +26,9 @@
     $app->register(new Silex\Provider\TwigServiceProvider(), array('twig.path' => __DIR__.'/../views'));
 
     $app->get('/', function() use ($app) {
-      return $app['twig']->render('index.html.twig', array('all_cities' => City::getAll(), 'all_identities' => Identity::getAll(), 'session' => $_SESSION['user']));
+      $user_id = ($_SESSION['user'][1]);
+      $user = User::find($user_id);
+      return $app['twig']->render('index.html.twig', array('all_cities' => City::getAll(), 'all_identities' => Identity::getAll(), 'session' => $_SESSION['user'], 'user' => $user));
     });
 
     $app->get("/users_basic_search", function() use ($app) {
@@ -52,7 +54,9 @@
     });
 
     $app->get('/about_page', function() use($app) {
-        return $app['twig']->render('about.html.twig');
+        $user_id = ($_SESSION['user'][1]);
+        $user = User::find($user_id);
+        return $app['twig']->render('about.html.twig', array('user' => $user, 'session' => $_SESSION['user']));
     });
 
     $app->post('/upload_image', function() use ($app) {
@@ -111,8 +115,10 @@
     $app->post('/user_login', function() use ($app) {
         $username = $_POST['username'];
         $password = $_POST['password'];
-        $user = User::signIn($username, $password);
-        return $app['twig']->render('index.html.twig', array('all_identities' => Identity::getAll(), 'all_cities' => City::getAll(), 'session' => $_SESSION['user']));
+        User::signIn($username, $password);
+        $user_id = ($_SESSION['user'][1]);
+        $user = User::find($user_id);
+        return $app['twig']->render('index.html.twig', array('all_identities' => Identity::getAll(), 'all_cities' => City::getAll(), 'session' => $_SESSION['user'], 'user' => $user));
     });
 
     $app->get('/user_sign_out', function() use ($app) {
