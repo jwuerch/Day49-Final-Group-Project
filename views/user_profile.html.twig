@@ -2,27 +2,6 @@
 <html>
     {% include 'head.html' %}
     {% include 'navbar.html' %}
-
-
-                {% if session is empty %}
-                <li>
-                    <a href="/">Register</a>
-                </li>
-                <li>
-
-                    <button id="log-in" type="submit">Sign-In</button>
-                </li>
-                {% else %}
-                <li>
-                    <a href="/user_sign_out">Sign-Out</a>
-                </li>
-                {% endif %}
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-     </div>
-    </div>
-    <!-- /.container -->
     <body>
         <div class="container">
             <h5> {{ user.getUsername }}</h5>
