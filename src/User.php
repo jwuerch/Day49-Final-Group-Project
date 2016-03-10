@@ -250,7 +250,8 @@
                 $description = $image['description'];
                 $user_id = $image['user_id'];
                 $id = $image['id'];
-                $new_image = new Image($title, $description, $user_id, $id);
+                $url = $image['url'];
+                $new_image = new Image($title, $description, $user_id, $url, $id);
                 array_push($images, $new_image);
             }
             return $images;

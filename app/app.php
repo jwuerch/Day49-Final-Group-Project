@@ -28,6 +28,7 @@
     $app->get('/', function() use ($app) {
       $user_id = ($_SESSION['user'][1]);
       $user = User::find($user_id);
+      
       return $app['twig']->render('index.html.twig', array('all_cities' => City::getAll(), 'all_identities' => Identity::getAll(), 'session' => $_SESSION['user'], 'user' => $user));
     });
 
@@ -54,8 +55,12 @@
     });
 
     $app->get('/about_page', function() use($app) {
+        if (empty($_SESSION['user'])) {
+            $_SESSION['user'] = [null, null];
+        } else {
         $user_id = ($_SESSION['user'][1]);
         $user = User::find($user_id);
+        }
         return $app['twig']->render('about.html.twig', array('user' => $user, 'session' => $_SESSION['user']));
     });
 
@@ -116,8 +121,12 @@
         $username = $_POST['username'];
         $password = $_POST['password'];
         User::signIn($username, $password);
+        if (empty($_SESSION['user'])) {
+            $_SESSION['user'] = [null, null];
+        } else {
         $user_id = ($_SESSION['user'][1]);
         $user = User::find($user_id);
+        }
         return $app['twig']->render('index.html.twig', array('all_identities' => Identity::getAll(), 'all_cities' => City::getAll(), 'session' => $_SESSION['user'], 'user' => $user));
     });
 

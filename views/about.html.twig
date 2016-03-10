@@ -20,17 +20,17 @@
     <div id="logo">
       <img src="img/logo2.png" alt="logo" />
     </div>
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/about_page">About</a></li>
-          {% if session is empty %}
-          <li><a href="/register">Register</a></li>
-          <li><a href="#" id="log-in">Log In</a></li>
-          {% else %}
-          <li><a href="/user_profile/{{ user.getId }}">Profile</a></li>
-          <li><a href="/user_sign_out">Sign Out</a></li>
-          {% endif %}
-        </ul>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/about_page">About</a></li>
+      {% if session[1] == null %}
+      <li><a href="/register">Register</a></li>
+      <li><a href="#" id="log-in">Log In</a></li>
+      {% else %}
+      <li><a href="/user_profile/{{ user.getId }}">Profile</a></li>
+      <li><a href="/user_sign_out">Sign Out</a></li>
+      {% endif %}
+    </ul>
     </div>
 
       <div class="about">

@@ -10,6 +10,20 @@
     display: none;
 }
 
+.upload-image-box {
+    z-index: 2;
+    background:#fff;
+    margin-top:100px;
+    position:absolute;
+    box-shadow: 0 5px 15px rgba(0,0,0,.5);
+    width:598px;
+    height:319px;
+    position:absolute;
+    margin-left:45%;
+    padding:15px;
+    display:none;
+}
+
 .sign-in-box {
     z-index: 2;
     background:#fff;

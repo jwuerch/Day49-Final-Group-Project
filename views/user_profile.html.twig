@@ -5,9 +5,13 @@
     <link rel="stylesheet" href="/css/profile-styles.css" media="screen" title="no title" charset="utf-8">
     <meta charset="utf-8">
     <link href='https://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
+    <script src="/js/jquery-1.12.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="/js/scripts.js"></script>
     <title>Poly Profile Page</title>
 
   </head>
+            {% include 'upload-image-box.html' %}
   <body>
   <div class="wrapper">
 
@@ -18,7 +22,7 @@
     <ul>
       <li><a href="/">Home</a></li>
       <li><a href="/about_page">About</a></li>
-      {% if session is empty %}
+      {% if session[1] == null %}
       <li><a href="/register">Register</a></li>
       <li><a href="#" id="log-in">Log In</a></li>
       {% else %}
@@ -27,10 +31,11 @@
       {% endif %}
     </ul>
     </div>
-
   <div class=profile-info>
     <div class="photo">
       <img src="/images/profile1.jpg" alt="male generic profile" />
+      <a href="#" id="upload-image">Upload Images</a>
+
     </div>
     <div class="info">
       <h3>Name/Username: {{user.getUsername}} </h3><p>
@@ -118,8 +123,17 @@
          <p>
           when you die, your cat will happily eat your face.
          </p>
+         {% for image in user_images %}
+           <img src="{{ image.getUrl }}">
+           {% endfor %}
        </div>
       </div>
+
+      {% for image in user_images %}
+      <div>
+        <img src="{{ image.getUrl }}">
+    </div>
+        {% endfor %}
 
     </div>
   <footer>
