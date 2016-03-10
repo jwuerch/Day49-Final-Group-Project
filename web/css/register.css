@@ -1,0 +1,135 @@
+body {
+background: linear-gradient(#fff, transparent 50%), linear-gradient(0deg, #fff, transparent 20%), url("../img/cover3.jpg") no-repeat center;
+  background-size: cover;
+
+}
+
+.topnav {
+  background: linear-gradient(#6F9283, transparent 100%), linear-gradient(0deg, #705151, transparent 100%);
+  color: white;
+}
+
+.form {
+  max-width: 500px;
+    padding: 10px 20px;
+    background: linear-gradient(#5C415D, transparent 100%), linear-gradient(0deg, #705151, transparent 100%);
+    /*background: #5C415D;*/
+    margin: 10px auto;
+    margin-top: 40px;
+    padding: 20px;
+    border-radius: 8px;
+    color: white;
+    text-shadow: 3px 3px 3px black;
+    transition: all 1s ease-out;
+}
+
+.form:hover {
+  max-width: 700px;
+  background: linear-gradient(#6F9283, transparent 100%), linear-gradient(0deg, #705151, transparent 100%);
+  color: #274963;
+  text-shadow: 3px 2px 2px gray;
+  transform: scale(1.06);
+  transition: all 1s ease-in-out 0.4s
+}
+
+.form-group label{
+  display: block;
+ margin: 0px 0px 15px 0px;
+}
+
+.form-group input {
+  display: block;
+ margin: 0px 0px 15px 0px;
+}
+
+input, textarea {
+    /*padding: 9px;
+    border: solid 1px #E5E5E5;
+    outline: 0;
+    font: normal 13px/100% Verdana, Tahoma, sans-serif;
+    width: 200px;
+    background: #FFFFFF;
+    margin: 20px;*/
+   display: block;
+   margin: 0px 0px 15px 0px;
+   font-family: Georgia, "Times New Roman", Times, serif;
+   background: rgba(255,255,255,.1);
+   border: none;
+   border-radius: 4px;
+   font-size: 16px;
+   margin: 0;
+   outline: 0;
+   padding: 7px;
+   width:100%;
+   color: white;
+   box-sizing: border-box;
+   -webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   background-color: #e8eeef;
+   color:#8a97a0;
+   -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+   box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+   margin-bottom: 30px;
+    }
+
+textarea {
+    width: 400px;
+    max-width: 400px;
+    height: 150px;
+    line-height: 150%;
+
+    }
+
+    .form-group select {
+      -webkit-appearance: menulist-button;
+      height:35px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+input:hover, textarea:hover,
+input:focus, textarea:focus {
+    border-color: #C9C9C9;
+     color: #5C415D;
+    }
+
+ button {
+    position: relative;
+    display: block;
+    padding: 19px 39px 18px 39px;
+    color: #FFF;
+    margin: 0 auto;
+    background-color: #5C415D;
+    font-size: 18px;
+    text-align: center;
+    font-style: normal;
+    width: 100%;
+    border: 1px solid #16a085;
+    border-width: 1px 1px 3px;
+    margin-bottom: 10px;
+}
+button:hover {
+    background: #109177;
+}
+
+h5 {
+  text-align: center;
+  font-size: 30px;
+  text-shadow: 3px 3px 3px gray;
+}
+
+/*.navbar-header {
+  background-color: #5C415D;
+}*/
+
+.topnav a {
+  color: white !important;
+  text-shadow: 2px 2px 2px black;
+}
+
+.btn-primary {
+  background-color: #6F9283 !important;
+  color: #5C415D;
+  font-size: 18px;
+  text-shadow: 2px 2px 2px gray;
+}

@@ -1,117 +1,155 @@
 <!DOCTYPE html>
 <html>
-    {% include 'head.html' %}
-    {% include 'navbar.html' %}
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<link href="css/register.css" rel="stylesheet">
+</head>
+<html>
+<div class="container-fluid">
+<nav class="navbar navbar-default topnav" role="navigation">
+<div class="container topnav">
+<!-- Brand and toggle get grouped for better mobile display -->
+<div class="navbar-header">
+
+    <a class="navbar-brand topnav" href="#" target="_blank">Jason Wuerch</a>
+</div>
+<!-- Collect the nav links, forms, and other content for toggling -->
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            <a href="/register">Register</a>
+        </li>
+        <li>
+            <a href="/sign-in">Sign-In</a>
+        </li>
+    </ul>
+</div>
+<!-- /.navbar-collapse -->
+</div>
+</div>
 
 
-    <body>
-        <div class="container">
-            <h5>Create A Profile</h5>
+<body>
+    <div class="container">
 
-            <form action="/register_new_user" method="post">
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input id="username" name="username" type="text" class="form-select" required>
-                </div>
 
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input id="password" name="password" type="text" class="form-select" required>
-                </div>
+        <h5>Create A Profile</h5>
 
-                <div class="form-group">
-                    <label for="identity">Identity</label>
-                    <select name="identity">
-                        {% for identity in all_identities %}
+        <div class="form">
+        <form action="/register_new_user" method="post">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input id="username" name="username" type="text" class="form-select" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input id="password" name="password" type="text" class="form-select" required>
+            </div>
+
+            <div class="form-group">
+                <label for="identity">Identity</label>
+                <select name="identity">
+                    {% for identity in all_identities %}
+                    <option value="{{ identity.getId }}">{{ identity.getName }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="first_name">First Name</label>
+                <input id="first_name" name="first_name" type="text" class="form-select" required>
+            </div>
+
+            <div class="form-group">
+                <label for="last_name">Last Name</label>
+                <input id="last_name" name="last_name" type="text" class="form-select" required>
+            </div>
+
+            <div class="form-group">
+                <label for="status">Status</label>
+                <select name="status">
+                    <option value="single">Single</option>
+                    <option value="taken">Taken</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="kink_friendly">Kink Friendly</label>
+                <select name="kink_friendly" required>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="birthday">Birthday</label>
+                <input id="birthday" name="birthday" type="date" class="form-select" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" class="form-select" required>
+            </div>
+
+            <div class="form-group">
+                <label for="about_me">About Me</label>
+                <input id="about_me" name="about_me" type="text" class="form-select" required>
+            </div>
+
+            <div class="form-group">
+                <label for="interests">Interests</label>
+                <input id="interests" name="interests" type="text" class="form-select" required>
+            </div>
+
+            <div class="form-group">
+                <label for="seeking_gender">Seeking Gender</label>
+                <select name="seeking_gender">
+                    {% for identity in all_identities %}
                         <option value="{{ identity.getId }}">{{ identity.getName }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
+                    {% endfor %}
+                </select>
+            </div>
 
-                <div class="form-group">
-                    <label for="first_name">First Name</label>
-                    <input id="first_name" name="first_name" type="text" class="form-select" required>
-                </div>
+            <div class="form-group">
+                <label for="seeking_relationship_type">Seeking Relationship Type</label>
+                <select name="seeking_relationship_type">
+                        <option value="primary_partner">Primary Partner</option>
+                        <option value="side_partner">Side Partner</option>
+                </select>
+            </div>
 
-                <div class="form-group">
-                    <label for="last_name">Last Name</label>
-                    <input id="last_name" name="last_name" type="text" class="form-select" required>
-                </div>
+            <div class="form-group">
+                <label for="city_id">City</label>
+                <select name="city_id">
+                    {% for city in all_cities %}
+                        <option value="{{ city.getId }}">{{ city.getName}}, {{city.getState }}</option>
+                    {% endfor %}
+                </select>
+            </div>
 
-                <div class="form-group">
-                    <label for="status">Status</label>
-                    <select name="status">
-                        <option value="single">Single</option>
-                        <option value="taken">Taken</option>
-                    </select>
-                </div>
+            <div class="form-group">
+                <label for="zip_code_id">Zip Code Id</label>
+                <select name="zip_code_id">
+                    {% for zip_code in all_zip_codes %}
+                        <option value="{{ zip_code.getId }}">{{ zip_code.getZipNumber }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button class="btn btn-primary" type="submit">Register</button>
+        </form>
+    </div>
+    </div>
+    <footer>
+      <h2> &copy 2016 Poly Something</h2>
+      <a href="#"><i class="fa fa-facebook-square"></i></a>
+      <a href="#"><i class="fa fa-instagram"></i></a>
+      <a href="#"><i class="fa fa-twitter"></i></a>
+    </footer>
+</body>
 
-                <div class="form-group">
-                    <label for="kink_friendly">Kink Friendly</label>
-                    <select name="kink_friendly" required>
-                        <option value="true">Yes</option>
-                        <option value="false">No</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="birthday">Birthday</label>
-                    <input id="birthday" name="birthday" type="date" class="form-select" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input id="email" name="email" type="email" class="form-select" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="about_me">About Me</label>
-                    <input id="about_me" name="about_me" type="text" class="form-select" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="interests">Interests</label>
-                    <input id="interests" name="interests" type="text" class="form-select" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="seeking_gender">Seeking Gender</label>
-                    <select name="seeking_gender">
-                        {% for identity in all_identities %}
-                            <option value="{{ identity.getId }}">{{ identity.getName }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="seeking_relationship_type">Seeking Relationship Type</label>
-                    <select name="seeking_relationship_type">
-                            <option value="primary_partner">Primary Partner</option>
-                            <option value="side_partner">Side Partner</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="city_id">City</label>
-                    <select name="city_id">
-                        {% for city in all_cities %}
-                            <option value="{{ city.getId }}">{{ city.getName}}, {{city.getState }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="zip_code_id">Zip Code Id</label>
-                    <select name="zip_code_id">
-                        {% for zip_code in all_zip_codes %}
-                            <option value="{{ zip_code.getId }}">{{ zip_code.getZipNumber }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-                <button class="btn btn-primary" type="submit">Register</button>
-            </form>
-            <br>
-        </div>
-    </body>
-    {% include 'footer.html' %}
 </html>

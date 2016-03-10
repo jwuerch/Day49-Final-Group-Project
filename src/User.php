@@ -277,7 +277,6 @@
 
         static function signOut() {
             $_SESSION['user'] = array();
-            echo 'You have successfully signed out.';
             return 'You have successfully signed out.';
         }
 

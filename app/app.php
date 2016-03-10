@@ -101,7 +101,7 @@
         $identity = Identity::find($_POST['identity']);
         $new_user->addIdentity($identity);
 
-        return $app['twig']->render('all_users.html.twig', array('all_users' => User::getAll(), 'all_identities' => Identity::getAll(), 'session' => $_SESSION['user']));
+        return $app['twig']->render('index.html.twig', array('all_users' => User::getAll(), 'all_identities' => Identity::getAll(), 'session' => $_SESSION['user']));
     });
 
     $app->get('/sign_in', function() use ($app) {
@@ -117,12 +117,12 @@
 
     $app->get('/user_sign_out', function() use ($app) {
         User::signOut();
-        return $app['twig']->render('sign-in.html.twig', array('session' => $_SESSION['user']));
+        return $app['twig']->render('index.html.twig', array('session' => $_SESSION['user'], 'all_cities' => City::getAll(), 'all_identities' => Identity::getAll()));
     });
 
     $app->post('/delete_all_users', function() use ($app) {
         User::deleteAll();
-        return $app['twig']->render('all_users.html.twig', array('all_users' => User::getAll(), 'session' => $_SESSION['user']));
+        return $app['twig']->render('all_users.html.twig', array('all_users' => User::getAll(), 'session' => $_SESSION['user'],));
     });
 
     //Cities
