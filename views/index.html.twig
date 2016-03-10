@@ -1,29 +1,102 @@
 <!DOCTYPE html>
 <html>
-    {% include 'head.html' %}
-    {% include 'navbar.html' %}
+  <head>
+    <meta name="viewport" content="width=device-width">
+    <meta charset="utf-8"><link rel="stylesheet" href="/css/styles.css" media="screen" title="no title" charset="utf-8">
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <title>Poly Something</title>
+  </head>
+  <body>
+  <div class="container">
 
-    <body>
-        <div class="container">
-            <h1 class="text-center">Welcome To Poly Date</h1>
+    <div class="navbar">
+    <div id="logo">
+      <!-- <img src="img/logo2.png" alt="logo" /> -->
+       <i class="fa fa-transgender-alt fa-5x"></i>
+    </div>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about_page">About</a></li>
+        <li><a href="register.html">Register</a></li>
+        <li><a href="#">Log In</a></li>
+      </ul>
+    </div>
 
-            <form action="/users_basic_search">
-                <label for="my_identity">I am/We Are</label>
-                <select id="my_identity" name="my_identity">
-                    {% for identity in all_identities %}
-                        <option value="{{ identity.getId }}">{{ identity.getName }}</option>
-                    {% endfor %}
-                </select>
-                <label for="city_id">City</label>
-                <select id = "city_id" name="city_id">
-                    {% for city in all_cities %}
-                        <option value="{{ city.getId }}">{{ city.getName}}, {{city.getState}}</option>
-                    {% endfor %}
-                </select>
-                <button class="btn btn-success" type="submit">Search</button>
-            </form>
-        </div>
-        
-    </body>
-    {% include 'footer.html' %}
+    <div class="cover">
+
+      <div class="headerInfo">
+        <!-- <img src="img/poly.png"> -->
+        <h2>Find polyamorous matches in your area.</h2>
+      </div>
+    <div class="flex-form-wrap">
+        <form action="/users_basic_search">
+      <div class="flex-form-boxes-wrap flex-form">
+
+        <!-- <input type="search" placeholder="Find a Match"> -->
+
+        <label for="from">I am/We are:</label>
+        <select id ="identity" name="my_identity" placeholder="">
+            {% for identity in all_identities %}
+                <option value="{{ identity.getId }}">{{ identity.getName }} </option>
+            {% endfor %}
+            </select>
+        <label for="from">Location</label>
+        <select id="location" name="city_id">
+            {% for city in all_cities %}
+                <option value="{{ city.getId }}">{{ city.getName}}, {{city.getState}}</option>
+            {% endfor %}
+            </select>
+
+        <input type="submit" value="Search">
+      </div>
+    </div>
+    </form>
+  </div>
+
+
+  <div class="allIcons">
+
+    <div class="icon">
+      <div class="img1">
+        <img src="img/men.jpg" alt="" />
+      </div>
+      <div class="info">
+        <p>
+          blah, blah, blah
+        </p>
+      </div>
+   </div>
+
+     <div class="icon">
+       <div class="img2">
+         <img src="img/kisses.jpg" alt="" />
+
+
+       </div>
+      <div class="info">
+        <p>
+         it's just wishful thinking, you'll die alone
+        </p>
+      </div>
+    </div>
+
+    <div class="icon">
+      <div class="img3">
+        <img src="img/wedding.jpg" alt="" />
+      </div>
+     <div class="info">
+       <p>
+        when you die, your cat will happily eat your face.
+       </p>
+     </div>
+    </div>
+
+  </div>
+
+    <footer>
+      <h2> &copy 2016 Poly Something</h2>
+    </footer>
+</div>
+  </body>
 </html>

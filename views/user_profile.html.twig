@@ -30,7 +30,9 @@
                     {{ image.getName }}
                 {% endfor %}
             </ul>
-
+            {% for image in user_images %}
+                <img src="{{ image.getUrl }}">
+            {% endfor %}
             <br>
             <h4>Upload an Image</h4>
             <form action="/upload_image" method="post">

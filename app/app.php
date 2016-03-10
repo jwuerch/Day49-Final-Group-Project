@@ -51,6 +51,10 @@
         return $app['twig']->render('user_profile.html.twig', array('user' => $user, 'city_name' => $user->getCityName(), 'zip_code' => $user->getZipCode(), 'identities' => $identities, 'seeking_genders' => $seeking_genders, 'session' => $_SESSION['user'], 'user_images' => $user->getImages()));
     });
 
+    $app->get('/about_page', function() use($app) {
+        return $app['twig']->render('about.html.twig');
+    });
+
     $app->post('/upload_image', function() use ($app) {
         $title = $_POST['title'];
         $description = $_POST['description'];
