@@ -28,7 +28,7 @@
     $app->get('/', function() use ($app) {
       $user_id = ($_SESSION['user'][1]);
       $user = User::find($user_id);
-      
+
       return $app['twig']->render('index.html.twig', array('all_cities' => City::getAll(), 'all_identities' => Identity::getAll(), 'session' => $_SESSION['user'], 'user' => $user));
     });
 
@@ -79,7 +79,8 @@
     $app->delete('/delete_user', function() use ($app) {
         $user = User::find($_POST['user_id']);
         $user->deleteProfile();
-        return $app['twig']->render('all_users.html.twig', array('all_users' => User::getAll(), 'session' => $_SESSION['user']));
+        $_SESSION['user'] = array();
+        return $app['twig']->render('index.html.twig', array('all_users' => User::getAll(), 'identities' => Identity::getAll(), City::getAll(), 'session' => $_SESSION['user']));
     });
 
     $app->post('/register_new_user', function() use ($app) {
