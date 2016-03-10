@@ -1265,7 +1265,6 @@
 
             //Assert;
             $this->assertEquals([$test_image, $test_image2], $result);
-
         }
 
 

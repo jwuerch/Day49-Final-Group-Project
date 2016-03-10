@@ -1,17 +1,21 @@
 <?php
 
+    $server = 'mysql:host=localhost;dbname=poly_date';
+    $username = 'root';
+    $password = 'root';
+    $DB = new PDO($server, $username, $password);
+
     class Image {
         private $title;
         private $description;
         private $user_id;
-        private $url;
         private $id;
 
-        public function __construct($title, $description, $user_id, $url, $id = null) {
+        public function __construct($title, $description, $user_id, $image = null, $id = null) {
             $this->title = $title;
             $this->description = $description;
             $this->user_id = $user_id;
-            $this->url = $url;
+            $this->image = $image;
             $this->id = $id;
         }
         //Setters;
@@ -21,11 +25,8 @@
         public function setDescription($description) {
             $this->description = $description;
         }
-        public function setUserId($user_id) {
-            $this->user_id = $user_id;
-        }
-        public function setUrl($url) {
-            $this->url = $url;
+        public function setImage($image) {
+            $this->image = $image;
         }
 
         //Getters;
@@ -38,21 +39,20 @@
         public function getUserId() {
             return $this->user_id;
         }
-        public function getUrl() {
-            return $this->url;
+        public function getImage() {
+            return $this->image;
         }
         public function getId() {
             return $this->id;
         }
 
         public function save() {
-            $GLOBALS['DB']->exec("INSERT INTO images (title, description, user_id, url) VALUES ('{$this->getTitle()}', '{$this->getDescription()}', {$this->getUserId()}, '{$this->getUrl()}');");
+            $GLOBALS['DB']->exec("INSERT INTO images (title, description, user_id, image) VALUES ('{$this->getTitle()}', '{$this->getDescription()}', {$this->getUserId()}, {$this->getImage()});");
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
         public function delete() {
             $GLOBALS['DB']->exec("DELETE FROM images WHERE id = {$this->getId()};");
         }
-
         //Static Functions;
         static function getAll() {
             $returned_images = $GLOBALS['DB']->query("SELECT * FROM images;");
@@ -62,8 +62,8 @@
                 $description = $image['description'];
                 $user_id = $image['user_id'];
                 $id = $image['id'];
-                $url = $image['url'];
-                $new_image = new Image($title, $description, $user_id, $url, $id);
+                $image2 = $imaage['image'];
+                $new_image = new Image($title, $description, $user_id, $image, $id);
                 array_push($images, $new_image);
             }
             return $images;
@@ -85,7 +85,14 @@
         }
     }
 
+    //properties
+    $image = file_get_contents($_FILES['myfile']['tmp_name']);
+    $title = $_POST['title'];
+    $description = $_POST['description'];
+    $user_id = $_POST['user_id'];
+    $GLOBALS['DB']->exec("INSERT INTO images (title, description, user_id, image) VALUES ('{$title}', '{$description}', {$user_id}, '{$image}');");
+    var_dump($image);
+    echo 'Upload Successful!';
 
 
-
- ?>
+?>

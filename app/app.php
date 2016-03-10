@@ -4,6 +4,8 @@
     require_once __DIR__.'/../src/City.php';
     require_once __DIR__.'/../src/ZipCode.php';
     require_once __DIR__.'/../src/Identity.php';
+    require_once __DIR__.'/../src/Image.php';
+
 
     $app = new Silex\Application();
     $server = 'mysql:host=localhost;dbname=poly_date';
@@ -46,7 +48,17 @@
         $user = User::find($id);
         $identities = $user->getIdentities();
         $seeking_genders = $user->getSeekingGenders();
-        return $app['twig']->render('user_profile.html.twig', array('user' => $user, 'city_name' => $user->getCityName(), 'zip_code' => $user->getZipCode(), 'identities' => $identities, 'seeking_genders' => $seeking_genders, 'session' => $_SESSION['user']));
+        return $app['twig']->render('user_profile.html.twig', array('user' => $user, 'city_name' => $user->getCityName(), 'zip_code' => $user->getZipCode(), 'identities' => $identities, 'seeking_genders' => $seeking_genders, 'session' => $_SESSION['user'], 'user_images' => $user->getImages()));
+    });
+
+    $app->post('/upload_image', function() use ($app) {
+        $title = $_POST['title'];
+        $description = $_POST['description'];
+        $user = User::find($_POST['user_id']);
+        $user_id = $user->getId();
+        $new_image = new Image($title, $description, $user_id);
+        $new_image->save();
+        return $app['twig']->render('user_profile.html.twig', array('user' => $user, 'city_name' => $user->getCityName(), 'zip_code' => $user->getZipCode(), 'identities' => $user->getIdentities(), 'seeking_genders' => $user->getSeekingGenders(), 'session' => $_SESSION['user'], 'user_images' => $user->getImages()));
     });
 
     $app->delete('/delete_user', function() use ($app) {

@@ -57,12 +57,23 @@
                 <li>City: {{ user.getCityName }}</li>
                 <li>Zip Code: {{ user.getZipCode }}</li>
                 <li>ID: {{ user.getId }}</li>
+                {% for image in user_images %}
+                    {{ image.getName }}
+                {% endfor %}
             </ul>
+
             <br>
-            <form action="/delete_user" method="post">
-                <input type="hidden" name="_method" value="delete">
-                <input type="hidden" name="user_id" value="{{ user.getId }}">
-                <button type="submit"class="btn btn-danger">Delete THIS User</button>
+            <form action="/../upload.php" method="POST" enctype="multipart/form-data">
+                Upload an Image
+                <input type="file" name="myfile"><p></p>
+                <input type="submit" value="Upload">
+                Title
+                <input name="title" type="text">
+                Description
+                <input type="text" name="description">
+                URL
+                <input type="text" name="url">
+                <input type="hidden" value="{{ user.getId }}" name="user_id">
             </form>
         </div>
     </body>
