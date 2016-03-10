@@ -33,7 +33,7 @@
     </div>
   <div class=profile-info>
     <div class="photo">
-      <img src="/images/profile1.jpg" alt="male generic profile" />
+      <img src="{{ user_images[0].getUrl }}" alt="male generic profile" />
       <a href="#" id="upload-image">Upload Images</a>
 
     </div>
@@ -95,7 +95,7 @@
 
       <div class="icon">
         <div class="img1">
-          <img src="/img/Mficon.png" alt="" />
+          <img src="{{ user_images[1].getUrl }}" alt="" />
         </div>
         <div class="info">
           <p>
@@ -106,7 +106,7 @@
 
        <div class="icon">
          <div class="img2">
-           <img src="/img/MFicon.png" alt="" />
+           <img src="{{ user_images[2].getUrl }}" alt="" />
          </div>
         <div class="info">
           <p>
@@ -117,23 +117,15 @@
 
       <div class="icon">
         <div class="img3">
-          <img src="/img/MFicon.png" alt="" />
+          <img src="{{ user_images[3].getUrl }}" alt="" />
         </div>
        <div class="info">
          <p>
           when you die, your cat will happily eat your face.
          </p>
-         {% for image in user_images %}
-           <img src="{{ image.getUrl }}">
-           {% endfor %}
+           <img src="{{ user_images[3].getUrl }}">
        </div>
       </div>
-
-      {% for image in user_images %}
-      <div>
-        <img src="{{ image.getUrl }}">
-    </div>
-        {% endfor %}
 
     </div>
   <footer>
