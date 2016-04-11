@@ -2,8 +2,8 @@
 
 #### _Creates a Poly Dating App_
 
-####  * _Backend:Jason Wuerch_
-      * _Frontend: Tal, Timmi and Hillary_
+####  Backend:Jason Wuerch
+####  Frontend: Tal, Timmi and Hillary
 
 ## Description
 
