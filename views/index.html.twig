@@ -15,7 +15,6 @@
   <div class="container">
     <div class="navbar">
     <div id="logo">
-      <!-- <img src="img/logo2.png" alt="logo" /> -->
        <i class="fa fa-transgender-alt fa-5x"></i>
     </div>
       <ul>
@@ -34,7 +33,7 @@
     <div class="cover">
 
       <div class="headerInfo">
-        <!-- <img src="img/poly.png"> -->
+        <h1>PolyMatch</h1>
         <h2>Find polyamorous matches in your area.</h2>
       </div>
     <div class="flex-form-wrap">
@@ -52,7 +51,7 @@
         <label for="from">Location</label>
         <select id="location" name="city_id">
             {% for city in all_cities %}
-                <option value="{{ city.getId }}">{{ city.getName}}, {{city.getState}}</option>
+                <option value="{{ city.getId }}">{{ city.getName}}</option>
             {% endfor %}
             </select>
 
@@ -65,46 +64,49 @@
 
   <div class="allIcons">
 
-    <div class="icon">
-      <div class="img1">
-        <img src="img/men.jpg" alt="" />
-      </div>
-      <div class="info">
-        <p>
-          blah, blah, blah
-        </p>
-      </div>
-   </div>
-
-     <div class="icon">
-       <div class="img2">
-         <img src="img/kisses.jpg" alt="" />
-
-
-       </div>
-      <div class="info">
-        <p>
-         it's just wishful thinking, you'll die alone
-        </p>
-      </div>
-    </div>
+   <div class="icon">
+     <div class="img1">
+       <img src="img/men.jpg" alt="" />
+     </div>
+     <div class="info">
+       <p>
+         Signing up only takes two minutes and is totally free.
+       </p>
+     </div>
+  </div>
 
     <div class="icon">
-      <div class="img3">
-        <img src="img/wedding.jpg" alt="" />
+      <div class="img2">
+        <img src="img/kisses.jpg" alt="" />
+
+
       </div>
      <div class="info">
        <p>
-        when you die, your cat will happily eat your face.
+        Meet other poly individuals and couples in your area.
        </p>
      </div>
+   </div>
+
+   <div class="icon">
+     <div class="img3">
+       <img src="img/wedding.jpg" alt="" />
+     </div>
+    <div class="info">
+      <p>
+       Along came Poly.
+      </p>
     </div>
+   </div>
 
-  </div>
+ </div>
 
-    <footer>
-      <h2> &copy 2016 Poly Something</h2>
-    </footer>
+ <footer>
+   <h2> &copy 2016 PolyMatch</h2>
+   <a href="#"><i class="fa fa-facebook-square"></i></a>
+   <a href="#"><i class="fa fa-instagram"></i></a>
+   <a href="#"><i class="fa fa-twitter"></i></a>
+ </footer>
 </div>
     <div class="transparency">
     </div>

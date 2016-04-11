@@ -1,21 +1,62 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <link rel="stylesheet" href="css/basic_search_results.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <script src="js/jquery-1.12.1.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <script src="js/scripts.js"></script>
+</head>
     <body>
-        <div class="container">
-            <ul>
-                {% for user in user_search_results %}
-                    <li>{{ user.getUsername }}</li>
-                    <ul>
-                        <li>First Name: {{ user.getFirstName }}</li>
-                        <li>Last Name: {{ user.getLastName }}</li>
-                        <li>{{ user.getSeekingGendersNames }}</li>
-                    </ul>
+        {% include 'sign-in-box.html' %}
 
-                {% endfor %}
+      <div class="container">
+
+        <div class="navbar">
+          <div id="logo">
+            <!-- <img src="img/logo2.png" alt="logo" /> -->
+             <i class="fa fa-transgender-alt fa-5x"></i>
+          </div>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about_page">About</a></li>
+        {% if session[1] == null %}
+        <li><a href="/register">Register</a></li>
+        <li><a href="#" id="log-in">Log In</a></li>
+        {% else %}
+        <li><a href="/user_profile/{{ my_user.getId }}">Profile</a></li>
+        <li><a href="/user_sign_out">Sign Out</a></li>
+        {% endif %}
+      </ul>
+      </div>
+          <div class="profile">
+            {% for user in user_search_results %}
+          <div class="Profile1">
+            <img src="images/profile2.png" alt="" />
+            <ul>
+              <li>First Name: {{ user.getFirstName }}</li>
+              <li>Last Name: {{ user.getLastName }}</li>
+              <li>Gender: {{ user.getIdentitiesNames }}</li>
+              <li>City: {{ user.getCityName }}</li>
+              <li id="link"><a href="/user_profile/{{ user.getId }}">View Profile</a></li>
             </ul>
+          </div>
+
+
+
+          {% endfor %}
         </div>
+        </div>
+        <footer>
+          <h2> &copy 2016 PolyMatch</h2>
+          <a href="#"><i class="fa fa-facebook-square"></i></a>
+          <a href="#"><i class="fa fa-instagram"></i></a>
+          <a href="#"><i class="fa fa-twitter"></i></a>
+        </footer>
+
 
     </body>
-    <div class="transparency">
-    </div>
+
 </html>

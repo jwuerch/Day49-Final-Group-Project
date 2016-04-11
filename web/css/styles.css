@@ -52,7 +52,7 @@
   flex-wrap: wrap;
   width: 100%;
   height: 100vh;
-  max-width: 1600px;
+  max-width: 100%;
 }
 
 .navbar {
@@ -110,7 +110,7 @@
 }
 
 .headerInfo h2 {
-  padding-top: 100px;
+  /*padding-top: 100px;*/
   text-align: center;
     color: white;
     text-shadow: 4px 4px 4px #5C415D;
@@ -118,7 +118,6 @@
 }
 
 .flex-form {
-  min-width: 390px;
   height: 20vh;
   margin: 0 auto;
   display: flex;
@@ -130,6 +129,16 @@
   border-left: 100% solid rgba(34,	34,	59, 0.3);
   align-items: stretch;
   font-family: 'Raleway', sans-serif;
+}
+
+.flex-form select {
+      /*border: 0 !important;       */
+      /*-webkit-appearance: none;
+      -moz-appearance: none;          */
+      background: url('/images/caret_down.png') no-repeat;        /*Adds background-image*/
+      background-color:rgba(191,	192,	192, 0.5);
+      background-position: 82px 15px;                /*Position of the background-image*/
+      width:100px;                /*Width of select dropdown to give space for arrow image*/
 }
 
 .flex-form-wrap {
@@ -179,6 +188,12 @@ align-items: center;
  margin: 0 auto;
  }
 
+ .headerInfo h1 {
+  color: #6F9283;
+  font-size: 50px;
+  text-shadow: 1px 2px #22223B;
+ }
+
 
 /*icon centering*/
 .allIcons {
@@ -204,7 +219,10 @@ align-items: center;
   margin: 0 auto;
   padding-top: 10px;
   flex: 1;
+  font-weight: bolder;
+  color: #22223B;
 }
+
 .img1 img, .img2 img, .img3 img {
   width: 200px;
   height: 200px;
@@ -214,13 +232,21 @@ align-items: center;
 }
 
 footer {
-  display: flex;
-  flex-wrap: wrap;
+  text-align: center;
+  /*display: flex;
+  flex-wrap: wrap;*/
   /*border: 5px solid orange;*/
   background: linear-gradient(#5C415D, transparent 100%), linear-gradient(0deg, #5C415D, transparent 100%);
   border-bottom: 2px solid black;
   width: 100%;
+  color: #6F9283;
+  text-shadow: 2px 2px 2px #22223B;
 }
+footer a {
+  color: white;
+  font-size: 30px;
+}
+
 
 
 @media screen and (min-width: 640px) {
@@ -254,6 +280,8 @@ footer {
   width: 100%;
   margin: 0 auto;
    }
+
+
 
   .flex-form-wrap {
      text-align: none;
@@ -340,8 +368,8 @@ font-size: 15px;
 }
 
 
-footer {
+/*footer {
   background: linear-gradient(#5C415D, transparent 100%), linear-gradient(0deg, #5C415D, transparent 100%);
   border-bottom: 2px solid black;
   width: 100%;
-}
+}*/

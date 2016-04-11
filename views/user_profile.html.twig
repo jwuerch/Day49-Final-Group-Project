@@ -12,6 +12,7 @@
 
   </head>
             {% include 'upload-image-box.html' %}
+            {% include 'sign-in-box.html' %}
   <body>
   <div class="wrapper">
 
@@ -75,7 +76,7 @@
       <h3>Zip Code: {{user.getZipCode }}</h3><p>
 
       </p>
-      {% include 'view-images-box.html' %}
+        {% include 'view-images-box.html' %}
       <a href="#" id='view-images'>View All Images</a>
     </div>
   </div>
@@ -113,8 +114,8 @@
            it's just wishful thinking, you'll die alone
           </p>
         </div>
+        {% if session[1] == user.getId %}
         <a href="#" id="upload-image">Upload Images</a>
-        {% if session[0] == user.getUsername %}
         <form action="/delete_user" method="post" class="form-inline">
             <input type="hidden" name="_method" value="delete">
             <input type="hidden" name="user_id" value="{{ user.getId }}">
@@ -131,7 +132,7 @@
          <p>
           when you die, your cat will happily eat your face.
          </p>
-           <img src="{{ user_images[3].getUrl }}">
+
        </div>
       </div>
 

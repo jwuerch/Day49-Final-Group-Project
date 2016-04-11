@@ -188,6 +188,16 @@
             return $seeking_gender_names;
         }
 
+        public function getIdentitiesNames() {
+            $seeking_identities = $this->getSeekingGenders();
+            $seeking_identity_names = array();
+            foreach ($seeking_identities as $identity) {
+                array_push($seeking_identity_names, $identity->getName());
+            }
+            $seeking_identity_names = implode(", ", $seeking_identity_names);
+            return $seeking_identity_names;
+        }
+
         public function addIdentity($identity) {
             $GLOBALS['DB']->exec("INSERT INTO identities_users (user_id, identity_id) VALUES ({$this->getId()}, {$identity->getId()});");
         }

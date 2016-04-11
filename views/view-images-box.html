@@ -1,0 +1,22 @@
+
+<div class="view-images-box">
+  <div class="sign-in-box-header">
+     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+     <h4 class="modal-title" id="exampleModalLabel">Upload Images</h4>
+   </div>
+    {% for image in user_images %}
+    <p>{{ image.getTitle }}</p>
+      <img src="{{ image.getUrl }}" style="width:100px;height:100px;">
+      <p><span style="text-decoration:underline;">Description</span>: {{ image.getDescription}}</p>
+      <form action="/delete_image" method="post">
+      </form>
+      {% if session[1] == user.getId %}
+      <form action="/delete_image" method="post">
+          <input type="hidden" name="user_id" value="{{ user.getId }}">
+          <input type="hidden" name="_method" value="delete">
+          <input type="hidden" name="image_id" value="{{ image.getId }}">
+          <button type="submit">Delete Image</button>
+    </form>
+    {% endif %}
+    {% endfor %}
+</div>

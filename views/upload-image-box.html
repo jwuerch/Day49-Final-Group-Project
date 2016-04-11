@@ -1,10 +1,8 @@
-<head>
-
-</head>
 
 <div class="upload-image-box">
 
-    <form action="/user_login" method="post">
+    <form action="/upload_image" method="post">
+      <input type="hidden" name="user_id" value="{{user.getId }}">
         <div class="sign-in-box-header">
            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
            <h4 class="modal-title" id="exampleModalLabel">Upload Images</h4>
@@ -23,6 +21,7 @@
              <label for="url">Enter Image Url</label>
              <input type="text" id="url" name="url" class="form-select">
          </div>
-        <button class="btn btn-success" action>Upload!</button>
+
+           <button class="btn btn-success" action>Upload!</button>
     </form>
 </div>
