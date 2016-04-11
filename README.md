@@ -7,7 +7,7 @@
 ## Description
 
 _This app allows you to create a user profile, user login with sessions, edit information, upload images, delete users, and store all of this information
-in a database using mySQL. A search functionality is also found on the homepag.e_
+in a database using mySQL. A search functionality is also found on the homepage._
 
 ## Setup/Installation Requirements
 
