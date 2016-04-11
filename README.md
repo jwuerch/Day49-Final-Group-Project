@@ -1,4 +1,4 @@
-# Brands and Stores
+# Poly Match
 
 #### _Creates a Poly Dating App_
 
